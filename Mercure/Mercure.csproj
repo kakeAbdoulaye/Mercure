@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F0C1D1F8-99CA-49B4-B4DA-A932C397423A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mercure</RootNamespace>
+    <AssemblyName>Mercure</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publier\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.104.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZKWeb.Repack.SQLite.1.0.104\lib\net45\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.108.0\lib\net45\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.108.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\Famille.cs" />
+    <Compile Include="Models\Marque.cs" />
+    <Compile Include="Models\SousFamille.cs" />
+    <Compile Include="Vue\Ajouter_Modifier_Article.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\Ajouter_Modifier_Article.Designer.cs">
+      <DependentUpon>Ajouter_Modifier_Article.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\Ajouter_Modifier_Famille.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\Ajouter_Modifier_Famille.Designer.cs">
+      <DependentUpon>Ajouter_Modifier_Famille.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\Ajouter_Modifier_Marque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\Ajouter_Modifier_Marque.Designer.cs">
+      <DependentUpon>Ajouter_Modifier_Marque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\Ajouter_Modifier_SousFamille.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\Ajouter_Modifier_SousFamille.Designer.cs">
+      <DependentUpon>Ajouter_Modifier_SousFamille.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\ApplicatioCentrale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\ApplicatioCentrale.Designer.cs">
+      <DependentUpon>ApplicatioCentrale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\ApplicationFamille.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\ApplicationFamille.Designer.cs">
+      <DependentUpon>ApplicationFamille.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\ApplicationMarque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\ApplicationMarque.Designer.cs">
+      <DependentUpon>ApplicationMarque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\ApplicationSousFamille.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\ApplicationSousFamille.Designer.cs">
+      <DependentUpon>ApplicationSousFamille.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\Fenetre_Integration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\Fenetre_Integration.Designer.cs">
+      <DependentUpon>Fenetre_Integration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InterfaceBaseDonnee\InterfaceDB.cs" />
+    <Compile Include="InterfaceBaseDonnee\InterfaceDB_Articles.cs" />
+    <Compile Include="InterfaceBaseDonnee\InterfaceDB_Famille.cs" />
+    <Compile Include="InterfaceBaseDonnee\InterfaceDB_Marque.cs" />
+    <Compile Include="InterfaceBaseDonnee\InterfaceDB_Sous_Famille.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vue\GestionGroupTri.cs" />
+    <Compile Include="Vue\ListViewColumnTri.cs" />
+    <Compile Include="Vue\ListViewGroupTri.cs" />
+    <EmbeddedResource Include="Vue\Ajouter_Modifier_Article.resx">
+      <DependentUpon>Ajouter_Modifier_Article.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\Ajouter_Modifier_Famille.resx">
+      <DependentUpon>Ajouter_Modifier_Famille.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\Ajouter_Modifier_Marque.resx">
+      <DependentUpon>Ajouter_Modifier_Marque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\Ajouter_Modifier_SousFamille.resx">
+      <DependentUpon>Ajouter_Modifier_SousFamille.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\ApplicatioCentrale.resx">
+      <DependentUpon>ApplicatioCentrale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\ApplicationFamille.resx">
+      <DependentUpon>ApplicationFamille.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\ApplicationMarque.resx">
+      <DependentUpon>ApplicationMarque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\ApplicationSousFamille.resx">
+      <DependentUpon>ApplicationSousFamille.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\Fenetre_Integration.resx">
+      <DependentUpon>Fenetre_Integration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Mercure.SQLite" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\ZKWeb.Repack.SQLite.1.0.104\build\net45\ZKWeb.Repack.SQLite.targets" Condition="Exists('..\packages\ZKWeb.Repack.SQLite.1.0.104\build\net45\ZKWeb.Repack.SQLite.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\ZKWeb.Repack.SQLite.1.0.104\build\net45\ZKWeb.Repack.SQLite.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ZKWeb.Repack.SQLite.1.0.104\build\net45\ZKWeb.Repack.SQLite.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

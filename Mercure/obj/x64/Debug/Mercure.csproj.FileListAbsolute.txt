@@ -1,0 +1,16 @@
+C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\x64\Debug\Mercure.exe.config
+C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\x64\Debug\Mercure.exe
+C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\x64\Debug\Mercure.pdb
+C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\x64\Debug\EntityFramework.dll
+C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\x64\Debug\EntityFramework.SqlServer.dll
+C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\x64\Debug\System.Data.SQLite.dll
+C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\x64\Debug\System.Data.SQLite.EF6.dll
+C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\x64\Debug\System.Data.SQLite.Linq.dll
+C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\x64\Debug\EntityFramework.xml
+C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\x64\Debug\EntityFramework.SqlServer.xml
+C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\x64\Debug\System.Data.SQLite.xml
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\x64\Debug\Mercure.ApplicatioCentrale.resources
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\x64\Debug\Mercure.Properties.Resources.resources
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\x64\Debug\Mercure.csproj.GenerateResource.Cache
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\x64\Debug\Mercure.exe
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\x64\Debug\Mercure.pdb

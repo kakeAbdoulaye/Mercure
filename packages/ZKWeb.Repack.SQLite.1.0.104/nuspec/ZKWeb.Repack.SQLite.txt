@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>ZKWeb.Repack.SQLite</id>
+    <version>1.0.104</version>
+    <title>ZKWeb.Repack.SQLite</title>
+    <authors>SQLite Development Team</authors>
+    <owners>303248153</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://www.sqlite.org/copyright.html</licenseUrl>
+    <projectUrl>https://system.data.sqlite.org/</projectUrl>
+    <iconUrl>https://system.data.sqlite.org/images/sqlite128.png</iconUrl>
+    <description>Notice this is a repacked package for ZKWeb proejct. It fixed official package can't copy SQLite.Interop.dll to ouput directory with Asp.Net Core.</description>
+    <copyright>Public Domain</copyright>
+    <language>en-US</language>
+    <tags>sqlite database ado.net provider interop</tags>
+  </metadata>
+  <files>
+    <file src="build\net20\x64\SQLite.Interop.dll" target="build\net20\x64" />
+    <file src="build\net20\x86\SQLite.Interop.dll" target="build\net20\x86" />
+    <file src="build\net20\ZKWeb.Repack.SQLite.targets" target="build\net20" />
+    
+    <file src="build\net40\x64\SQLite.Interop.dll" target="build\net40\x64" />
+    <file src="build\net40\x86\SQLite.Interop.dll" target="build\net40\x86" />
+    <file src="build\net40\ZKWeb.Repack.SQLite.targets" target="build\net40" />
+    
+    <file src="build\net45\x64\SQLite.Interop.dll" target="build\net45\x64" />
+    <file src="build\net45\x86\SQLite.Interop.dll" target="build\net45\x86" />
+    <file src="build\net45\ZKWeb.Repack.SQLite.targets" target="build\net45" />
+    
+    <file src="build\net46\x64\SQLite.Interop.dll" target="build\net46\x64" />
+    <file src="build\net46\x86\SQLite.Interop.dll" target="build\net46\x86" />
+    <file src="build\net46\ZKWeb.Repack.SQLite.targets" target="build\net46" />
+    
+    <file src="build\net451\x64\SQLite.Interop.dll" target="build\net451\x64" />
+    <file src="build\net451\x86\SQLite.Interop.dll" target="build\net451\x86" />
+    <file src="build\net451\ZKWeb.Repack.SQLite.targets" target="build\net451" />
+    
+    <file src="lib\net20\System.Data.SQLite.dll" target="lib\net20" />
+    <file src="lib\net20\System.Data.SQLite.dll.config" target="lib\net20" />
+    <file src="lib\net20\System.Data.SQLite.xml" target="lib\net20" />
+    
+    <file src="lib\net40\System.Data.SQLite.dll" target="lib\net40" />
+    <file src="lib\net40\System.Data.SQLite.dll.config" target="lib\net40" />
+    <file src="lib\net40\System.Data.SQLite.xml" target="lib\net40" />
+    
+    <file src="lib\net45\System.Data.SQLite.dll" target="lib\net45" />
+    <file src="lib\net45\System.Data.SQLite.dll.config" target="lib\net45" />
+    <file src="lib\net45\System.Data.SQLite.xml" target="lib\net45" />
+    
+    <file src="lib\net46\System.Data.SQLite.dll" target="lib\net46" />
+    <file src="lib\net46\System.Data.SQLite.dll.config" target="lib\net46" />
+    <file src="lib\net46\System.Data.SQLite.xml" target="lib\net46" />
+    
+    <file src="lib\net451\System.Data.SQLite.dll" target="lib\net451" />
+    <file src="lib\net451\System.Data.SQLite.dll.config" target="lib\net451" />
+    <file src="lib\net451\System.Data.SQLite.xml" target="lib\net451" />
+    
+    <file src="runtimes\win7-x64\native\SQLite.Interop.dll" target="runtimes\win7-x64\native" />
+    <file src="runtimes\win7-x86\native\SQLite.Interop.dll" target="runtimes\win7-x86\native" />
+    
+    <file src="ZKWeb.Repack.SQLite.txt" target="nuspec" />
+</files>
+</package>
