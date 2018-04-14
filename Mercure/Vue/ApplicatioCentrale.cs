@@ -100,11 +100,20 @@ namespace Mercure.Vue
             InterfaceDB.deconnection();
         }
 
-      
+        private void changementStatus(string chaine)
+        {
+            this.statuslabel_operation.Text = chaine;
+        }
         private void ajouterArticle()
         {
+            int count = listView_Articles.Items.Count;
             Ajouter_Modifier_Article ajout = new Ajouter_Modifier_Article("Ajouter Article");
             ajout.ShowDialog(this);
+            mettreJourArticles();
+            if (count < listView_Articles.Items.Count)
+            {
+                changementStatus("Un nouvel article ajouté ");
+            }
         }
 
         private void modifierArticle()
@@ -121,6 +130,7 @@ namespace Mercure.Vue
 
         private void supprimerArticle()
         {
+            int count = listView_Articles.Items.Count;
             if (listView_Articles.SelectedItems.Count > 0)
             {
                 DialogResult reponse = MessageBox.Show("Voulez-vous supprimer cet article ? ", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -131,6 +141,10 @@ namespace Mercure.Vue
                     InterfaceDB_Articles inter = new InterfaceDB_Articles();
                     inter.supprimerArticle(refarticle);
                     mettreJourArticles();
+                    if (count > listView_Articles.Items.Count)
+                    {
+                        changementStatus("Un  article supprimé ");
+                    }
                 }
 
             }
@@ -232,6 +246,31 @@ namespace Mercure.Vue
         {
             supprimerArticle();
             mettreJourArticles();
+        }
+
+        private void toolStripButton_ajoutArticle_Click(object sender, EventArgs e)
+        {
+            ajouterArticle();
+            mettreJourArticles();
+        }
+        private void quitterApplication()
+        {
+            DialogResult reponse = MessageBox.Show("Voulez-vous vraiment quitté ? ", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (reponse == DialogResult.OK)
+            {
+                InterfaceDB.deconnection();
+                this.Close();
+            }
+               
+        }
+        private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            quitterApplication();
+        }
+
+        private void toolStripButton_quitterApplication_Click(object sender, EventArgs e)
+        {
+            quitterApplication();
         }
     }
 }

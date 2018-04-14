@@ -27,7 +27,7 @@ namespace Mercure.InterfaceBaseDonnee
             Marque marque2 = getMarque(refmarque);
             if (marque2 != null || marque != null)
             {
-               resultat = " = Existe dejà dans la table Marque " +refmarque;
+                resultat = " = Existe dejà dans la table Marque " + refmarque;
 
             }
             else
@@ -44,13 +44,13 @@ namespace Mercure.InterfaceBaseDonnee
 
                     InterfaceDB.Commande_sqlite.ExecuteNonQuery();
 
-                    resultat = " + Insertion dans la Table Marque : "+refmarque;
+                    resultat = " + Insertion dans la Table Marque : " + refmarque;
 
                 }
                 catch (SQLiteException ex)
                 {
 
-                   resultat = " * Erreur d'insertion dans la Table Marque de "+refmarque+" : " + ex.Message;
+                    resultat = " * Erreur d'insertion dans la Table Marque de " + refmarque + " : " + ex.Message;
 
                 }
 
@@ -60,7 +60,7 @@ namespace Mercure.InterfaceBaseDonnee
         }
         public string insererMarque(Marque marque)
         {
-           return  insererMarque(marque.RefMarque, marque.NomMarque);
+            return insererMarque(marque.RefMarque, marque.NomMarque);
         }
         public string insererMarque(string nom)
         {
@@ -83,7 +83,7 @@ namespace Mercure.InterfaceBaseDonnee
             }
             catch (SQLiteException ex)
             {
-                resultat = " * Erreur de mise à jour dans la Table Marque de "+refmarque+" : " + ex.Message;
+                resultat = " * Erreur de mise à jour dans la Table Marque de " + refmarque + " : " + ex.Message;
 
             }
             return resultat;
@@ -93,19 +93,28 @@ namespace Mercure.InterfaceBaseDonnee
         {
             string requete = "DELETE FROM Marques WHERE RefMarque=@ref";
             string resultat;
-            
+            InterfaceDB_Articles interArticle = new InterfaceDB_Articles();
+            List<Article> liste = interArticle.getToutesArticlebyMarque(refMarque);
 
             try
             {
-                /**
-                 * Suppresion de la maque 
-                 * */
-                InterfaceDB.Commande_sqlite = new SQLiteCommand(requete, InterfaceDB.getInstaneConnexion());
-                InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refMarque);
-                InterfaceDB.Commande_sqlite.ExecuteNonQuery();
-                resultat = " - Suppresion de " + refMarque + " dans la table Marque";
+                if (liste != null && liste.Count > 0)
+                {
+                    resultat = "Echec de la suppresion de " + refMarque + " car cette marque est liée à des articles";
+                }
+                else
+                {
+                    /**
+                     * Suppresion de la maque 
+                     * */
+                    InterfaceDB.Commande_sqlite = new SQLiteCommand(requete, InterfaceDB.getInstaneConnexion());
+                    InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refMarque);
+                    InterfaceDB.Commande_sqlite.ExecuteNonQuery();
+                    resultat = " - Suppresion de " + refMarque + " dans la table Marque";
 
-              
+                }
+
+
 
             }
             catch (SQLiteException ex)
@@ -127,12 +136,12 @@ namespace Mercure.InterfaceBaseDonnee
 
             try
             {
-               Lecture_donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
+                Lecture_donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
 
                 while (Lecture_donnee.Read())
                 {
                     refmarqueTrouve = Int32.Parse(Lecture_donnee["RefMarque"].ToString());
-                    nomTrouve =Lecture_donnee["Nom"].ToString();
+                    nomTrouve = Lecture_donnee["Nom"].ToString();
                     marque = new Marque(refmarqueTrouve, nomTrouve);
 
                 }
@@ -159,12 +168,12 @@ namespace Mercure.InterfaceBaseDonnee
 
             try
             {
-               Lecture_donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
+                Lecture_donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
 
                 while (Lecture_donnee.Read())
                 {
                     refmarqueTrouve = Int32.Parse(Lecture_donnee["RefMarque"].ToString());
-                    nomTrouve =Lecture_donnee["Nom"].ToString();
+                    nomTrouve = Lecture_donnee["Nom"].ToString();
                     marque = new Marque(refmarqueTrouve, nomTrouve);
 
                 }
@@ -182,7 +191,7 @@ namespace Mercure.InterfaceBaseDonnee
         public List<Marque> getToutesMarque()
         {
 
-            List<Marque> listmarque= null;
+            List<Marque> listmarque = null;
             Marque marque = null;
             int refmarqueTrouve;
             string nomTrouve;

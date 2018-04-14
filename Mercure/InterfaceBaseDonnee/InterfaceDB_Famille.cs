@@ -92,17 +92,25 @@ namespace Mercure.InterfaceBaseDonnee
         {
             string requete = "DELETE FROM Familles WHERE RefFamille=@ref";
             string resultat;
-            
-
+            InterfaceDB_Sous_Famille interSousfam = new InterfaceDB_Sous_Famille();
+            List<SousFamille> liste = interSousfam.getToutesSousFamillebyFamille(refFamille);
             try
             {
-                /**
-                 * Suppression de la famille 
-                 * */
-                InterfaceDB.Commande_sqlite = new SQLiteCommand(requete, InterfaceDB.getInstaneConnexion());
-                InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refFamille);
-                InterfaceDB.Commande_sqlite.ExecuteNonQuery();
-                resultat = " - Suppresion de " + refFamille + " dans la table Famille";
+                if (liste != null && liste.Count > 0)
+                {
+                    resultat = "Echec de la suppresion de " + refFamille + " car cette famille est liée à des sous familles ";
+                }
+                else
+                {
+                    /**
+                    * Suppression de la famille 
+                    * */
+                    InterfaceDB.Commande_sqlite = new SQLiteCommand(requete, InterfaceDB.getInstaneConnexion());
+                    InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refFamille);
+                    InterfaceDB.Commande_sqlite.ExecuteNonQuery();
+                    resultat = " - Suppresion de " + refFamille + " dans la table Famille";
+                }
+               
 
             }
             catch (SQLiteException ex)

@@ -102,19 +102,26 @@ namespace Mercure.InterfaceBaseDonnee
         {
             string requete = "DELETE FROM SousFamilles WHERE RefSousFamille=@ref";
             string resultat;
-            
+            InterfaceDB_Articles interArticle = new InterfaceDB_Articles();
+            List<Article> liste = interArticle.getToutesArticlebySousFamille(refsousfamille);
 
             try
             {
-                /**
-                 * suppression de la sous famille
-                 * */
-                InterfaceDB.Commande_sqlite = new SQLiteCommand(requete, InterfaceDB.getInstaneConnexion());
-                InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refsousfamille);
-                InterfaceDB.Commande_sqlite.ExecuteNonQuery();
-                resultat = " - Suppresion de " + refsousfamille + " dans la table Sous Famille";
+                if (liste != null && liste.Count > 0)
+                {
+                    resultat = "Echec de la suppresion de " + refsousfamille + " car cette sous famille est liée à des articles";
+                }
+                else
+                {
+                    /**
+                     * suppression de la sous famille
+                     * */
+                    InterfaceDB.Commande_sqlite = new SQLiteCommand(requete, InterfaceDB.getInstaneConnexion());
+                    InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refsousfamille);
+                    InterfaceDB.Commande_sqlite.ExecuteNonQuery();
+                    resultat = " - Suppresion de " + refsousfamille + " dans la table Sous Famille";
 
-              
+                }
             }
             catch (SQLiteException ex)
             {
@@ -130,7 +137,7 @@ namespace Mercure.InterfaceBaseDonnee
             int reffamille;
             int refsousfamille;
             string nomsousfamille;
-
+            InterfaceDB_Famille interFamille = new InterfaceDB_Famille();
             RequetedonneesSousFamilles = "select * from SousFamilles where SousFamilles.Nom like @nom";
 
             InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneesSousFamilles, InterfaceDB.getInstaneConnexion());
@@ -145,7 +152,7 @@ namespace Mercure.InterfaceBaseDonnee
                     refsousfamille = Int32.Parse(Lecture_donnee["RefSousFamille"].ToString());
                     reffamille = Int32.Parse(Lecture_donnee["RefFamille"].ToString());
                     nomsousfamille = Lecture_donnee["Nom"].ToString();
-                    InterfaceDB_Famille interFamille = new InterfaceDB_Famille();
+                    
                     sousfamille = new SousFamille(refsousfamille, interFamille.getFamille(reffamille), nomsousfamille);
                 }
             }
@@ -163,7 +170,7 @@ namespace Mercure.InterfaceBaseDonnee
             int reffamille;
             int refsousfamille;
             string nomsousfamille;
-
+            InterfaceDB_Famille interFamille = new InterfaceDB_Famille();
             RequetedonneesSousFamilles = "select * from SousFamilles where SousFamilles.RefSousFamille=@ref";
 
             InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneesSousFamilles, InterfaceDB.getInstaneConnexion());
@@ -178,7 +185,7 @@ namespace Mercure.InterfaceBaseDonnee
                     refsousfamille = Int32.Parse(Lecture_donnee["RefSousFamille"].ToString());
                     reffamille = Int32.Parse(Lecture_donnee["RefFamille"].ToString());
                     nomsousfamille = Lecture_donnee["Nom"].ToString();
-                    InterfaceDB_Famille interFamille = new InterfaceDB_Famille();
+                    
                     sousfamille = new SousFamille(refsousfamille, interFamille.getFamille(reffamille), nomsousfamille);
                 }
             }
@@ -198,7 +205,7 @@ namespace Mercure.InterfaceBaseDonnee
             int reffamille;
             int refsousfamille;
             string nomsousfamille;
-
+            InterfaceDB_Famille interFamille = new InterfaceDB_Famille();
             RequetedonneesSousFamilles = "select * from SousFamilles";
 
             InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneesSousFamilles, InterfaceDB.getInstaneConnexion());
@@ -214,7 +221,7 @@ namespace Mercure.InterfaceBaseDonnee
                     refsousfamille = Int32.Parse(Lecture_donnee["RefSousFamille"].ToString());
                     reffamille = Int32.Parse(Lecture_donnee["RefFamille"].ToString());
                     nomsousfamille = Lecture_donnee["Nom"].ToString();
-                    InterfaceDB_Famille interFamille = new InterfaceDB_Famille();
+                   
                     sousfamille = new SousFamille(refsousfamille, interFamille.getFamille(reffamille), nomsousfamille);
                     listsousfamille.Add(sousfamille);
 
@@ -238,13 +245,11 @@ namespace Mercure.InterfaceBaseDonnee
             int reffamille;
             int refsousfamille;
             string nomsousfamille;
-
+            InterfaceDB_Famille interFamille = new InterfaceDB_Famille();
             RequetedonneesSousFamilles = "select * from SousFamilles where RefFamille = @ref";
 
             InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneesSousFamilles, InterfaceDB.getInstaneConnexion());
             InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refFamille);
-
-
             try
             {
 
@@ -255,7 +260,7 @@ namespace Mercure.InterfaceBaseDonnee
                     refsousfamille = Int32.Parse(Lecture_donnee["RefSousFamille"].ToString());
                     reffamille = Int32.Parse(Lecture_donnee["RefFamille"].ToString());
                     nomsousfamille = Lecture_donnee["Nom"].ToString();
-                    InterfaceDB_Famille interFamille = new InterfaceDB_Famille();
+                    
                     sousfamille = new SousFamille(refsousfamille, interFamille.getFamille(reffamille), nomsousfamille);
                     listsousfamille.Add(sousfamille);
 

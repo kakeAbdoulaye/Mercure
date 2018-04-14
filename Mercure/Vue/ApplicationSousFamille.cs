@@ -94,13 +94,14 @@ namespace Mercure.Vue
         private void supprimerSousFamille()
         {
             DialogResult reponse = MessageBox.Show("Voulez-vous supprimer cette famille ? ", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            string resultat;
             if (reponse == DialogResult.OK)
             {
                 ListViewItem item = listView_SousFamille.SelectedItems[0];
                 int refsousfamille = Int32.Parse(item.SubItems[0].Text);
                 InterfaceDB_Sous_Famille inter = new InterfaceDB_Sous_Famille();
-                inter.supprimerSousFamille(refsousfamille);
-          
+                resultat= inter.supprimerSousFamille(refsousfamille);
+                MessageBox.Show(resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 mettreJourSousFamilles();
             }
         }

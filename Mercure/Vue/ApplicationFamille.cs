@@ -68,11 +68,21 @@ namespace Mercure.Vue
 
       
         }
+        private void changementStatus(string chaine)
+        {
+            this.statuslabel_operation.Text = chaine;
+        }
 
         public void ajouterFamille()
         {
+            int count = this.listView_Famille.Items.Count;
             Ajouter_Modifier_Famille ajout = new Ajouter_Modifier_Famille("Ajout Famille ");
             ajout.ShowDialog(this);
+            mettreJourFamilles();
+            if(count < listView_Famille.Items.Count)
+            {
+                changementStatus("Une nouvelle famille ajoutée ");
+            }
         }
 
         public void modifierFamille()
@@ -89,14 +99,21 @@ namespace Mercure.Vue
 
         public void supprimerFamille()
         {
+            int count = this.listView_Famille.Items.Count;
             DialogResult reponse = MessageBox.Show("Voulez-vous supprimer cette famille ? ", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            string resultat = "";
             if (reponse == DialogResult.OK)
             {
                 ListViewItem item = listView_Famille.SelectedItems[0];
                 int reffamille = Int32.Parse(item.SubItems[0].Text);
                 InterfaceDB_Famille inter = new InterfaceDB_Famille();               
-                inter.supprimerFamille(reffamille);
+                resultat= inter.supprimerFamille(reffamille);
+                MessageBox.Show(resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 mettreJourFamilles();
+                if (count > listView_Famille.Items.Count)
+                {
+                    changementStatus("Une famille supprimée");
+                }
             }
         }
 
@@ -145,6 +162,11 @@ namespace Mercure.Vue
         private void supprimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             supprimerFamille();
+        }
+
+        private void toolStripButton_ajoutfamille_Click(object sender, EventArgs e)
+        {
+            ajouterFamille();
         }
     }
 }

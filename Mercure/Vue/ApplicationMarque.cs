@@ -96,12 +96,14 @@ namespace Mercure.Vue
         private void supprimerMarque()
         {
             DialogResult reponse = MessageBox.Show("Voulez-vous supprimer cette marque ? ", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            string resultat;
             if (reponse == DialogResult.OK)
             {
                 ListViewItem item = listView_Marque.SelectedItems[0];
                 int refmarque = Int32.Parse(item.SubItems[0].Text);
                 InterfaceDB_Marque inter = new InterfaceDB_Marque();
-                inter.supprimerMarque(refmarque);
+                resultat= inter.supprimerMarque(refmarque);
+                MessageBox.Show(resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 mettreJourMarques();
             }
         }

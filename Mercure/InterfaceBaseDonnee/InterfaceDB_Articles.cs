@@ -112,6 +112,8 @@ namespace Mercure.InterfaceBaseDonnee
             string articleref, desc;
             int refsousfamille, refmarque, quan;
             double prix;
+            InterfaceDB_Sous_Famille Intersousfamille = new InterfaceDB_Sous_Famille();
+            InterfaceDB_Marque InterMarque = new InterfaceDB_Marque();
 
             RequetedonneeArticle = "select * from Articles where Articles.RefArticle like @nom";
 
@@ -130,10 +132,8 @@ namespace Mercure.InterfaceBaseDonnee
                     prix = Double.Parse(Lecture_donnee["PrixHT"].ToString());
                     quan = Int32.Parse(Lecture_donnee["Quantite"].ToString());
 
-                    InterfaceDB_Sous_Famille Intersousfamille = new InterfaceDB_Sous_Famille();
+                   
                     SousFamille sousfamille = Intersousfamille.getSousFamille(refsousfamille);
-
-                    InterfaceDB_Marque InterMarque = new InterfaceDB_Marque();
                     Marque marque = InterMarque.getMarque(refmarque);
 
                     article = new Article(articleref, desc, sousfamille, marque, prix, quan);
@@ -155,9 +155,10 @@ namespace Mercure.InterfaceBaseDonnee
             string articleref, desc;
             int refsousfamille, refmarque, quan;
             double prix;
+            InterfaceDB_Sous_Famille Intersousfamille = new InterfaceDB_Sous_Famille();
+            InterfaceDB_Marque InterMarque = new InterfaceDB_Marque();
 
             RequetedonneeArticle = "select * from Articles";
-
             InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneeArticle, InterfaceDB.getInstaneConnexion());
 
 
@@ -175,10 +176,7 @@ namespace Mercure.InterfaceBaseDonnee
                     prix = Double.Parse(Lecture_donnee["PrixHT"].ToString());
                     quan = Int32.Parse(Lecture_donnee["Quantite"].ToString());
 
-                    InterfaceDB_Sous_Famille Intersousfamille = new InterfaceDB_Sous_Famille();
                     SousFamille sousfamille = Intersousfamille.getSousFamille(refsousfamille);
-
-                    InterfaceDB_Marque InterMarque = new InterfaceDB_Marque();
                     Marque marque = InterMarque.getMarque(refmarque);
 
                     Article article = new Article(articleref, desc, sousfamille, marque, prix, quan);
@@ -195,5 +193,104 @@ namespace Mercure.InterfaceBaseDonnee
 
             return listarticle;
         }
+
+        public List<Article> getToutesArticlebyMarque(int refMarque)
+        {
+
+            List<Article> listarticle = null;
+            string articleref, desc;
+            int refsousfamille, refmarque, quan;
+            double prix;
+            InterfaceDB_Sous_Famille Intersousfamille = new InterfaceDB_Sous_Famille();
+            InterfaceDB_Marque InterMarque = new InterfaceDB_Marque();
+            RequetedonneeArticle = "select * from Articles where RefMarque=@ref";
+
+            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneeArticle, InterfaceDB.getInstaneConnexion());
+            InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refMarque);
+
+            try
+            {
+
+                Lecture_donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
+                listarticle = new List<Article>();
+                while (Lecture_donnee.Read())
+                {
+                    articleref = Lecture_donnee["RefArticle"].ToString();
+                    desc = Lecture_donnee["Description"].ToString();
+                    refsousfamille = Int32.Parse(Lecture_donnee["RefSousFamille"].ToString());
+                    refmarque = Int32.Parse(Lecture_donnee["RefMarque"].ToString());
+                    prix = Double.Parse(Lecture_donnee["PrixHT"].ToString());
+                    quan = Int32.Parse(Lecture_donnee["Quantite"].ToString());
+
+                    
+                    SousFamille sousfamille = Intersousfamille.getSousFamille(refsousfamille);
+                    Marque marque = InterMarque.getMarque(refmarque);
+
+                    Article article = new Article(articleref, desc, sousfamille, marque, prix, quan);
+                    listarticle.Add(article);
+
+                }
+            }
+            catch (SQLiteException ex)
+            {
+
+                listarticle = null;
+                Console.WriteLine(" * Erreur de lecture dans la table Article : " + ex.Message);
+            }
+
+            return listarticle;
+        }
+
+        public List<Article> getToutesArticlebySousFamille(int refSousFamille)
+        {
+
+            List<Article> listarticle = null;
+            string articleref, desc;
+            int refsousfamille, refmarque, quan;
+            double prix;
+            InterfaceDB_Sous_Famille Intersousfamille = new InterfaceDB_Sous_Famille();
+            InterfaceDB_Marque InterMarque = new InterfaceDB_Marque();
+            RequetedonneeArticle = "select * from Articles where RefSousFamille=@ref";
+
+            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneeArticle, InterfaceDB.getInstaneConnexion());
+            InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refSousFamille);
+
+            try
+            {
+
+                Lecture_donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
+                listarticle = new List<Article>();
+                while (Lecture_donnee.Read())
+                {
+                    articleref = Lecture_donnee["RefArticle"].ToString();
+                    desc = Lecture_donnee["Description"].ToString();
+                    refsousfamille = Int32.Parse(Lecture_donnee["RefSousFamille"].ToString());
+                    refmarque = Int32.Parse(Lecture_donnee["RefMarque"].ToString());
+                    prix = Double.Parse(Lecture_donnee["PrixHT"].ToString());
+                    quan = Int32.Parse(Lecture_donnee["Quantite"].ToString());
+
+
+                    SousFamille sousfamille = Intersousfamille.getSousFamille(refsousfamille);
+                    Marque marque = InterMarque.getMarque(refmarque);
+
+                    Article article = new Article(articleref, desc, sousfamille, marque, prix, quan);
+                    listarticle.Add(article);
+
+                }
+            }
+            catch (SQLiteException ex)
+            {
+
+                listarticle = null;
+                Console.WriteLine(" * Erreur de lecture dans la table Article : " + ex.Message);
+            }
+
+            return listarticle;
+        }
+
+
+
+
+
     }
 }
