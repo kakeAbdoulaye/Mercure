@@ -27,3 +27,11 @@ Ce projet a pour titre Mercure , il a été codé en c# avec l'interface graphiq
     * Sous Famille = ref , nomSousFamille , refFamille
     * Famille = ref , nomFamille 
     * Article = ref , description , refMarque , refSousFamille , prix , quantite
+    
+    
+    
+    Editeur : 
+       - Visual Studio 2015
+       - EntityFramework Version=6.0.0.0 , Version du Runtime = v4.0.30319
+       
+           
