@@ -34,10 +34,10 @@ Ce projet a pour titre Mercure , il a été codé en c# avec l'interface graphiq
     
     
     
-    - Editeur : 
+ - Editeur : 
        - Visual Studio 2015
        - EntityFramework Version=6.0.0.0 , Version du Runtime = v4.0.30319
        
-   - Auteur : 
+ - Auteur : 
        - Kake Abdoulaye 
        - Etudiant , ingénieur à Polytech Tours 
