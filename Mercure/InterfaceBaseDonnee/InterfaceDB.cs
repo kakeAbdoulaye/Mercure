@@ -21,8 +21,9 @@ namespace Mercure.InterfaceBaseDonnee
         private static SQLiteConnection connexion_sqlite;
         private static SQLiteCommand commande_sqlite;
         private static SQLiteDataReader lecture_donnee;
-
-        private static string baseDonnee = "Mercure.SQlite";
+        private static string repertoirCourant = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+        private static string nombaseDonnee = "Mercure.SQlite";
+        private static string cheminBaseDonnee = repertoirCourant+"\\BaseDeDonnees\\"+nombaseDonnee;
 
         public static SQLiteCommand Commande_sqlite
         {
@@ -52,7 +53,7 @@ namespace Mercure.InterfaceBaseDonnee
         {
             if (connexion_sqlite == null)
             {
-                connexion_sqlite = new SQLiteConnection("Data Source=" + Environment.CurrentDirectory + "\\" + baseDonnee + ";Version=3");
+                connexion_sqlite = new SQLiteConnection("Data Source=" + cheminBaseDonnee + "; Version=3");
                 connexion_sqlite.Open();
             }
             return connexion_sqlite;
