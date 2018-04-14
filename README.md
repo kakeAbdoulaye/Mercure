@@ -23,7 +23,7 @@ Ce projet a pour titre Mercure , il a été codé en c# avec l'interface graphiq
     
     
   - Structure de la base de données :
-    Marque = ref , nomMarque 
-    Sous Famille = ref , nomSousFamille , refFamille
-    Famille = ref , nomFamille 
-    Article = ref , description , refMarque , refSousFamille , prix , quantite
+    * Marque = ref , nomMarque 
+    * Sous Famille = ref , nomSousFamille , refFamille
+    * Famille = ref , nomFamille 
+    * Article = ref , description , refMarque , refSousFamille , prix , quantite
