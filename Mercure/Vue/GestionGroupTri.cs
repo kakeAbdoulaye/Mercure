@@ -86,6 +86,7 @@ namespace Mercure.Vue
 
         private void ColumnClick(object sender, ColumnClickEventArgs e)
         {
+            init();
             // Déterminer si la colonne sélectionnée est déjà la colonne triée.
             if ( e.Column == groupColumn)
             {

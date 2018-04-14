@@ -73,11 +73,20 @@ namespace Mercure.Vue
 
             this.listView_Marque.Items.AddRange(listeItem);
         }
-
+        private void changementStatus(string chaine)
+        {
+            this.statuslabel_operation.Text = chaine;
+        }
         private void ajouterMarque()
         {
+            int count = this.listView_Marque.Items.Count;
             Ajouter_Modifier_Marque ajout = new Ajouter_Modifier_Marque("Ajout Marque ");
             ajout.ShowDialog(this);
+            mettreJourMarques();
+            if (count < listView_Marque.Items.Count)
+            {
+                changementStatus("Une nouvelle marque ajoutée ");
+            }
         }
 
         private void modifierMarque()
@@ -88,13 +97,13 @@ namespace Mercure.Vue
                 int refmarque = Int32.Parse(item.SubItems[0].Text);
                 Ajouter_Modifier_Marque fenetremodifMarque = new Ajouter_Modifier_Marque("Modification Marque ", refmarque);
                 fenetremodifMarque.ShowDialog(this);
-                //listView_Marque.SelectedItems.Clear();
                 mettreJourMarques();
             }
         }
 
         private void supprimerMarque()
         {
+            int count = this.listView_Marque.Items.Count;
             DialogResult reponse = MessageBox.Show("Voulez-vous supprimer cette marque ? ", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             string resultat;
             if (reponse == DialogResult.OK)
@@ -105,6 +114,10 @@ namespace Mercure.Vue
                 resultat= inter.supprimerMarque(refmarque);
                 MessageBox.Show(resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 mettreJourMarques();
+                if (count > listView_Marque.Items.Count)
+                {
+                    changementStatus("Une marque supprimé  ");
+                }
             }
         }
 
@@ -151,6 +164,11 @@ namespace Mercure.Vue
         private void supprimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             supprimerMarque();
+        }
+
+        private void toolStripButton_ajoutMarque_Click(object sender, EventArgs e)
+        {
+            ajouterMarque();
         }
     }
 }

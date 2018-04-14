@@ -73,11 +73,22 @@ namespace Mercure.Vue
             this.listView_SousFamille.Items.AddRange(listeItem);
 
         }
+        private void changementStatus(string chaine)
+        {
+            this.statuslabel_operation.Text = chaine;
+        }
 
         private void ajouterSousFamille()
         {
+            int count = this.listView_SousFamille.Items.Count;
             Ajouter_Modifier_SousFamille ajout = new Ajouter_Modifier_SousFamille("Ajout Sous Famille");
             ajout.ShowDialog(this);
+            mettreJourSousFamilles();
+            if(count < listView_SousFamille.Items.Count)
+            {
+                changementStatus("Une nouvelle sous famille ajoutée");
+            }
+
         }
         private void modifierSousFamille()
         {
@@ -93,6 +104,7 @@ namespace Mercure.Vue
         }
         private void supprimerSousFamille()
         {
+            int count = this.listView_SousFamille.Items.Count;
             DialogResult reponse = MessageBox.Show("Voulez-vous supprimer cette famille ? ", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             string resultat;
             if (reponse == DialogResult.OK)
@@ -103,6 +115,10 @@ namespace Mercure.Vue
                 resultat= inter.supprimerSousFamille(refsousfamille);
                 MessageBox.Show(resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 mettreJourSousFamilles();
+                if (count < listView_SousFamille.Items.Count)
+                {
+                    changementStatus("Une sous famille supprimée ");
+                }
             }
         }
         private void listView_SousFamille_KeyDown(object sender, KeyEventArgs e)
@@ -147,6 +163,11 @@ namespace Mercure.Vue
         private void supprimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             supprimerSousFamille();
+        }
+
+        private void toolStripButton_ajoutSousFamille_Click(object sender, EventArgs e)
+        {
+            ajouterSousFamille();
         }
     }
 }
