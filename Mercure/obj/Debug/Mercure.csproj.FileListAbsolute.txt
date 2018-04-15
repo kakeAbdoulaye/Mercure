@@ -33,3 +33,4 @@ C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.Vue.ApplicationFamill
 C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.Vue.ApplicationMarque.resources
 C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.Vue.ApplicationSousFamille.resources
 C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.Vue.Ajouter_Modifier_Article.resources
+C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\Debug\Mercure.XML

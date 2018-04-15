@@ -14,25 +14,25 @@ namespace Mercure.Vue
 {
     public partial class Ajouter_Modifier_Famille : Form
     {
-        private int reffamille;
+        private int RefFamille;
         public Ajouter_Modifier_Famille(string titre , int refFamille = -1)
         {
             InitializeComponent();
             this.Text = titre;
-            reffamille = refFamille;
-            init();
+            RefFamille = refFamille;
+            Init();
         }
 
-        public void init()
+        public void Init()
         {
-            if (reffamille == -1)
+            if (RefFamille == -1)
             {
                 
             }
             else
             {
                 InterfaceDB_Famille inter = new InterfaceDB_Famille();
-                Famille famille = inter.getFamille(reffamille);
+                Famille famille = inter.GetFamille(RefFamille);
                 textBox_nomfamille.Text = famille.NomFamille;
                 button_ajouter_modifier.Text = "Modifier";
             }
@@ -55,17 +55,17 @@ namespace Mercure.Vue
             else
             {
                 InterfaceDB_Famille interfam = new InterfaceDB_Famille();
-                Famille famille = interfam.getFamille(textBox_nomfamille.Text);
+                Famille famille = interfam.GetFamille(textBox_nomfamille.Text);
                 string resultat;
-                if (reffamille == -1)//on ajoute
+                if (RefFamille == -1)//on ajoute
                 {
-                    resultat = interfam.insererFamille(textBox_nomfamille.Text);
+                    resultat = interfam.InsererFamille(textBox_nomfamille.Text);
 
                 }
                 else // on modifie
                 {
 
-                    resultat = interfam.modifierFamille(reffamille, textBox_nomfamille.Text);
+                    resultat = interfam.ModifierFamille(RefFamille, textBox_nomfamille.Text);
 
                 }
                 MessageBox.Show(this, resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);

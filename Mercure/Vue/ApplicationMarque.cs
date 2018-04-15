@@ -15,32 +15,32 @@ namespace Mercure.Vue
 {
     public partial class ApplicationMarque : Form
     {
-        private ListViewColumnTri columnTri;
+        private ListViewColumnTri ColumnTri;
 
-        private GestionGroupTri groupTri;
+        private GestionGroupTri GroupTri;
     
 
 
         public ApplicationMarque()
         {
             InitializeComponent();
-            remplirListeMarque();
-            columnTri = new ListViewColumnTri();
-            this.listView_Marque.ListViewItemSorter = columnTri;
-            groupTri = new GestionGroupTri(listView_Marque);
+            RemplirListeMarque();
+            ColumnTri = new ListViewColumnTri();
+            this.listView_Marque.ListViewItemSorter = ColumnTri;
+            GroupTri = new GestionGroupTri(listView_Marque);
         }
 
-        public void mettreJourMarques()
+        public void MettreJourMarques()
         {
             listView_Marque.Items.Clear();
             listView_Marque.Columns.Clear();
             listView_Marque.Groups.Clear();
             listView_Marque.Clear();
 
-            remplirListeMarque();
+            RemplirListeMarque();
         }
 
-        public void remplirListeMarque()
+        public void RemplirListeMarque()
         {
 
             InterfaceDB_Marque inter = new InterfaceDB_Marque();
@@ -58,7 +58,7 @@ namespace Mercure.Vue
 
             this.listView_Marque.Columns.AddRange(new ColumnHeader[] { Cref, Cnom });
 
-            List<Marque> liste = inter.getToutesMarque();
+            List<Marque> liste = inter.GetToutesMarque();
 
             ListViewItem[] listeItem = new ListViewItem[liste.Count];
 
@@ -73,23 +73,23 @@ namespace Mercure.Vue
 
             this.listView_Marque.Items.AddRange(listeItem);
         }
-        private void changementStatus(string chaine)
+        private void ChangementStatus(string chaine)
         {
             this.statuslabel_operation.Text = chaine;
         }
-        private void ajouterMarque()
+        private void AjouterMarque()
         {
             int count = this.listView_Marque.Items.Count;
             Ajouter_Modifier_Marque ajout = new Ajouter_Modifier_Marque("Ajout Marque ");
             ajout.ShowDialog(this);
-            mettreJourMarques();
+            MettreJourMarques();
             if (count < listView_Marque.Items.Count)
             {
-                changementStatus("Une nouvelle marque ajoutée ");
+                ChangementStatus("Une nouvelle marque ajoutée ");
             }
         }
 
-        private void modifierMarque()
+        private void ModifierMarque()
         {
             if (listView_Marque.SelectedItems.Count > 0)
             {
@@ -97,11 +97,11 @@ namespace Mercure.Vue
                 int refmarque = Int32.Parse(item.SubItems[0].Text);
                 Ajouter_Modifier_Marque fenetremodifMarque = new Ajouter_Modifier_Marque("Modification Marque ", refmarque);
                 fenetremodifMarque.ShowDialog(this);
-                mettreJourMarques();
+                MettreJourMarques();
             }
         }
 
-        private void supprimerMarque()
+        private void SupprimerMarque()
         {
             int count = this.listView_Marque.Items.Count;
             DialogResult reponse = MessageBox.Show("Voulez-vous supprimer cette marque ? ", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -111,12 +111,12 @@ namespace Mercure.Vue
                 ListViewItem item = listView_Marque.SelectedItems[0];
                 int refmarque = Int32.Parse(item.SubItems[0].Text);
                 InterfaceDB_Marque inter = new InterfaceDB_Marque();
-                resultat= inter.supprimerMarque(refmarque);
+                resultat= inter.SupprimerMarque(refmarque);
                 MessageBox.Show(resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                mettreJourMarques();
+                MettreJourMarques();
                 if (count > listView_Marque.Items.Count)
                 {
-                    changementStatus("Une marque supprimé  ");
+                    ChangementStatus("Une marque supprimé  ");
                 }
             }
         }
@@ -131,44 +131,44 @@ namespace Mercure.Vue
 
         private void listView_Marque_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            modifierMarque();
+            ModifierMarque();
         }
 
         private void listView_Marque_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.F5)
             {
-                mettreJourMarques();
+                MettreJourMarques();
             }
             else if(e.KeyCode == Keys.Delete)
             {
-                supprimerMarque();
+                SupprimerMarque();
             }
             else if(e.KeyCode == Keys.Enter)
             {
-                modifierMarque();
+                ModifierMarque();
             }
            
         }
 
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ajouterMarque();
+            AjouterMarque();
         }
 
         private void modifierToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            modifierMarque();
+            ModifierMarque();
         }
 
         private void supprimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            supprimerMarque();
+            SupprimerMarque();
         }
 
         private void toolStripButton_ajoutMarque_Click(object sender, EventArgs e)
         {
-            ajouterMarque();
+            AjouterMarque();
         }
     }
 }

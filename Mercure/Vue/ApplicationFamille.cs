@@ -15,30 +15,30 @@ namespace Mercure.Vue
 {
     public partial class ApplicationFamille : Form
     {
-        private ListViewColumnTri columnTri;
+        private ListViewColumnTri ColumnTri;
 
-        private GestionGroupTri groupTri;
+        private GestionGroupTri GroupTri;
 
         public ApplicationFamille()
         {
             InitializeComponent();
-            remplirListeFamille();
-            columnTri = new ListViewColumnTri();
-            this.listView_Famille.ListViewItemSorter = columnTri;
-            groupTri = new GestionGroupTri(listView_Famille);
+            RemplirListeFamille();
+            ColumnTri = new ListViewColumnTri();
+            this.listView_Famille.ListViewItemSorter = ColumnTri;
+            GroupTri = new GestionGroupTri(listView_Famille);
         }
 
-        public void mettreJourFamilles()
+        public void MettreJourFamilles()
         {
             listView_Famille.Items.Clear();
             listView_Famille.Columns.Clear();
             listView_Famille.Groups.Clear();
             listView_Famille.Clear();
 
-            remplirListeFamille();
+            RemplirListeFamille();
         }
 
-        public void remplirListeFamille()
+        public void RemplirListeFamille()
         {
             InterfaceDB_Famille interfamille = new InterfaceDB_Famille();
             int indice = 0;
@@ -52,7 +52,7 @@ namespace Mercure.Vue
             Cnom.Width = -2;
 
             this.listView_Famille.Columns.AddRange(new ColumnHeader[] { Creffamille, Cnom });
-            List<Famille> listeFamille = interfamille.getToutesFamille();
+            List<Famille> listeFamille = interfamille.GetToutesFamille();
             ListViewItem[] listeItemFamille = new ListViewItem[listeFamille.Count];
 
             foreach (Famille famille in listeFamille)
@@ -68,24 +68,24 @@ namespace Mercure.Vue
 
       
         }
-        private void changementStatus(string chaine)
+        private void ChangementStatus(string chaine)
         {
             this.statuslabel_operation.Text = chaine;
         }
 
-        public void ajouterFamille()
+        public void AjouterFamille()
         {
             int count = this.listView_Famille.Items.Count;
             Ajouter_Modifier_Famille ajout = new Ajouter_Modifier_Famille("Ajout Famille ");
             ajout.ShowDialog(this);
-            mettreJourFamilles();
+            MettreJourFamilles();
             if(count < listView_Famille.Items.Count)
             {
-                changementStatus("Une nouvelle famille ajoutée ");
+                ChangementStatus("Une nouvelle famille ajoutée ");
             }
         }
 
-        public void modifierFamille()
+        public void ModifierFamille()
         {
             if (listView_Famille.SelectedItems.Count > 0)
             {
@@ -93,11 +93,11 @@ namespace Mercure.Vue
                 int reffamille = Int32.Parse(item.SubItems[0].Text);
                 Ajouter_Modifier_Famille fenetremodif = new Ajouter_Modifier_Famille("Modification Famille ", reffamille);
                 fenetremodif.ShowDialog(this);
-                mettreJourFamilles();
+                MettreJourFamilles();
             }
         }
 
-        public void supprimerFamille()
+        public void SupprimerFamille()
         {
             int count = this.listView_Famille.Items.Count;
             DialogResult reponse = MessageBox.Show("Voulez-vous supprimer cette famille ? ", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -107,12 +107,12 @@ namespace Mercure.Vue
                 ListViewItem item = listView_Famille.SelectedItems[0];
                 int reffamille = Int32.Parse(item.SubItems[0].Text);
                 InterfaceDB_Famille inter = new InterfaceDB_Famille();               
-                resultat= inter.supprimerFamille(reffamille);
+                resultat= inter.SupprimerFamille(reffamille);
                 MessageBox.Show(resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                mettreJourFamilles();
+                MettreJourFamilles();
                 if (count > listView_Famille.Items.Count)
                 {
-                    changementStatus("Une famille supprimée");
+                    ChangementStatus("Une famille supprimée");
                 }
             }
         }
@@ -130,43 +130,43 @@ namespace Mercure.Vue
 
         private void listView_Famille_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            modifierFamille();
+            ModifierFamille();
         }
 
         private void listView_Famille_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F5)
             {
-                mettreJourFamilles();
+                MettreJourFamilles();
             }
             else if (e.KeyCode == Keys.Delete)
             {
-                supprimerFamille();
+                SupprimerFamille();
             }
             else if (e.KeyCode == Keys.Enter)
             {
-                modifierFamille();
+                ModifierFamille();
             }
         }
 
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ajouterFamille();
+            AjouterFamille();
         }
 
         private void modifierToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            modifierFamille();
+            ModifierFamille();
         }
 
         private void supprimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            supprimerFamille();
+            SupprimerFamille();
         }
 
         private void toolStripButton_ajoutfamille_Click(object sender, EventArgs e)
         {
-            ajouterFamille();
+            AjouterFamille();
         }
     }
 }

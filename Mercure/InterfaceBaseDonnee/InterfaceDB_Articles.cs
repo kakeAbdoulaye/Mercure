@@ -8,22 +8,59 @@ using System.Data.SQLite;
 
 namespace Mercure.InterfaceBaseDonnee
 {
+    /// <summary>
+    ///  Cette classe représente l'interface de requete sur la table Articles 
+    /// </summary>
+    /// <remarks>
+    ///     Elle utilise la classe statique <see cref="InterfaceDB"/>
+    /// </remarks>
     class InterfaceDB_Articles
     {
+        /// <summary>
+        ///  Attribut contentant la requete d'insertion de la classe 
+        /// </summary>
         private string RequeteInsererArticle;
-        private string RequetedonneeArticle;
+
+        /// <summary>
+        ///  Attribut contentant la requete de selection  de la classe 
+        /// </summary>
+        private string RequeteDonneeArticle;
+
+        /// <summary>
+        ///  Attribut contentant la requete de modification  de la classe 
+        /// </summary>
         private string RequeteModifierArticle;
-        private SQLiteDataReader Lecture_donnee;
+
+        /// <summary>
+        ///  Attribut permettant la lecture des données retournées dans une commande de la classe 
+        /// </summary>
+        private SQLiteDataReader Lecture_Donnee;
+
+        /// <summary>
+        ///  Constructeur par defaut 
+        /// </summary>
         public InterfaceDB_Articles()
         {
 
         }
-
-        public string insererArticle(string refArticle, string description, int refsousfamille
+        /// <summary>
+        ///  cette methode d'insérer un nouveau article dans la table Articles de la base de données
+        /// </summary>
+        /// <param name="refArticle">l'identifiant de l'article </param>
+        /// <param name="description"> la description de l'article </param>
+        /// <param name="refsousfamille"> l'identifiant de la sous famille de l'article </param>
+        /// <param name="refmarque">l'identifiant de la marque de l'artcile </param>
+        /// <param name="prixht">le prix de l'article </param>
+        /// <param name="quantite">la quantité de l'article </param>
+        /// <returns>le resultat de l'opération </returns>
+        /// <remarks>
+        ///     Elle vérifie si l'article existe ou pas avant l'insertion dans la table Articles et gère les erreurs qui peuvent survenir 
+        /// </remarks>
+        public string InsererArticle(string refArticle, string description, int refsousfamille
             , int refmarque, double prixht, int quantite)
         {
             string resultat="";
-            Article article = getArticle(refArticle);
+            Article article = GetArticle(refArticle);
             if (article != null)
             {
                 resultat = " = Existe dejà dans la table Article " + refArticle;
@@ -35,7 +72,7 @@ namespace Mercure.InterfaceBaseDonnee
                 {
                     RequeteInsererArticle = "INSERT INTO Articles(RefArticle,Description,RefSousFamille,RefMarque,PrixHT,Quantite) VALUES"
                    + "(@refArticle,@description,@refsousfamille,@refmarque,@prixht,@quantite)";
-                    InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteInsererArticle, InterfaceDB.getInstaneConnexion());
+                    InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteInsererArticle, InterfaceDB.GetInstaneConnexion());
                     InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@refArticle", refArticle);
                     InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@description", description);
                     InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@refsousfamille", refsousfamille);
@@ -53,20 +90,35 @@ namespace Mercure.InterfaceBaseDonnee
             return resultat;
 
         }
-
-        public string insererArticle(Article article)
+        /// <summary>
+        ///     cette methode d'insérer un nouveau article dans la table Articles de la base de données
+        /// </summary>
+        /// <param name="article"> un objet Article représentant le nouveau article </param>
+        /// <returns></returns>
+        public string InsererArticle(Article article)
         {
-            return insererArticle(article.RefArticle, article.Description, article.SousFamille.RefSousFamille, article.Marque.RefMarque, article.PrixHT, article.Quantite);
+            return InsererArticle(article.RefArticle, article.Description, article.SousFamille.RefSousFamille, article.Marque.RefMarque, article.PrixHT, article.Quantite);
 
         }
-        public string modifierArticle(string refArticle, string description, int refsousfamille, int refmarque, double prixht, int quantite)
+
+        /// <summary>
+        ///  Cette methode permet de modifier les informations d'un article existant 
+        /// </summary>
+        /// <param name="refArticle">le nouvel identifiant de l'article </param>
+        /// <param name="description"> la nouvelle  description de l'article </param>
+        /// <param name="refsousfamille"> le nouvel identifiant de la sous famille de l'article </param>
+        /// <param name="refmarque">le nouvel identifiant de la marque de l'artcile </param>
+        /// <param name="prixht">le nouveau prix de l'article </param>
+        /// <param name="quantite">la nouvelle quantité de l'article </param>
+        /// <returns>le resutat de l'opération </returns>
+        public string ModifierArticle(string refArticle, string description, int refsousfamille, int refmarque, double prixht, int quantite)
         {
             string resultat="";
             try
             {
 
                 RequeteModifierArticle = "UPDATE Articles SET Description =@desc ,RefSousFamille =@refsous,RefMarque=@refmar,PrixHT=@prix,Quantite=@quan WHERE RefArticle = @ref";
-                InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteModifierArticle, InterfaceDB.getInstaneConnexion());
+                InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteModifierArticle, InterfaceDB.GetInstaneConnexion());
                 InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@desc", description);
                 InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@refsous", refsousfamille);
                 InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@refmar", refmarque);
@@ -85,11 +137,18 @@ namespace Mercure.InterfaceBaseDonnee
             return resultat;
 
         }
-        public string supprimerArticle(string refarticle)
+
+        /// <summary>
+        ///  Cette methode permet de supprimer un article dans la table Articles 
+        ///  en fonction de son identifiant 
+        /// </summary>
+        /// <param name="refarticle"> l'identifiant de l'article à supprimer </param>
+        /// <returns>le resultat de l'opération </returns>
+        public string SupprimerArticle(string refarticle)
         {
             string requete = "DELETE FROM Articles WHERE RefArticle=@ref";
             string resultat;
-            InterfaceDB.Commande_sqlite = new SQLiteCommand(requete, InterfaceDB.getInstaneConnexion());
+            InterfaceDB.Commande_sqlite = new SQLiteCommand(requete, InterfaceDB.GetInstaneConnexion());
             InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refarticle);
             
             try
@@ -105,8 +164,13 @@ namespace Mercure.InterfaceBaseDonnee
             return resultat;
         }
         
-
-        public Article getArticle(string refarticle)
+        /// <summary>
+        /// Cette methode permet d'avoir toutes les insformations d'un article dans la table Articles 
+        /// en fonction de l'identifiant de l'article
+        /// </summary>
+        /// <param name="refarticle"> l'identiifiant de l'article</param>
+        /// <returns>L'article recuperer </returns>
+        public Article GetArticle(string refarticle)
         {
             Article article = null;
             string articleref, desc;
@@ -115,26 +179,26 @@ namespace Mercure.InterfaceBaseDonnee
             InterfaceDB_Sous_Famille Intersousfamille = new InterfaceDB_Sous_Famille();
             InterfaceDB_Marque InterMarque = new InterfaceDB_Marque();
 
-            RequetedonneeArticle = "select * from Articles where Articles.RefArticle like @nom";
+            RequeteDonneeArticle = "select * from Articles where Articles.RefArticle like @nom";
 
-            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneeArticle, InterfaceDB.getInstaneConnexion());
+            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteDonneeArticle, InterfaceDB.GetInstaneConnexion());
             InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@nom", refarticle);
 
             try
             {
-                Lecture_donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
-                while (Lecture_donnee.Read())
+                Lecture_Donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
+                while (Lecture_Donnee.Read())
                 {
-                    articleref = Lecture_donnee["RefArticle"].ToString();
-                    desc = Lecture_donnee["Description"].ToString();
-                    refsousfamille = Int32.Parse(Lecture_donnee["RefSousFamille"].ToString());
-                    refmarque = Int32.Parse(Lecture_donnee["RefMarque"].ToString());
-                    prix = Double.Parse(Lecture_donnee["PrixHT"].ToString());
-                    quan = Int32.Parse(Lecture_donnee["Quantite"].ToString());
+                    articleref = Lecture_Donnee["RefArticle"].ToString();
+                    desc = Lecture_Donnee["Description"].ToString();
+                    refsousfamille = Int32.Parse(Lecture_Donnee["RefSousFamille"].ToString());
+                    refmarque = Int32.Parse(Lecture_Donnee["RefMarque"].ToString());
+                    prix = Double.Parse(Lecture_Donnee["PrixHT"].ToString());
+                    quan = Int32.Parse(Lecture_Donnee["Quantite"].ToString());
 
                    
-                    SousFamille sousfamille = Intersousfamille.getSousFamille(refsousfamille);
-                    Marque marque = InterMarque.getMarque(refmarque);
+                    SousFamille sousfamille = Intersousfamille.GetSousFamille(refsousfamille);
+                    Marque marque = InterMarque.GetMarque(refmarque);
 
                     article = new Article(articleref, desc, sousfamille, marque, prix, quan);
 
@@ -148,7 +212,13 @@ namespace Mercure.InterfaceBaseDonnee
 
             return article;
         }
-        public List<Article> getToutesArticle()
+
+        /// <summary>
+        ///  Cette methode nous donne la liste de toutes les articles dans la table Articles de la base de données 
+        /// </summary>
+        /// <returns>liste d'article </returns>
+        /// <see cref="Article"/>
+        public List<Article> GetToutesArticle()
         {
 
             List<Article> listarticle = null;
@@ -158,26 +228,26 @@ namespace Mercure.InterfaceBaseDonnee
             InterfaceDB_Sous_Famille Intersousfamille = new InterfaceDB_Sous_Famille();
             InterfaceDB_Marque InterMarque = new InterfaceDB_Marque();
 
-            RequetedonneeArticle = "select * from Articles";
-            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneeArticle, InterfaceDB.getInstaneConnexion());
+            RequeteDonneeArticle = "select * from Articles";
+            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteDonneeArticle, InterfaceDB.GetInstaneConnexion());
 
 
             try
             {
 
-                Lecture_donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
+                Lecture_Donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
                 listarticle = new List<Article>();
-                while (Lecture_donnee.Read())
+                while (Lecture_Donnee.Read())
                 {
-                    articleref = Lecture_donnee["RefArticle"].ToString();
-                    desc = Lecture_donnee["Description"].ToString();
-                    refsousfamille = Int32.Parse(Lecture_donnee["RefSousFamille"].ToString());
-                    refmarque = Int32.Parse(Lecture_donnee["RefMarque"].ToString());
-                    prix = Double.Parse(Lecture_donnee["PrixHT"].ToString());
-                    quan = Int32.Parse(Lecture_donnee["Quantite"].ToString());
+                    articleref = Lecture_Donnee["RefArticle"].ToString();
+                    desc = Lecture_Donnee["Description"].ToString();
+                    refsousfamille = Int32.Parse(Lecture_Donnee["RefSousFamille"].ToString());
+                    refmarque = Int32.Parse(Lecture_Donnee["RefMarque"].ToString());
+                    prix = Double.Parse(Lecture_Donnee["PrixHT"].ToString());
+                    quan = Int32.Parse(Lecture_Donnee["Quantite"].ToString());
 
-                    SousFamille sousfamille = Intersousfamille.getSousFamille(refsousfamille);
-                    Marque marque = InterMarque.getMarque(refmarque);
+                    SousFamille sousfamille = Intersousfamille.GetSousFamille(refsousfamille);
+                    Marque marque = InterMarque.GetMarque(refmarque);
 
                     Article article = new Article(articleref, desc, sousfamille, marque, prix, quan);
                     listarticle.Add(article);
@@ -194,7 +264,13 @@ namespace Mercure.InterfaceBaseDonnee
             return listarticle;
         }
 
-        public List<Article> getToutesArticlebyMarque(int refMarque)
+        /// <summary>
+        ///  Cette methode permet d'avoir tous les articles appartenant à une marque 
+        /// </summary>
+        /// <param name="refMarque">l'identifiant de la marque</param>
+        /// <returns>une liste d'article </returns>
+        /// <see cref="Article"/>
+        public List<Article> GetToutesArticlebyMarque(int refMarque)
         {
 
             List<Article> listarticle = null;
@@ -203,28 +279,28 @@ namespace Mercure.InterfaceBaseDonnee
             double prix;
             InterfaceDB_Sous_Famille Intersousfamille = new InterfaceDB_Sous_Famille();
             InterfaceDB_Marque InterMarque = new InterfaceDB_Marque();
-            RequetedonneeArticle = "select * from Articles where RefMarque=@ref";
+            RequeteDonneeArticle = "select * from Articles where RefMarque=@ref";
 
-            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneeArticle, InterfaceDB.getInstaneConnexion());
+            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteDonneeArticle, InterfaceDB.GetInstaneConnexion());
             InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refMarque);
 
             try
             {
 
-                Lecture_donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
+                Lecture_Donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
                 listarticle = new List<Article>();
-                while (Lecture_donnee.Read())
+                while (Lecture_Donnee.Read())
                 {
-                    articleref = Lecture_donnee["RefArticle"].ToString();
-                    desc = Lecture_donnee["Description"].ToString();
-                    refsousfamille = Int32.Parse(Lecture_donnee["RefSousFamille"].ToString());
-                    refmarque = Int32.Parse(Lecture_donnee["RefMarque"].ToString());
-                    prix = Double.Parse(Lecture_donnee["PrixHT"].ToString());
-                    quan = Int32.Parse(Lecture_donnee["Quantite"].ToString());
+                    articleref = Lecture_Donnee["RefArticle"].ToString();
+                    desc = Lecture_Donnee["Description"].ToString();
+                    refsousfamille = Int32.Parse(Lecture_Donnee["RefSousFamille"].ToString());
+                    refmarque = Int32.Parse(Lecture_Donnee["RefMarque"].ToString());
+                    prix = Double.Parse(Lecture_Donnee["PrixHT"].ToString());
+                    quan = Int32.Parse(Lecture_Donnee["Quantite"].ToString());
 
                     
-                    SousFamille sousfamille = Intersousfamille.getSousFamille(refsousfamille);
-                    Marque marque = InterMarque.getMarque(refmarque);
+                    SousFamille sousfamille = Intersousfamille.GetSousFamille(refsousfamille);
+                    Marque marque = InterMarque.GetMarque(refmarque);
 
                     Article article = new Article(articleref, desc, sousfamille, marque, prix, quan);
                     listarticle.Add(article);
@@ -241,7 +317,12 @@ namespace Mercure.InterfaceBaseDonnee
             return listarticle;
         }
 
-        public List<Article> getToutesArticlebySousFamille(int refSousFamille)
+        /// <summary>
+        ///  Cette methode permet d'avoir tous les articles appartenant à une sous famille
+        /// </summary>
+        /// <param name="refSousFamille">l'identifiant de la sous famille</param>
+        /// <returns>une liste d'article </returns>
+        public List<Article> GetToutesArticlebySousFamille(int refSousFamille)
         {
 
             List<Article> listarticle = null;
@@ -250,28 +331,28 @@ namespace Mercure.InterfaceBaseDonnee
             double prix;
             InterfaceDB_Sous_Famille Intersousfamille = new InterfaceDB_Sous_Famille();
             InterfaceDB_Marque InterMarque = new InterfaceDB_Marque();
-            RequetedonneeArticle = "select * from Articles where RefSousFamille=@ref";
+            RequeteDonneeArticle = "select * from Articles where RefSousFamille=@ref";
 
-            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneeArticle, InterfaceDB.getInstaneConnexion());
+            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteDonneeArticle, InterfaceDB.GetInstaneConnexion());
             InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refSousFamille);
 
             try
             {
 
-                Lecture_donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
+                Lecture_Donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
                 listarticle = new List<Article>();
-                while (Lecture_donnee.Read())
+                while (Lecture_Donnee.Read())
                 {
-                    articleref = Lecture_donnee["RefArticle"].ToString();
-                    desc = Lecture_donnee["Description"].ToString();
-                    refsousfamille = Int32.Parse(Lecture_donnee["RefSousFamille"].ToString());
-                    refmarque = Int32.Parse(Lecture_donnee["RefMarque"].ToString());
-                    prix = Double.Parse(Lecture_donnee["PrixHT"].ToString());
-                    quan = Int32.Parse(Lecture_donnee["Quantite"].ToString());
+                    articleref = Lecture_Donnee["RefArticle"].ToString();
+                    desc = Lecture_Donnee["Description"].ToString();
+                    refsousfamille = Int32.Parse(Lecture_Donnee["RefSousFamille"].ToString());
+                    refmarque = Int32.Parse(Lecture_Donnee["RefMarque"].ToString());
+                    prix = Double.Parse(Lecture_Donnee["PrixHT"].ToString());
+                    quan = Int32.Parse(Lecture_Donnee["Quantite"].ToString());
 
 
-                    SousFamille sousfamille = Intersousfamille.getSousFamille(refsousfamille);
-                    Marque marque = InterMarque.getMarque(refmarque);
+                    SousFamille sousfamille = Intersousfamille.GetSousFamille(refsousfamille);
+                    Marque marque = InterMarque.GetMarque(refmarque);
 
                     Article article = new Article(articleref, desc, sousfamille, marque, prix, quan);
                     listarticle.Add(article);

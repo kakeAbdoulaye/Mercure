@@ -17,30 +17,30 @@ namespace Mercure.Vue
 {
     public partial class ApplicatioCentrale : Form
     {
-        private ListViewColumnTri columnTri;
-        private GestionGroupTri groupTri;
+        private ListViewColumnTri ColumnTri;
+        private GestionGroupTri GroupTri;
 
         public ApplicatioCentrale()
         {
             InitializeComponent();
-            remplirListeArticle();
-            columnTri = new ListViewColumnTri();
-            listView_Articles.ListViewItemSorter = columnTri;
-            groupTri = new GestionGroupTri(listView_Articles);
+            RemplirListeArticle();
+            ColumnTri = new ListViewColumnTri();
+            listView_Articles.ListViewItemSorter = ColumnTri;
+            GroupTri = new GestionGroupTri(listView_Articles);
             
         }
 
-        public void mettreJourArticles()
+        public void MettreJourArticles()
         {
             listView_Articles.Items.Clear();
             listView_Articles.Columns.Clear();
             listView_Articles.Groups.Clear();
             listView_Articles.Clear();
 
-            remplirListeArticle();
+            RemplirListeArticle();
         }
 
-        public void remplirListeArticle()
+        public void RemplirListeArticle()
         {
             InterfaceDB_Articles interArticle = new InterfaceDB_Articles();
             int indice = 0;
@@ -75,7 +75,7 @@ namespace Mercure.Vue
 
             listView_Articles.Columns.AddRange(new ColumnHeader[] { Crefarcticle, Cdescription, Cfamille, Csousfamille, Cmarque, Cprix, Cquantite });
 
-            List<Article> listeArticle = interArticle.getToutesArticle();
+            List<Article> listeArticle = interArticle.GetToutesArticle();
 
             ListViewItem[] listeItemArticle = new ListViewItem[listeArticle.Count];
 
@@ -97,26 +97,26 @@ namespace Mercure.Vue
 
         private void ApplicatioCentrale_FormClosing(object sender, FormClosingEventArgs e)
         {
-            InterfaceDB.deconnection();
+            InterfaceDB.Deconnection();
         }
 
-        private void changementStatus(string chaine)
+        private void ChangementStatus(string chaine)
         {
             this.statuslabel_operation.Text = chaine;
         }
-        private void ajouterArticle()
+        private void AjouterArticle()
         {
             int count = listView_Articles.Items.Count;
             Ajouter_Modifier_Article ajout = new Ajouter_Modifier_Article("Ajouter Article");
             ajout.ShowDialog(this);
-            mettreJourArticles();
+            MettreJourArticles();
             if (count < listView_Articles.Items.Count)
             {
-                changementStatus("Un nouvel article ajouté ");
+                ChangementStatus("Un nouvel article ajouté ");
             }
         }
 
-        private void modifierArticle()
+        private void ModifierArticle()
         {
             if (listView_Articles.SelectedItems.Count > 0)
             {
@@ -124,11 +124,11 @@ namespace Mercure.Vue
                 string refarticle = item.SubItems[0].Text;
                 Ajouter_Modifier_Article fenetremodifArticle = new Ajouter_Modifier_Article("Modification Article ", refarticle);
                 fenetremodifArticle.ShowDialog(this);
-                mettreJourArticles();
+                MettreJourArticles();
             }
         }
 
-        private void supprimerArticle()
+        private void SupprimerArticle()
         {
             int count = listView_Articles.Items.Count;
             if (listView_Articles.SelectedItems.Count > 0)
@@ -139,11 +139,11 @@ namespace Mercure.Vue
                     ListViewItem item = listView_Articles.SelectedItems[0];
                     string refarticle = item.SubItems[0].Text;
                     InterfaceDB_Articles inter = new InterfaceDB_Articles();
-                    inter.supprimerArticle(refarticle);
-                    mettreJourArticles();
+                    inter.SupprimerArticle(refarticle);
+                    MettreJourArticles();
                     if (count > listView_Articles.Items.Count)
                     {
-                        changementStatus("Un  article supprimé ");
+                        ChangementStatus("Un  article supprimé ");
                     }
                 }
 
@@ -160,24 +160,24 @@ namespace Mercure.Vue
      
         private void listView_Articles_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            modifierArticle();
+            ModifierArticle();
         }
 
         private void listView_Articles_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F5)
             {
-                mettreJourArticles();
+                MettreJourArticles();
 
             }
             else if (e.KeyCode == Keys.Delete)
             {
-                supprimerArticle();
+                SupprimerArticle();
                 
             }
             else if (e.KeyCode == Keys.Enter)
             {
-                modifierArticle();
+                ModifierArticle();
             }
         }
        
@@ -185,92 +185,92 @@ namespace Mercure.Vue
         {
             ApplicationFamille appli = new ApplicationFamille();
             appli.ShowDialog(this);
-            mettreJourArticles();
+            MettreJourArticles();
         }
 
         private void ajouterFamilleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Ajouter_Modifier_Famille appli = new Ajouter_Modifier_Famille("Ajouter Famille");
             appli.ShowDialog(this);
-            mettreJourArticles();
+            MettreJourArticles();
         }
 
         private void afficherSousFamilleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ApplicationSousFamille appli = new ApplicationSousFamille();
             appli.ShowDialog(this);
-            mettreJourArticles();
+            MettreJourArticles();
         }
 
         private void ajouterSousFamilleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Ajouter_Modifier_SousFamille appli = new Ajouter_Modifier_SousFamille("Ajouter Sous Famille");
             appli.ShowDialog(this);
-            mettreJourArticles();
+            MettreJourArticles();
         }
 
         private void afficherMarqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ApplicationMarque appli = new ApplicationMarque();
             appli.ShowDialog(this);
-            mettreJourArticles();
+            MettreJourArticles();
         }
 
         private void ajouterMarqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Ajouter_Modifier_Marque appli = new Ajouter_Modifier_Marque("Ajouter Marque");
             appli.ShowDialog(this);
-            mettreJourArticles();
+            MettreJourArticles();
         }
 
         private void ouvrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Fenetre_Integration integration = new Fenetre_Integration();
             integration.ShowDialog(this);
-            mettreJourArticles();
+            MettreJourArticles();
         }
 
         private void ajouterToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            ajouterArticle();
-            mettreJourArticles();
+            AjouterArticle();
+            MettreJourArticles();
         }
 
         private void modifierToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            modifierArticle();
-            mettreJourArticles();
+            ModifierArticle();
+            MettreJourArticles();
         }
 
         private void supprimerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            supprimerArticle();
-            mettreJourArticles();
+            SupprimerArticle();
+            MettreJourArticles();
         }
 
         private void toolStripButton_ajoutArticle_Click(object sender, EventArgs e)
         {
-            ajouterArticle();
-            mettreJourArticles();
+            AjouterArticle();
+            MettreJourArticles();
         }
-        private void quitterApplication()
+        private void QuitterApplication()
         {
             DialogResult reponse = MessageBox.Show("Voulez-vous vraiment quitté ? ", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (reponse == DialogResult.OK)
             {
-                InterfaceDB.deconnection();
+                InterfaceDB.Deconnection();
                 this.Close();
             }
                
         }
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            quitterApplication();
+            QuitterApplication();
         }
 
         private void toolStripButton_quitterApplication_Click(object sender, EventArgs e)
         {
-            quitterApplication();
+            QuitterApplication();
         }
     }
 }

@@ -22,9 +22,9 @@ namespace Mercure.Vue
         /// verifier que le fichier choisie est correcte sinon faite une erreur (fait)
         /// </summary>
         ///  si une marque est référencié on ne peut pas le supprimer , mettre à jour si existe sinon le cree (fait) , en levé la saisie des reférences dans marque , sous famill , famille (fait)
-        private string nomFicherXML = "";
-        private int count;
-        private string resultatErreur;
+        private string NomFicherXML= "";
+        private int Count;
+        private string ResultatErreur;
 
         delegate void AjouterFinLigneResultatErreurs(string text);
 
@@ -39,11 +39,11 @@ namespace Mercure.Vue
             DialogResult dialogueResultXML = this.Ouvrir_XML_Fichier.ShowDialog();
             if (dialogueResultXML == DialogResult.OK)
             {
-                this.nomFicherXML = this.Ouvrir_XML_Fichier.FileName;
+                this.NomFicherXML = this.Ouvrir_XML_Fichier.FileName;
                 XmlDocument documentXml = new XmlDocument();
-                documentXml.Load(this.nomFicherXML);
-                count = Int32.Parse(documentXml.CreateNavigator().Evaluate("count(//article)").ToString());
-                text_chemin_fichier_choisi.Text = nomFicherXML;
+                documentXml.Load(this.NomFicherXML);
+                Count = Int32.Parse(documentXml.CreateNavigator().Evaluate("count(//article)").ToString());
+                text_chemin_fichier_choisi.Text = NomFicherXML;
             }
         }
 
@@ -107,21 +107,21 @@ namespace Mercure.Vue
             /**
              * Suppression des tables de la base de données 
              * */
-            resultatErreur = InterfaceDB.supprimerToutTable("Articles");
-            textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
-            resultatErreur = InterfaceDB.supprimerToutTable("Familles");
-            textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
-            resultatErreur = InterfaceDB.supprimerToutTable("SousFamilles");
-            textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
-            resultatErreur = InterfaceDB.supprimerToutTable("Marques");
-            textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
+            ResultatErreur = InterfaceDB.SupprimerToutTable("Articles");
+            textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+            ResultatErreur = InterfaceDB.SupprimerToutTable("Familles");
+            textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+            ResultatErreur = InterfaceDB.SupprimerToutTable("SousFamilles");
+            textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+            ResultatErreur = InterfaceDB.SupprimerToutTable("Marques");
+            textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
             
 
             /**
              * Lecture des Elements dans le fichier xml choisie 
              * */
-            this.nomFicherXML = this.Ouvrir_XML_Fichier.FileName;
-            documentXml.Load(this.nomFicherXML);
+            this.NomFicherXML = this.Ouvrir_XML_Fichier.FileName;
+            documentXml.Load(this.NomFicherXML);
 
             foreach (XmlNode enregistrement in documentXml.DocumentElement)
             {
@@ -144,28 +144,28 @@ namespace Mercure.Vue
                  */
 
                 InterfaceDB_Marque marque = new InterfaceDB_Marque();
-                resultatErreur = marque.insererMarque(nomMarque);
-                textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
+                ResultatErreur = marque.InsererMarque(nomMarque);
+                textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
     
 
                 InterfaceDB_Famille famille = new InterfaceDB_Famille();
-                resultatErreur = famille.insererFamille(nomfamille);
-                textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
+                ResultatErreur = famille.InsererFamille(nomfamille);
+                textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
 
                 InterfaceDB_Sous_Famille sousfamille = new InterfaceDB_Sous_Famille();               
-                resultatErreur = sousfamille.insererSousFamille(nomfamille, nomSousfamille);
-                textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
+                ResultatErreur = sousfamille.InsererSousFamille(nomfamille, nomSousfamille);
+                textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
 
-                Marque marqueArticle = marque.getMarque(nomMarque);
-                SousFamille sousFamilleArticle = sousfamille.getSousFamille(nomSousfamille);
+                Marque marqueArticle = marque.GetMarque(nomMarque);
+                SousFamille sousFamilleArticle = sousfamille.GetSousFamille(nomSousfamille);
 
                
 
                 if (marqueArticle != null && sousFamilleArticle != null)
                 {
                     InterfaceDB_Articles article = new InterfaceDB_Articles();  
-                    resultatErreur = article.insererArticle(refArticle, descriptionActicle, sousFamilleArticle.RefSousFamille, marqueArticle.RefMarque, prixArticle, quantiteArticle);
-                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
+                    ResultatErreur = article.InsererArticle(refArticle, descriptionActicle, sousFamilleArticle.RefSousFamille, marqueArticle.RefMarque, prixArticle, quantiteArticle);
+                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
                 }
                
                 increment++;
@@ -187,8 +187,8 @@ namespace Mercure.Vue
 
             int increment = 0;
             XmlDocument documentXml = new XmlDocument();
-            this.nomFicherXML = this.Ouvrir_XML_Fichier.FileName;
-            documentXml.Load(this.nomFicherXML);
+            this.NomFicherXML = this.Ouvrir_XML_Fichier.FileName;
+            documentXml.Load(this.NomFicherXML);
 
             foreach (XmlNode enregistrement in documentXml.DocumentElement)
             {
@@ -204,40 +204,40 @@ namespace Mercure.Vue
                 /**
                  * La marque 
                  * */
-                marqueMisejour = interMarque.getMarque(nomMarque);
+                marqueMisejour = interMarque.GetMarque(nomMarque);
                 if(marqueMisejour == null)
                 {
-                    resultatErreur = interMarque.insererMarque(nomMarque);
-                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
-                    marqueMisejour = interMarque.getMarque(nomMarque);
+                    ResultatErreur = interMarque.InsererMarque(nomMarque);
+                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                    marqueMisejour = interMarque.GetMarque(nomMarque);
                 }
                 /**
                  * La famille 
                  */
-                familleMisejour = interfamille.getFamille(nomfamille);
+                familleMisejour = interfamille.GetFamille(nomfamille);
                 if(familleMisejour == null)
                 {
-                    resultatErreur = interfamille.insererFamille(nomfamille);
-                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
-                    familleMisejour = interfamille.getFamille(nomfamille);
+                    ResultatErreur = interfamille.InsererFamille(nomfamille);
+                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                    familleMisejour = interfamille.GetFamille(nomfamille);
                 }
 
                 /**
                  * La sous famille 
                  * */
-                sousfamilleMisejour = interSousfamille.getSousFamille(nomSousfamille);
+                sousfamilleMisejour = interSousfamille.GetSousFamille(nomSousfamille);
                 if(sousfamilleMisejour == null)
                 {
-                    resultatErreur = interSousfamille.insererSousFamille(nomfamille, nomSousfamille);
-                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
-                    sousfamilleMisejour = interSousfamille.getSousFamille(nomSousfamille);
+                    ResultatErreur = interSousfamille.InsererSousFamille(nomfamille, nomSousfamille);
+                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                    sousfamilleMisejour = interSousfamille.GetSousFamille(nomSousfamille);
                 }
                 else
                 {
                     if(sousfamilleMisejour.MaFamille.RefFamille != familleMisejour.RefFamille)
                     {
-                        resultatErreur = interSousfamille.modifierSousFamille(sousfamilleMisejour.RefSousFamille, familleMisejour.RefFamille, sousfamilleMisejour.NomSousFamille);
-                        textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
+                        ResultatErreur = interSousfamille.ModifierSousFamille(sousfamilleMisejour.RefSousFamille, familleMisejour.RefFamille, sousfamilleMisejour.NomSousFamille);
+                        textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
                     }
                 }
 
@@ -245,16 +245,16 @@ namespace Mercure.Vue
                  * L'article 
                  * */
 
-                articleMisejour =  interArticle.getArticle(refArticle);
+                articleMisejour =  interArticle.GetArticle(refArticle);
                 if(articleMisejour == null)
                 {
-                    resultatErreur = interArticle.insererArticle(refArticle, descriptionActicle, sousfamilleMisejour.RefSousFamille, marqueMisejour.RefMarque, prixArticle, quantiteArticle);
-                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
+                    ResultatErreur = interArticle.InsererArticle(refArticle, descriptionActicle, sousfamilleMisejour.RefSousFamille, marqueMisejour.RefMarque, prixArticle, quantiteArticle);
+                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
                 }
                 else
                 {
-                   resultatErreur = interArticle.modifierArticle(refArticle, descriptionActicle, sousfamilleMisejour.RefSousFamille, marqueMisejour.RefMarque, prixArticle, quantiteArticle);
-                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), resultatErreur);
+                   ResultatErreur = interArticle.ModifierArticle(refArticle, descriptionActicle, sousfamilleMisejour.RefSousFamille, marqueMisejour.RefMarque, prixArticle, quantiteArticle);
+                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
                 }
                 increment++;
                 Travail_En_Arriere_Plan.ReportProgress(increment);
@@ -265,7 +265,7 @@ namespace Mercure.Vue
 
         private void button_integration_Click(object sender, EventArgs e)
         {
-            Bar_Progression_Integration_fichier_XML.Maximum = count;
+            Bar_Progression_Integration_fichier_XML.Maximum = Count;
             button_integration.Enabled = false;
             Travail_En_Arriere_Plan.RunWorkerAsync();
 

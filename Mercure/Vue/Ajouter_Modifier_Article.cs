@@ -13,37 +13,38 @@ namespace Mercure.Vue
 {
     public partial class Ajouter_Modifier_Article : Form
     {
-        private string refarticle;
+        private string RefArticle;
+
         public Ajouter_Modifier_Article(string titre,string refArticle=null)
         {
             InitializeComponent();
             this.Text = titre;
-            refarticle = refArticle;
-            init();
+            RefArticle = refArticle;
+            Init();
         }
-        public void init()
+        public void Init()
         {
-            if (refarticle == null)
+            if (RefArticle == null)
             {
-                remplirComboMarque();
-                remplirComboSousfamille();
+                RemplirComboMarque();
+                RemplirComboSousfamille();
             }
             else
             {
                 InterfaceDB_Articles inter = new InterfaceDB_Articles();
-                Article article = inter.getArticle(refarticle);
-                textBox_refArticle.Text = refarticle;
+                Article article = inter.GetArticle(RefArticle);
+                textBox_refArticle.Text = RefArticle;
                 textBox_description.Text = article.Description;
                 numericUpDown_prixht.Value = Decimal.Parse(article.PrixHT.ToString());
                 numericUpDown_quantite.Value = Int32.Parse(article.Quantite.ToString());
                 button_ajouter_modifier.Text = "Modifier";
-                remplirComboMarque();
-                remplirComboSousfamille();
+                RemplirComboMarque();
+                RemplirComboSousfamille();
                 this.comboBox_marque.SelectedIndex = this.comboBox_marque.FindString(article.Marque.NomMarque);
                 this.comboBox_sousfamille.SelectedIndex = this.comboBox_sousfamille.FindString(article.SousFamille.NomSousFamille);
             }
         }
-        public void remplirComboSousfamille()
+        public void RemplirComboSousfamille()
         {
             InterfaceDB_Sous_Famille inter = new InterfaceDB_Sous_Famille();
             int indice = 0;
@@ -60,12 +61,12 @@ namespace Mercure.Vue
 
             this.comboBox_sousfamille.Items.AddRange(chaine);
         }
-        public void remplirComboMarque()
+        public void RemplirComboMarque()
         {
             InterfaceDB_Marque inter = new InterfaceDB_Marque();
             int indice = 0;
 
-            List<Marque> liste = inter.getToutesMarque();
+            List<Marque> liste = inter.GetToutesMarque();
 
             string[] chaine = new string[liste.Count];
 
@@ -97,19 +98,19 @@ namespace Mercure.Vue
 
                 string resultat;
 
-                SousFamille sousfamille = intersousfam.getSousFamille(comboBox_sousfamille.Text);
-                Marque marque = intermarque.getMarque(comboBox_marque.Text);
+                SousFamille sousfamille = intersousfam.GetSousFamille(comboBox_sousfamille.Text);
+                Marque marque = intermarque.GetMarque(comboBox_marque.Text);
 
-                if (refarticle  == null )//on ajoute
+                if (RefArticle  == null )//on ajoute
                 {
                     Article article = new Article(textBox_refArticle.Text, textBox_description.Text,sousfamille,marque, double.Parse(numericUpDown_prixht.Value.ToString()), Int32.Parse(numericUpDown_quantite.Value.ToString()));
-                    resultat = inter.insererArticle(article);
+                    resultat = inter.InsererArticle(article);
 
                 }
                 else // on modifie
                 {
                     
-                    resultat = inter.modifierArticle(refarticle,textBox_description.Text,sousfamille.RefSousFamille,marque.RefMarque, double.Parse(numericUpDown_prixht.Value.ToString()), Int32.Parse(numericUpDown_quantite.Value.ToString()));
+                    resultat = inter.ModifierArticle(RefArticle,textBox_description.Text,sousfamille.RefSousFamille,marque.RefMarque, double.Parse(numericUpDown_prixht.Value.ToString()), Int32.Parse(numericUpDown_quantite.Value.ToString()));
 
                 }
                 MessageBox.Show(this, resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);

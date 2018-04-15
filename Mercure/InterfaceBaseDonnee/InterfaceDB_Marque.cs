@@ -8,23 +8,56 @@ using System.Threading.Tasks;
 
 namespace Mercure.InterfaceBaseDonnee
 {
+    /// <summary>
+    ///  Cette classe représente l'interface de requete sur la table Marques
+    /// </summary>
+    /// <remarks>
+    ///     Elle utilise la classe statique <see cref="InterfaceDB"/>
+    /// </remarks>
     class InterfaceDB_Marque
     {
+        /// <summary>
+        ///  Attribut contentant la requete d'insertion de la classe 
+        /// </summary>
         private string RequeteInsererMarque;
-        private string RequetedonneesMarque;
-        private string RequeteModifierMarque;
-        private SQLiteDataReader Lecture_donnee;
 
+        /// <summary>
+        ///  Attribut contentant la requete de selection  de la classe 
+        /// </summary>
+        private string RequeteDonneesMarque;
+
+        /// <summary>
+        ///  Attribut contentant la requete de modification  de la classe 
+        /// </summary>
+        private string RequeteModifierMarque;
+
+        /// <summary>
+        ///  Attribut permettant la lecture des données retournées dans une commande de la classe 
+        /// </summary>
+        private SQLiteDataReader Lecture_Donnee;
+
+        /// <summary>
+        /// Constructeur par defaut 
+        /// </summary>
         public InterfaceDB_Marque()
         {
 
         }
 
-        public string insererMarque(int refmarque, string nom)
+        /// <summary>
+        ///     Cette methode permet d'inserer une nouvelle marque dans la table Marques
+        /// </summary>
+        /// <param name="refmarque"> l'identifiant de la marque </param>
+        /// <param name="nom"> le nom de la marque </param>
+        /// <returns></returns>
+        /// <remarks>
+        ///     L'insertion ne sera faite que si la marque n'existe pas
+        /// </remarks>
+        public string InsererMarque(int refmarque, string nom)
         {
             string resultat = "";
-            Marque marque = getMarque(nom);
-            Marque marque2 = getMarque(refmarque);
+            Marque marque = GetMarque(nom);
+            Marque marque2 = GetMarque(refmarque);
             if (marque2 != null || marque != null)
             {
                 resultat = " = Existe dejà dans la table Marque " + refmarque;
@@ -37,7 +70,7 @@ namespace Mercure.InterfaceBaseDonnee
 
                     RequeteInsererMarque = "INSERT INTO Marques(RefMarque,Nom) VALUES"
                                       + "(@refmarque,@nom)";
-                    InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteInsererMarque, InterfaceDB.getInstaneConnexion());
+                    InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteInsererMarque, InterfaceDB.GetInstaneConnexion());
 
                     InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@refmarque", refmarque);
                     InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@nom", nom);
@@ -58,23 +91,35 @@ namespace Mercure.InterfaceBaseDonnee
             }
             return resultat;
         }
-        public string insererMarque(Marque marque)
+
+        /// <summary>
+        ///     Cette methode permet d'inserer une nouvelle marque dans la table Marques
+        /// </summary>
+        /// <param name="nom"> le nom de la marque </param>
+        /// <returns>le resultat de l'operation </returns>
+        /// <remarks>
+        ///     L'identifiant est données par rapport au dernier identifiant de la table Marques
+        /// </remarks>
+        public string InsererMarque(string nom)
         {
-            return insererMarque(marque.RefMarque, marque.NomMarque);
+            int refmarque = InterfaceDB.DernierIdTable("Marques", "RefMarque") + 1;
+            return InsererMarque(refmarque, nom);
         }
-        public string insererMarque(string nom)
-        {
-            int refmarque = InterfaceDB.dernierIdTable("Marques", "RefMarque") + 1;
-            return insererMarque(refmarque, nom);
-        }
-        public string modifierMarque(int refmarque, string nouveaunommarque)
+
+        /// <summary>
+        /// Cette methode permet de modifier les données d'une marque dans la table Marques
+        /// </summary>
+        /// <param name="refmarque">l'identifiant de la marque </param>
+        /// <param name="nouveaunommarque">le nouveau nom de la marque </param>
+        /// <returns>le resultat de l'operation </returns>
+        public string ModifierMarque(int refmarque, string nouveaunommarque)
         {
             string resultat = "";
             try
             {
 
                 RequeteModifierMarque = "UPDATE Marques SET Nom = @nouveaunom WHERE RefMarque = @ref";
-                InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteModifierMarque, InterfaceDB.getInstaneConnexion());
+                InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteModifierMarque, InterfaceDB.GetInstaneConnexion());
                 InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@nouveaunom", nouveaunommarque);
                 InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refmarque);
                 InterfaceDB.Commande_sqlite.ExecuteNonQuery();
@@ -89,12 +134,22 @@ namespace Mercure.InterfaceBaseDonnee
             return resultat;
 
         }
-        public string supprimerMarque(int refMarque)
+
+        /// <summary>
+        ///  Cette methode permet de supprimer une marque dans la table Marques en fonction de son identifiant
+        /// </summary>
+        /// <param name="refMarque">l'identifiant de la marque à supprimer </param>
+        /// <returns>le resultat de l'operation </returns>
+        /// <remarks>
+        ///      la suppresion est faite si la marque à supprimer n'est pas liée à aucun article 
+        ///     sinon la suppression sera refusé
+        /// </remarks>
+        public string SupprimerMarque(int refMarque)
         {
             string requete = "DELETE FROM Marques WHERE RefMarque=@ref";
             string resultat;
             InterfaceDB_Articles interArticle = new InterfaceDB_Articles();
-            List<Article> liste = interArticle.getToutesArticlebyMarque(refMarque);
+            List<Article> liste = interArticle.GetToutesArticlebyMarque(refMarque);
 
             try
             {
@@ -107,7 +162,7 @@ namespace Mercure.InterfaceBaseDonnee
                     /**
                      * Suppresion de la maque 
                      * */
-                    InterfaceDB.Commande_sqlite = new SQLiteCommand(requete, InterfaceDB.getInstaneConnexion());
+                    InterfaceDB.Commande_sqlite = new SQLiteCommand(requete, InterfaceDB.GetInstaneConnexion());
                     InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refMarque);
                     InterfaceDB.Commande_sqlite.ExecuteNonQuery();
                     resultat = " - Suppresion de " + refMarque + " dans la table Marque";
@@ -123,25 +178,31 @@ namespace Mercure.InterfaceBaseDonnee
             }
             return resultat;
         }
-        public Marque getMarque(string nom)
+
+        /// <summary>
+        ///  Cette methode permet d'avoir toutes les informations d'une marque en fonction de son nom 
+        /// </summary>
+        /// <param name="nom"> le nom de la marque </param>
+        /// <returns> la marque correspondante</returns>
+        public Marque GetMarque(string nom)
         {
             Marque marque = null;
             int refmarqueTrouve;
             string nomTrouve;
 
-            RequetedonneesMarque = "select * from Marques where Marques.Nom like @nom";
+            RequeteDonneesMarque = "select * from Marques where Marques.Nom like @nom";
 
-            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneesMarque, InterfaceDB.getInstaneConnexion());
+            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteDonneesMarque, InterfaceDB.GetInstaneConnexion());
             InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@nom", nom);
 
             try
             {
-                Lecture_donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
+                Lecture_Donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
 
-                while (Lecture_donnee.Read())
+                while (Lecture_Donnee.Read())
                 {
-                    refmarqueTrouve = Int32.Parse(Lecture_donnee["RefMarque"].ToString());
-                    nomTrouve = Lecture_donnee["Nom"].ToString();
+                    refmarqueTrouve = Int32.Parse(Lecture_Donnee["RefMarque"].ToString());
+                    nomTrouve = Lecture_Donnee["Nom"].ToString();
                     marque = new Marque(refmarqueTrouve, nomTrouve);
 
                 }
@@ -155,25 +216,31 @@ namespace Mercure.InterfaceBaseDonnee
             return marque;
 
         }
-        public Marque getMarque(int refmarque)
+
+        /// <summary>
+        ///  Cette methode permet d'avoir toutes les informations d'une marque en fonction de son identifiant 
+        /// </summary>
+        /// <param name="refmarque">l'identifiant de la marque </param>
+        /// <returns>la marque correspondante</returns>
+        public Marque GetMarque(int refmarque)
         {
             Marque marque = null;
             int refmarqueTrouve;
             string nomTrouve;
 
-            RequetedonneesMarque = "select * from Marques where Marques.RefMarque=@ref";
+            RequeteDonneesMarque = "select * from Marques where Marques.RefMarque=@ref";
 
-            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneesMarque, InterfaceDB.getInstaneConnexion());
+            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteDonneesMarque, InterfaceDB.GetInstaneConnexion());
             InterfaceDB.Commande_sqlite.Parameters.AddWithValue("@ref", refmarque);
 
             try
             {
-                Lecture_donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
+                Lecture_Donnee = InterfaceDB.Commande_sqlite.ExecuteReader();
 
-                while (Lecture_donnee.Read())
+                while (Lecture_Donnee.Read())
                 {
-                    refmarqueTrouve = Int32.Parse(Lecture_donnee["RefMarque"].ToString());
-                    nomTrouve = Lecture_donnee["Nom"].ToString();
+                    refmarqueTrouve = Int32.Parse(Lecture_Donnee["RefMarque"].ToString());
+                    nomTrouve = Lecture_Donnee["Nom"].ToString();
                     marque = new Marque(refmarqueTrouve, nomTrouve);
 
                 }
@@ -188,7 +255,11 @@ namespace Mercure.InterfaceBaseDonnee
 
         }
 
-        public List<Marque> getToutesMarque()
+        /// <summary>
+        ///  Cette methode nous donne la liste de toutes les marques de la table Marques 
+        /// </summary>
+        /// <returns>liste de marque </returns>
+        public List<Marque> GetToutesMarque()
         {
 
             List<Marque> listmarque = null;
@@ -196,9 +267,9 @@ namespace Mercure.InterfaceBaseDonnee
             int refmarqueTrouve;
             string nomTrouve;
 
-            RequetedonneesMarque = "select * from Marques";
+            RequeteDonneesMarque = "select * from Marques";
 
-            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequetedonneesMarque, InterfaceDB.getInstaneConnexion());
+            InterfaceDB.Commande_sqlite = new SQLiteCommand(RequeteDonneesMarque, InterfaceDB.GetInstaneConnexion());
 
 
             try

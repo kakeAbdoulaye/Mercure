@@ -15,22 +15,22 @@ namespace Mercure.Vue
 {
     public partial class Ajouter_Modifier_SousFamille : Form
     {
-        private int refsousfammile;
+        private int RefsousFamile;
         public Ajouter_Modifier_SousFamille(string titre, int refsousFamille = -1)
         {
             InitializeComponent();
             this.Text = titre;
-            this.refsousfammile = refsousFamille;
-            init();
+            this.RefsousFamile = refsousFamille;
+            Init();
             
         }
 
-        public void remplirComboFamille()
+        public void RemplirComboFamille()
         {
             InterfaceDB_Famille inter = new InterfaceDB_Famille();
             int indice = 0;
 
-            List<Famille> liste = inter.getToutesFamille();
+            List<Famille> liste = inter.GetToutesFamille();
 
             string[] chaine = new string[liste.Count];
 
@@ -43,19 +43,19 @@ namespace Mercure.Vue
             this.comboBox_typefamille.Items.AddRange(chaine);
 
         }
-        public void init()
+        public void Init()
         {
-            if (refsousfammile == -1)
+            if (RefsousFamile == -1)
             {
-                remplirComboFamille();
+                RemplirComboFamille();
             }
             else
             {
                 InterfaceDB_Sous_Famille inter = new InterfaceDB_Sous_Famille();
-                SousFamille sousfammille = inter.getSousFamille(refsousfammile);
+                SousFamille sousfammille = inter.GetSousFamille(RefsousFamile);
                 textBox_nomsousfamille.Text = sousfammille.NomSousFamille;
                 button_ajouter_modifier.Text = "Modifier";
-                remplirComboFamille();
+                RemplirComboFamille();
                 this.comboBox_typefamille.SelectedIndex = this.comboBox_typefamille.FindString(sousfammille.MaFamille.NomFamille);
             }
         }
@@ -72,17 +72,17 @@ namespace Mercure.Vue
 
                 InterfaceDB_Sous_Famille inter = new InterfaceDB_Sous_Famille();
                 InterfaceDB_Famille interfam = new InterfaceDB_Famille();
-                Famille famille = interfam.getFamille(comboBox_typefamille.Text);
+                Famille famille = interfam.GetFamille(comboBox_typefamille.Text);
                 string resultat;
-                if (refsousfammile == -1)//on ajoute
+                if (RefsousFamile == -1)//on ajoute
                 {
-                    resultat = inter.insererSousFamille(famille.NomFamille, textBox_nomsousfamille.Text);
+                    resultat = inter.InsererSousFamille(famille.NomFamille, textBox_nomsousfamille.Text);
                    
                 }
                 else // on modifie
                 {
                    
-                    resultat = inter.modifierSousFamille(refsousfammile,famille.RefFamille, textBox_nomsousfamille.Text);
+                    resultat = inter.ModifierSousFamille(RefsousFamile,famille.RefFamille, textBox_nomsousfamille.Text);
                     
                 }
                 MessageBox.Show(this, resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);

@@ -1,0 +1,950 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mercure</name>
+    </assembly>
+    <members>
+        <member name="T:Mercure.Models.Article">
+            <summary>
+            Cette classe permet de modéliser et représenter un article 
+            </summary>
+            <remarks>
+                Chaque attributs représente un champ dans la table Articles dans la base de données
+                Elle est caractérisé par :  
+                    - un identifiant unique de l'article
+                    - une description de l'article 
+                    - La sous famille de l'article
+                    - La marque de l'article 
+                    - le prix de l'article 
+                    - la quantité disponible de cet article 
+                    
+            </remarks>
+            <see cref="P:Mercure.Models.Article.SousFamille"/>
+            <see cref="P:Mercure.Models.Article.Marque"/>
+        </member>
+        <member name="F:Mercure.Models.Article.RefArticle_">
+            <summary>
+             l'identifiant de l'article , type : chaine de caractère 
+            </summary>
+            <see cref="T:System.String"/>
+        </member>
+        <member name="F:Mercure.Models.Article.Description_">
+            <summary>
+            la description de l'article ,  type : chaine de caractère 
+            </summary>
+            <see cref="T:System.String"/>
+        </member>
+        <member name="F:Mercure.Models.Article.SousFamille_">
+            <summary>
+             La sous famille de l'article , type : SousFamille 
+            </summary>
+            <see cref="P:Mercure.Models.Article.SousFamille"/>
+        </member>
+        <member name="F:Mercure.Models.Article.Marque_">
+            <summary>
+            La marque de l'article 
+            </summary>
+            <see cref="P:Mercure.Models.Article.Marque"/>
+        </member>
+        <member name="F:Mercure.Models.Article.PrixHT_">
+            <summary>
+             le prix de l'article 
+            </summary>
+            <see cref="T:System.Double"/>
+        </member>
+        <member name="F:Mercure.Models.Article.Quantite_">
+            <summary>
+             La quantité d'un article 
+            </summary>
+            <see cref="T:System.Int32"/>
+        </member>
+        <member name="M:Mercure.Models.Article.#ctor(System.String,System.String,Mercure.Models.SousFamille,Mercure.Models.Marque,System.Double,System.Int32)">
+            <summary>
+             Constructeur d'un objet Article
+            </summary>
+            <param name="refarticle"> identifiant de l'article </param>
+            <param name="description">la description de l'article </param>
+            <param name="sousfamille">la sous famille de l'article </param>
+            <param name="marque">la marque de l'article </param>
+            <param name="prix"> le prix de l'article </param>
+            <param name="quantite">la quantité  de l'article </param>
+        </member>
+        <member name="P:Mercure.Models.Article.RefArticle">
+            <summary>
+                Cette propriété correspond à celui de l'identifiant de l'article
+                qui lui permet de modifier l'identifiant , et retourner le l'identifiant 
+            </summary>
+        </member>
+        <member name="P:Mercure.Models.Article.Description">
+            <summary>
+                Cette propriété correspond à celui de la description de l'article 
+                qui lui permet de modifier la description , et retourner la description
+            </summary>
+        </member>
+        <member name="P:Mercure.Models.Article.SousFamille">
+            <summary>
+                Cette propriété correspond à celui de la sous famille de l'article 
+                qui lui permet de modifier la sous famille , et retourner la sous famille
+            </summary>
+        </member>
+        <member name="P:Mercure.Models.Article.Marque">
+            <summary>
+                Cette propriété correspond à celui de la marque de l'article 
+                qui lui permet de modifier la marque , et retourner la marque
+            </summary>
+        </member>
+        <member name="P:Mercure.Models.Article.PrixHT">
+            <summary>
+                Cette propriété correspond à celui du prix de l'artcile 
+                qui lui permet de modifier le prix , et retourner le prix
+            </summary>
+        </member>
+        <member name="P:Mercure.Models.Article.Quantite">
+            <summary>
+                Cette propriété correspond à celui de la quantite de l'article 
+                qui lui permet de modifier la quantite , et retourner la quantite
+            </summary>
+        </member>
+        <member name="T:Mercure.Models.Famille">
+            <summary>
+                Famille est la classe représentant une famille d'article dans la base de données
+            </summary>
+            <remarks>
+                Une famille est caractérisé par : 
+                 - un identifiant unique 
+                 - un nom de famille 
+            </remarks>
+        </member>
+        <member name="F:Mercure.Models.Famille.RefFamille_">
+            <summary>
+             l'identifiant d'une famille , type entier 
+            </summary>
+            <see cref="T:System.Int32"/>
+        </member>
+        <member name="F:Mercure.Models.Famille.NomFamille_">
+            <summary>
+            le nom de la famille , type chaine de caractère 
+            </summary>
+            <see cref="T:System.String"/>
+        </member>
+        <member name="M:Mercure.Models.Famille.#ctor(System.Int32,System.String)">
+            <summary>
+                Contructeur d'un objet Famille, qui permet d'instancier les attributs de la classe 
+            </summary>
+            <param name="reffamille"> l'identifiant unique d'une famille </param>
+            <param name="famille">le nom d'une famille </param>
+        </member>
+        <member name="P:Mercure.Models.Famille.RefFamille">
+            <summary>
+             Cette propriété correspond à celui de l'identifiant de la famille 
+             qui permet de retourner l'identifiant et de le modifier 
+            </summary>
+        </member>
+        <member name="P:Mercure.Models.Famille.NomFamille">
+            <summary>
+             Cette propriété correspond à celui du nom de la famille 
+             permettant sa modification et retour du nom 
+            </summary>
+        </member>
+        <member name="T:Mercure.Models.Marque">
+            <summary>
+                Cette classe représente une marque d'article  dans la base de données
+                
+            </summary>
+            <remarks>
+                Une marque est caractérisé par : 
+                 - un identifiant unique , attribué à une marque 
+                 - un nom de marque 
+            </remarks>
+        </member>
+        <member name="F:Mercure.Models.Marque.RefMarque_">
+            <summary>
+             L'identifiant de la marque , type : entier 
+            </summary>
+            <see cref="T:System.Int32"/> 
+        </member>
+        <member name="F:Mercure.Models.Marque.NomMarque_">
+            <summary>
+            Le nom de la marque , type : chaine de caractère 
+            </summary>
+            <see cref="T:System.String"/>
+        </member>
+        <member name="M:Mercure.Models.Marque.#ctor(System.Int32,System.String)">
+            <summary>
+                Constructeur d'un objet Marque  , qui initialise les attributs de la classe
+            </summary>
+            <param name="refmarque"> l'identifiant unique de la marque </param>
+            <param name="marque">le nom de la marque </param>
+        </member>
+        <member name="P:Mercure.Models.Marque.NomMarque">
+            <summary>
+                Cette propriété correspond à celui du nom de la marque 
+                qui lui permet de modifier le nom , et retourner le nom 
+            </summary>
+        </member>
+        <member name="P:Mercure.Models.Marque.RefMarque">
+            <summary>
+                Cette propriété correspond à celui de l'identifiant de la marque 
+                qui lui permet de modifier l'identifiant , et retourner le l'identifiant 
+            </summary>
+        </member>
+        <member name="T:Mercure.Models.SousFamille">
+            <summary>
+             SousFamille , cette classe représente une sous famille d'un article dans la base de données
+            </summary>
+            <remarks>
+                Une sous famille est caractérisé par : 
+                    - un identifiant unique d'une sous famille 
+                    - une famille à la quelle elle appartient 
+                    - le nom de la sous famille 
+                    
+            <see cref="T:Mercure.Models.Famille"/>
+            </remarks>
+        </member>
+        <member name="F:Mercure.Models.SousFamille.RefSousFamille_">
+            <summary>
+             L'identifiant de la sous famille , type : entier 
+            </summary>
+            <see cref="T:System.Int32"/>
+        </member>
+        <member name="F:Mercure.Models.SousFamille.MaFamille_">
+            <summary>
+             La famille à la quelle appartient la sous famille , type : Famille
+            </summary>
+            <see cref="T:Mercure.Models.Famille"/>
+        </member>
+        <member name="F:Mercure.Models.SousFamille.NomSousFamille_">
+            <summary>
+             Le nom de la sous famille , type : chaine de caractere 
+            </summary>
+            <see cref="T:System.String"/>
+        </member>
+        <member name="M:Mercure.Models.SousFamille.#ctor(System.Int32,Mercure.Models.Famille,System.String)">
+            <summary>
+                Constructeur  d'un objet  sous famille 
+            </summary>
+            <param name="refsousfamille"> l'identifiant de la sous famille </param>
+            <param name="famille">la famille appartenante </param>
+            <param name="nomsousfamille"> le nom de la sous famille </param>
+        </member>
+        <member name="P:Mercure.Models.SousFamille.RefSousFamille">
+            <summary>
+                Cette propriété correspond à l'identifiant de la sous famille 
+                qui  permet de modifier et retourner  l'identifiant 
+            </summary>
+        </member>
+        <member name="P:Mercure.Models.SousFamille.MaFamille">
+            <summary>
+                Cette propriété correspond à la famille à la quelle appartient la sous famille 
+                qui  permet de modifier et retourner  la famille 
+            </summary>
+        </member>
+        <member name="P:Mercure.Models.SousFamille.NomSousFamille">
+            <summary>
+                Cette propriété correspond au nom de la sous famille 
+                qui  permet de modifier et retourner  le nom  
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.Ajouter_Modifier_Article.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Article.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Article.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.Ajouter_Modifier_Famille.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Famille.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Famille.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.Ajouter_Modifier_Marque.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Marque.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Marque.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.Ajouter_Modifier_SousFamille.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_SousFamille.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_SousFamille.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ApplicatioCentrale.components">
+            <summary>
+            Variable nécessaire au concepteur.
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.Dispose(System.Boolean)">
+            <summary>
+            Nettoyage des ressources utilisées.
+            </summary>
+            <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.InitializeComponent">
+            <summary>
+            Méthode requise pour la prise en charge du concepteur - ne modifiez pas
+            le contenu de cette méthode avec l'éditeur de code.
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ApplicationFamille.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ApplicationMarque.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ApplicationSousFamille.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.Fenetre_Integration.NomFicherXML">
+            <summary>
+            Prendre le text contenu dans  text pour la lecture 
+            tant que le champ du fichier est vide le groupbox integration sera inactif aussi
+            quand on appuie sur un bouton (integration totale / update) l'autre est désactivé jusqu'à la fin de l'integration
+            verifier que le fichier choisie est correcte sinon faite une erreur (fait)
+            </summary>
+             si une marque est référencié on ne peut pas le supprimer , mettre à jour si existe sinon le cree (fait) , en levé la saisie des reférences dans marque , sous famill , famille (fait)
+        </member>
+        <member name="F:Mercure.Vue.Fenetre_Integration.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ListViewColumnTri.columnATrier">
+            <summary>
+            Spécifie la colonne à trier
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ListViewColumnTri.ordreTri">
+            <summary>
+            Spécifie l'ordre de tri .
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ListViewColumnTri.ObjectCompare">
+            <summary>
+            Objet de comparaison ne respectant pas les majuscules et minuscules
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ListViewColumnTri.Compare(System.Object,System.Object)">
+             <summary>
+             Cette méthode est héritée de l'interface IComparer.  Il compare les deux objets passés en effectuant une comparaison 
+            qui ne tient pas compte des majuscules et des minuscules.
+             </summary>
+             <param name="x">Premier objet à comparer</param>
+             <param name="x">Deuxième objet à comparer</param>
+             <returns>Le résultat de la comparaison. "0" si équivalent, négatif si 'x' est inférieur à 'y' 
+            et positif si 'x' est supérieur à 'y'</returns>
+        </member>
+        <member name="F:Mercure.Vue.ListViewGroupTri.OrdreTri">
+            <summary>
+            Spécifie l'ordre de tri .
+            </summary>
+        </member>
+        <member name="T:Mercure.InterfaceBaseDonnee.InterfaceDB">
+            <summary>
+             Cette classe statique , représente une interface de connexion à la base de données 
+             , elle contient toutes les méthodes de traitement générale sur la base de données 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB.Connexion_Sqlite">
+            <summary>
+                l'attribut de  connexion à la base de données 
+            </summary>
+            <see cref="T:System.Data.SQLite.SQLiteConnection"/>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB.Commande_Sqlite">
+            <summary>
+             Attribut permettant de faire des commandes sql sur la base de données
+            </summary>
+            <see cref="T:System.Data.SQLite.SQLiteCommand"/>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB.Lecture_Donnee">
+            <summary>
+             Attribut permettant la lecture des données renvoyé par une commande 
+            </summary>
+            <see cref="T:System.Data.SQLite.SQLiteDataReader"/>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB.RepertoireCourant">
+            <summary>
+             le repertoir du projet 
+            </summary>
+            <see cref="T:System.String"/>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB.NomBaseDonnee">
+            <summary>
+            Le fichier, nom de la base de données 
+            </summary>
+            <see cref="T:System.String"/>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB.CheminBaseDonnee">
+            <summary>
+             Le chemin complet mennant au fichier contenant la base de données 
+            </summary>
+            <see cref="T:System.String"/>
+        </member>
+        <member name="P:Mercure.InterfaceBaseDonnee.InterfaceDB.Commande_sqlite">
+            <summary>
+             Cette propriété statique , correspond à une commande sqlite 
+             
+            </summary>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB.Connection">
+            <summary>
+             Cette methode permet de d'ouvrir une connexion sur la base de données 
+            </summary>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB.Deconnection">
+            <summary>
+             Cette methode permet de se deconnecter ou fermer la connexion à la base de données
+            </summary>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB.GetInstaneConnexion">
+            <summary>
+                Cette methode permet d'instancier une connection en suivant le processus Singleton 
+               et  d'ouvrir directement la connection vers la base de données 
+             
+            </summary>
+            <remarks> Singleton : permet d'instancer une seul fois un attribut
+                - Si Connexion_Sqlite est déja instancier alors on le retourne 
+                - Sinon il doit être instancier en indiquant le chemin de connection à la base de données 
+            </remarks>
+            <returns> l'attribut contenant la connection à la base de données   </returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB.DernierIdTable(System.String,System.String)">
+            <summary>
+             Cette methode pour une table de la base de données et son champ représentant
+             les identifiants de la table nous donne le dernier identifiant de la table 
+            </summary>
+            <param name="nomTable"> le nom de la table </param>
+            <param name="type"> la colonne / champ correspondant aux identifiants</param>
+            <returns>le dernier identifiant de table </returns>
+            <remarks>
+                <example> Voici un exemple d'utilisation de la methode : 
+                    <code> int dernierId = InterfaceDB.DernierIdTable("Marques","RefMarque")</code>
+                    qui nous donne le dernier id de la table Marques de la base de données en fonction de son identifiant ici RefMarque
+                </example>
+            </remarks>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB.SupprimerToutTable(System.String)">
+            <summary>
+             Cette methode pour une table de base de données supprime toutes les tuples de la table 
+            </summary>
+            <param name="nomTable"> le nom de la table existante dans la base de données </param>
+            <returns>le resultat de l'opération </returns>
+        </member>
+        <member name="T:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles">
+            <summary>
+             Cette classe représente l'interface de requete sur la table Articles 
+            </summary>
+            <remarks>
+                Elle utilise la classe statique <see cref="T:Mercure.InterfaceBaseDonnee.InterfaceDB"/>
+            </remarks>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.RequeteInsererArticle">
+            <summary>
+             Attribut contentant la requete d'insertion de la classe 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.RequeteDonneeArticle">
+            <summary>
+             Attribut contentant la requete de selection  de la classe 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.RequeteModifierArticle">
+            <summary>
+             Attribut contentant la requete de modification  de la classe 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.Lecture_Donnee">
+            <summary>
+             Attribut permettant la lecture des données retournées dans une commande de la classe 
+            </summary>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.#ctor">
+            <summary>
+             Constructeur par defaut 
+            </summary>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.InsererArticle(System.String,System.String,System.Int32,System.Int32,System.Double,System.Int32)">
+            <summary>
+             cette methode d'insérer un nouveau article dans la table Articles de la base de données
+            </summary>
+            <param name="refArticle">l'identifiant de l'article </param>
+            <param name="description"> la description de l'article </param>
+            <param name="refsousfamille"> l'identifiant de la sous famille de l'article </param>
+            <param name="refmarque">l'identifiant de la marque de l'artcile </param>
+            <param name="prixht">le prix de l'article </param>
+            <param name="quantite">la quantité de l'article </param>
+            <returns>le resultat de l'opération </returns>
+            <remarks>
+                Elle vérifie si l'article existe ou pas avant l'insertion dans la table Articles et gère les erreurs qui peuvent survenir 
+            </remarks>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.InsererArticle(Mercure.Models.Article)">
+            <summary>
+                cette methode d'insérer un nouveau article dans la table Articles de la base de données
+            </summary>
+            <param name="article"> un objet Article représentant le nouveau article </param>
+            <returns></returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.ModifierArticle(System.String,System.String,System.Int32,System.Int32,System.Double,System.Int32)">
+            <summary>
+             Cette methode permet de modifier les informations d'un article existant 
+            </summary>
+            <param name="refArticle">le nouvel identifiant de l'article </param>
+            <param name="description"> la nouvelle  description de l'article </param>
+            <param name="refsousfamille"> le nouvel identifiant de la sous famille de l'article </param>
+            <param name="refmarque">le nouvel identifiant de la marque de l'artcile </param>
+            <param name="prixht">le nouveau prix de l'article </param>
+            <param name="quantite">la nouvelle quantité de l'article </param>
+            <returns>le resutat de l'opération </returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.SupprimerArticle(System.String)">
+            <summary>
+             Cette methode permet de supprimer un article dans la table Articles 
+             en fonction de son identifiant 
+            </summary>
+            <param name="refarticle"> l'identifiant de l'article à supprimer </param>
+            <returns>le resultat de l'opération </returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.GetArticle(System.String)">
+            <summary>
+            Cette methode permet d'avoir toutes les insformations d'un article dans la table Articles 
+            en fonction de l'identifiant de l'article
+            </summary>
+            <param name="refarticle"> l'identiifiant de l'article</param>
+            <returns>L'article recuperer </returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.GetToutesArticle">
+            <summary>
+             Cette methode nous donne la liste de toutes les articles dans la table Articles de la base de données 
+            </summary>
+            <returns>liste d'article </returns>
+            <see cref="T:Mercure.Models.Article"/>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.GetToutesArticlebyMarque(System.Int32)">
+            <summary>
+             Cette methode permet d'avoir tous les articles appartenant à une marque 
+            </summary>
+            <param name="refMarque">l'identifiant de la marque</param>
+            <returns>une liste d'article </returns>
+            <see cref="T:Mercure.Models.Article"/>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Articles.GetToutesArticlebySousFamille(System.Int32)">
+            <summary>
+             Cette methode permet d'avoir tous les articles appartenant à une sous famille
+            </summary>
+            <param name="refSousFamille">l'identifiant de la sous famille</param>
+            <returns>une liste d'article </returns>
+        </member>
+        <member name="T:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille">
+            <summary>
+             Cette classe représente l'interface de requete sur la table Familles
+            </summary>
+            <remarks>
+                Elle utilise la classe statique <see cref="T:Mercure.InterfaceBaseDonnee.InterfaceDB"/>
+            </remarks>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille.RequeteInsererFamille">
+            <summary>
+             Attribut contentant la requete d'insertion de la classe 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille.RequeteDonneesFamille">
+            <summary>
+             Attribut contentant la requete de selection  de la classe 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille.RequeteModifierFamille">
+            <summary>
+             Attribut contentant la requete de modification  de la classe 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille.Lecture_Donnee">
+            <summary>
+             Attribut permettant la lecture des données retournées dans une commande de la classe 
+            </summary>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille.#ctor">
+            <summary>
+            Constructeur par defaut 
+            </summary>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille.InsererFamille(System.Int32,System.String)">
+            <summary>
+             Cette methode permet d'inserer une nouvelle famille dans la table Famille 
+            </summary>
+            <param name="refFamille"> l'identifiant de la nouvelle famille </param>
+            <param name="nom">le nom de la famille </param>
+            <returns>le resulat de l'operation </returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille.InsererFamille(System.String)">
+            <summary>
+             Cette methode permet d'inserer une nouvelle famille dans la table Famille 
+            </summary>
+            <param name="nom">le nom de la famille </param>
+            <returns>le resulat de l'operation </returns>
+            <remarks>
+                Elle donne un identifiant qui est le dernier identifiant de table Familles à la nouvelle famille 
+            </remarks>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille.ModifierFamille(System.Int32,System.String)">
+            <summary>
+                Cette methode permet de modifier les données d'une famille dans la table Famille
+            </summary>
+            <param name="reffamille"> l'identifiant de la famille à modifier </param>
+            <param name="nouveaunomfamille">le nouveau nom  de la famille </param>
+            <returns>le resultat de l'opération </returns>
+            <remarks>
+                la mise à jour est faite si la famille existe 
+            </remarks>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille.SupprimerFamille(System.Int32)">
+            <summary>
+            Cette methode permet de supprimer une famille dans la table Familles
+            </summary>
+            <param name="refFamille">l'identifiant de la famille à supprimer </param>
+            <returns>le resultat de l'opération </returns>
+            <remarks>
+                la suppresion est faite si la famille à supprimer n'est liée à aucune sous famille 
+                sinon la suppression sera refusé
+            </remarks>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille.GetFamille(System.String)">
+            <summary>
+             Cette methode permet d'avoir toutes les informations d'une famille en fonction de son nom 
+            </summary>
+            <param name="nom"> le nom de la famille </param>
+            <returns> la famille correspondante </returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille.GetFamille(System.Int32)">
+            <summary>
+             Cette methode permet d'avoir toutes les informations d'une famille en fonction de son identifiant
+            </summary>
+            <param name="reffamille"> l'identifiant de la famille</param>
+            <returns>la famille correspondante </returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Famille.GetToutesFamille">
+            <summary>
+             Cette methode nous donne la liste de toutes les familles de la table Familles 
+            </summary>
+            <returns>liste de famille</returns>
+        </member>
+        <member name="T:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque">
+            <summary>
+             Cette classe représente l'interface de requete sur la table Marques
+            </summary>
+            <remarks>
+                Elle utilise la classe statique <see cref="T:Mercure.InterfaceBaseDonnee.InterfaceDB"/>
+            </remarks>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque.RequeteInsererMarque">
+            <summary>
+             Attribut contentant la requete d'insertion de la classe 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque.RequeteDonneesMarque">
+            <summary>
+             Attribut contentant la requete de selection  de la classe 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque.RequeteModifierMarque">
+            <summary>
+             Attribut contentant la requete de modification  de la classe 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque.Lecture_Donnee">
+            <summary>
+             Attribut permettant la lecture des données retournées dans une commande de la classe 
+            </summary>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque.#ctor">
+            <summary>
+            Constructeur par defaut 
+            </summary>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque.InsererMarque(System.Int32,System.String)">
+            <summary>
+                Cette methode permet d'inserer une nouvelle marque dans la table Marques
+            </summary>
+            <param name="refmarque"> l'identifiant de la marque </param>
+            <param name="nom"> le nom de la marque </param>
+            <returns></returns>
+            <remarks>
+                L'insertion ne sera faite que si la marque n'existe pas
+            </remarks>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque.InsererMarque(System.String)">
+            <summary>
+                Cette methode permet d'inserer une nouvelle marque dans la table Marques
+            </summary>
+            <param name="nom"> le nom de la marque </param>
+            <returns>le resultat de l'operation </returns>
+            <remarks>
+                L'identifiant est données par rapport au dernier identifiant de la table Marques
+            </remarks>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque.ModifierMarque(System.Int32,System.String)">
+            <summary>
+            Cette methode permet de modifier les données d'une marque dans la table Marques
+            </summary>
+            <param name="refmarque">l'identifiant de la marque </param>
+            <param name="nouveaunommarque">le nouveau nom de la marque </param>
+            <returns>le resultat de l'operation </returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque.SupprimerMarque(System.Int32)">
+            <summary>
+             Cette methode permet de supprimer une marque dans la table Marques en fonction de son identifiant
+            </summary>
+            <param name="refMarque">l'identifiant de la marque à supprimer </param>
+            <returns>le resultat de l'operation </returns>
+            <remarks>
+                 la suppresion est faite si la marque à supprimer n'est pas liée à aucun article 
+                sinon la suppression sera refusé
+            </remarks>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque.GetMarque(System.String)">
+            <summary>
+             Cette methode permet d'avoir toutes les informations d'une marque en fonction de son nom 
+            </summary>
+            <param name="nom"> le nom de la marque </param>
+            <returns> la marque correspondante</returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque.GetMarque(System.Int32)">
+            <summary>
+             Cette methode permet d'avoir toutes les informations d'une marque en fonction de son identifiant 
+            </summary>
+            <param name="refmarque">l'identifiant de la marque </param>
+            <returns>la marque correspondante</returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Marque.GetToutesMarque">
+            <summary>
+             Cette methode nous donne la liste de toutes les marques de la table Marques 
+            </summary>
+            <returns>liste de marque </returns>
+        </member>
+        <member name="T:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille">
+            <summary>
+             Cette classe représente l'interface de requete sur la table SousFamilles
+            </summary>
+            <remarks>
+                Elle utilise la classe statique <see cref="T:Mercure.InterfaceBaseDonnee.InterfaceDB"/>
+            </remarks>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.RequeteInsererSousFamille">
+            <summary>
+             Attribut contentant la requete d'insertion de la classe 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.RequeteDonneesSousFamilles">
+            <summary>
+             Attribut contentant la requete de selection  de la classe 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.RequeteModifierSousFamille">
+            <summary>
+             Attribut contentant la requete de modification  de la classe 
+            </summary>
+        </member>
+        <member name="F:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.Lecture_Donnee">
+            <summary>
+             Attribut permettant la lecture des données retournées dans une commande de la classe 
+            </summary>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.#ctor">
+            <summary>
+            Constructeur par defaut 
+            </summary>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.InsererSousFamille(System.Int32,System.Int32,System.String)">
+            <summary>
+             Cette methode permet d'inserer une nouvelle sous famille dans la table SousFamilles 
+            </summary>
+            <param name="refSousFamille">l'identifiant de la sous famille </param>
+            <param name="refFamille">l'identifiant de la famille</param>
+            <param name="nom">le nom de la sous famille </param>
+            <returns>le resultat de l'operation </returns>
+            <remarks>  
+                L'insertion est faite si la sous famille n'existait pas sinon rien 
+            </remarks>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.InsererSousFamille(System.String,System.String)">
+            <summary>
+             Cette methode permet d'inserer une nouvelle sous famille dans la table SousFamilles 
+            </summary>
+            <param name="nomFamille"> le nom de la famille </param>
+            <param name="nom"> le nom de la sous famille </param>
+            <returns>le resultat de l'operation </returns>
+            <remarks>  
+                - On cherche la famille correspondant au nom de la famille
+                - L'insertion est faite si la sous famille n'existait pas sinon rien 
+                - Et l'identifiant correspond au dernier identifiant dans de la table
+            </remarks>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.ModifierSousFamille(System.Int32,System.Int32,System.String)">
+            <summary>
+                Cette methode permet de modifier les données d'une sous famille dans la table SousFamilles
+            </summary>
+            <param name="refsousfamille"> l'identifiant de la sous famille à modifier</param>
+            <param name="refnouvellefamile"> l'identifiant de la nouvelle famille </param>
+            <param name="nouveaunomsousfamille"> le nouveau nom de la sous famille </param>
+            <returns>le resultat de l'operation </returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.SupprimerSousFamille(System.Int32)">
+            <summary>
+                 Cette methode permet de supprimer une sous famille dans la table SousFamilles
+            </summary>
+            <param name="refsousfamille">l'identifiant de la sous famille à supprimer </param>
+            <returns>le resultat de l'operation </returns>
+            <remarks>
+                la suppresion est faite si la sous famille à supprimer n'est liée à aucun  article 
+                sinon la suppression sera refusé
+            </remarks>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.GetSousFamille(System.String)">
+            <summary>
+             Cette methode permet d'avoir toutes les informations d'une sous famille en fonction de son nom 
+            </summary>
+            <param name="nom"> le nom de la sous famille </param>
+            <returns>la sous famille correspondante </returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.GetSousFamille(System.Int32)">
+            <summary>
+             Cette methode permet d'avoir toutes les informations d'une sous famille en fonction de son identifiant 
+            </summary>
+            <param name="sousfamilleref"> l'identifiant de la sous famille </param>
+            <returns>la sous famille correspondante </returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.getToutesSousFamille">
+            <summary>
+             Cette methode nous donne la liste de toutes les sous familles de la table SousFamilles 
+            </summary>
+            <returns>liste des sous familles</returns>
+        </member>
+        <member name="M:Mercure.InterfaceBaseDonnee.InterfaceDB_Sous_Famille.GetToutesSousFamillebyFamille(System.Int32)">
+            <summary>
+             Cette methode nous donne la liste de toutes les sous familles de la table SousFamilles appartenant à une famille
+            </summary>
+            <param name="refFamille"></param>
+            <returns>liste des sous familles</returns>
+        </member>
+        <member name="M:Mercure.Program.Main(System.String[])">
+            <summary>
+            Point d'entrée principal de l'application.
+            </summary>
+        </member>
+        <member name="T:Mercure.Properties.Resources">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:Mercure.Properties.Resources.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:Mercure.Properties.Resources.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+    </members>
+</doc>

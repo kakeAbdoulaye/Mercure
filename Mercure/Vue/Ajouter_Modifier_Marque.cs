@@ -14,24 +14,25 @@ namespace Mercure.Vue
 {
     public partial class Ajouter_Modifier_Marque : Form
     {
-        private int refmarque;
+        private int RefMarque;
+
         public Ajouter_Modifier_Marque(string titre ,  int refMarque =-1)
         {
             InitializeComponent();
             this.Text = titre;
-            refmarque = refMarque;
-            init();
+            RefMarque = refMarque;
+            Init();
         }
-        public void init()
+        public void Init()
         {
-            if (refmarque == -1)
+            if (RefMarque == -1)
             {
 
             }
             else
             {
                 InterfaceDB_Marque inter = new InterfaceDB_Marque();
-                Marque marque = inter.getMarque(refmarque);
+                Marque marque = inter.GetMarque(RefMarque);
                 textBox_nommarque.Text = marque.NomMarque;
                 button_ajouter_modifier.Text = "Modifier";
             }
@@ -54,17 +55,17 @@ namespace Mercure.Vue
             else
             {
                 InterfaceDB_Marque inter = new InterfaceDB_Marque();
-                Marque marque = inter.getMarque(textBox_nommarque.Text);
+                Marque marque = inter.GetMarque(textBox_nommarque.Text);
                 string resultat;
-                if (refmarque == -1)//on ajoute
+                if (RefMarque == -1)//on ajoute
                 {
-                    resultat = inter.insererMarque(textBox_nommarque.Text);
+                    resultat = inter.InsererMarque(textBox_nommarque.Text);
 
                 }
                 else // on modifie
                 {
 
-                    resultat = inter.modifierMarque(refmarque, textBox_nommarque.Text);
+                    resultat = inter.ModifierMarque(RefMarque, textBox_nommarque.Text);
 
                 }
                 MessageBox.Show(this, resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);

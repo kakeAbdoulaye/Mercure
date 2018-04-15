@@ -10,49 +10,48 @@ namespace Mercure.Vue
 {
     class GestionGroupTri
     {
-        private ListViewGroupTri groupTri;
+        private ListViewGroupTri GroupTri;
 
-        private Hashtable[] groupTables;
+        private Hashtable[] GroupTables;
 
-        int groupColumn = 0;
+        private int GroupColumn = 0;
 
         private bool isRunningXPOrLater = OSFeature.Feature.IsPresent(OSFeature.Themes);
 
-        private ListView listview;
+        private ListView Listview_;
 
         public GestionGroupTri(ListView list)
         {
-            listview = list;
-            this.listview.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ColumnClick);
-          //  list.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ColumnClick);
-            init();
+            Listview_ = list;
+            this.Listview_.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ColumnClick);
+            Init();
            
         }
-        private void init()
+        private void Init()
         { 
             // init 
             if (isRunningXPOrLater)
             {
-                groupTables = new Hashtable[listview.Columns.Count];
-                for (int column = 0; column < listview.Columns.Count; column++)
+                GroupTables = new Hashtable[Listview_.Columns.Count];
+                for (int column = 0; column < Listview_.Columns.Count; column++)
                 {
-                    groupTables[column] = CreerGroupsTable(column);
+                    GroupTables[column] = CreerGroupsTable(column);
                 }
             }
            
         }
         private void SetGroups(int column)
         {
-            listview.Groups.Clear();
-            Hashtable groups = (Hashtable)groupTables[column];
+            Listview_.Groups.Clear();
+            Hashtable groups = (Hashtable)GroupTables[column];
             ListViewGroup[] groupsArray = new ListViewGroup[groups.Count];
             groups.Values.CopyTo(groupsArray, 0);
 
-            groupTri = new ListViewGroupTri(listview.Sorting);
-            Array.Sort(groupsArray, groupTri);
-            listview.Groups.AddRange(groupsArray);
+            GroupTri = new ListViewGroupTri(Listview_.Sorting);
+            Array.Sort(groupsArray, GroupTri);
+            Listview_.Groups.AddRange(groupsArray);
 
-            foreach (ListViewItem item in listview.Items)
+            foreach (ListViewItem item in Listview_.Items)
             {
                 string subItemText = item.SubItems[column].Text;
 
@@ -68,7 +67,7 @@ namespace Mercure.Vue
         private Hashtable CreerGroupsTable(int column)
         {
             Hashtable groups = new Hashtable();
-            foreach (ListViewItem item in listview.Items)
+            foreach (ListViewItem item in Listview_.Items)
             {
                 string subItemText = item.SubItems[column].Text;
                 if (column == 0)
@@ -86,19 +85,19 @@ namespace Mercure.Vue
 
         private void ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            init();
+            Init();
             // Déterminer si la colonne sélectionnée est déjà la colonne triée.
-            if ( e.Column == groupColumn)
+            if ( e.Column == GroupColumn)
             {
                 // Inverser le sens de tri en cours pour cette colonne.
-                if (listview.Sorting == SortOrder.Ascending)
+                if (Listview_.Sorting == SortOrder.Ascending)
                 {
-                    listview.Sorting = SortOrder.Descending;
+                    Listview_.Sorting = SortOrder.Descending;
 
                 }
                 else
                 {
-                    listview.Sorting = SortOrder.Ascending;
+                    Listview_.Sorting = SortOrder.Ascending;
                 }
 
 
@@ -106,13 +105,13 @@ namespace Mercure.Vue
             else
             {
                 // Définir le numéro de colonne à trier ; par défaut sur croissant
-                groupColumn = e.Column;
-                listview.Sorting = SortOrder.Ascending;
+                GroupColumn = e.Column;
+                Listview_.Sorting = SortOrder.Ascending;
 
             }
             // Procéder au tri avec les nouvelles options.
-            listview.Sort();
-            SetGroups(groupColumn);
+            Listview_.Sort();
+            SetGroups(GroupColumn);
 
 
         }
