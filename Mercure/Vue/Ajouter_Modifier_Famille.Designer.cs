@@ -29,66 +29,66 @@
         private void InitializeComponent()
         {
             this.groupBox_Famille = new System.Windows.Forms.GroupBox();
-            this.textBox_nomfamille = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button_ajouter_modifier = new System.Windows.Forms.Button();
-            this.button_annuler = new System.Windows.Forms.Button();
+            this.TextBox_NomFamille = new System.Windows.Forms.TextBox();
+            this.Label_Nom_Famille = new System.Windows.Forms.Label();
+            this.Button_Ajouter_Modifier = new System.Windows.Forms.Button();
+            this.Button_Annuler = new System.Windows.Forms.Button();
             this.groupBox_Famille.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox_Famille
             // 
-            this.groupBox_Famille.Controls.Add(this.textBox_nomfamille);
-            this.groupBox_Famille.Controls.Add(this.label1);
+            this.groupBox_Famille.Controls.Add(this.TextBox_NomFamille);
+            this.groupBox_Famille.Controls.Add(this.Label_Nom_Famille);
             this.groupBox_Famille.Location = new System.Drawing.Point(12, 24);
             this.groupBox_Famille.Name = "groupBox_Famille";
             this.groupBox_Famille.Size = new System.Drawing.Size(334, 170);
             this.groupBox_Famille.TabIndex = 0;
             this.groupBox_Famille.TabStop = false;
             // 
-            // textBox_nomfamille
+            // TextBox_NomFamille
             // 
-            this.textBox_nomfamille.Location = new System.Drawing.Point(151, 73);
-            this.textBox_nomfamille.Name = "textBox_nomfamille";
-            this.textBox_nomfamille.Size = new System.Drawing.Size(134, 20);
-            this.textBox_nomfamille.TabIndex = 1;
+            this.TextBox_NomFamille.Location = new System.Drawing.Point(151, 73);
+            this.TextBox_NomFamille.Name = "TextBox_NomFamille";
+            this.TextBox_NomFamille.Size = new System.Drawing.Size(134, 20);
+            this.TextBox_NomFamille.TabIndex = 1;
             // 
-            // label1
+            // Label_Nom_Famille
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 76);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nom Famille";
+            this.Label_Nom_Famille.AutoSize = true;
+            this.Label_Nom_Famille.Location = new System.Drawing.Point(27, 76);
+            this.Label_Nom_Famille.Name = "Label_Nom_Famille";
+            this.Label_Nom_Famille.Size = new System.Drawing.Size(64, 13);
+            this.Label_Nom_Famille.TabIndex = 0;
+            this.Label_Nom_Famille.Text = "Nom Famille";
             // 
-            // button_ajouter_modifier
+            // Button_Ajouter_Modifier
             // 
-            this.button_ajouter_modifier.Location = new System.Drawing.Point(163, 213);
-            this.button_ajouter_modifier.Name = "button_ajouter_modifier";
-            this.button_ajouter_modifier.Size = new System.Drawing.Size(75, 23);
-            this.button_ajouter_modifier.TabIndex = 1;
-            this.button_ajouter_modifier.Text = "Ajouter";
-            this.button_ajouter_modifier.UseVisualStyleBackColor = true;
-            this.button_ajouter_modifier.Click += new System.EventHandler(this.button_ajouter_modifier_Click);
+            this.Button_Ajouter_Modifier.Location = new System.Drawing.Point(163, 213);
+            this.Button_Ajouter_Modifier.Name = "Button_Ajouter_Modifier";
+            this.Button_Ajouter_Modifier.Size = new System.Drawing.Size(75, 23);
+            this.Button_Ajouter_Modifier.TabIndex = 1;
+            this.Button_Ajouter_Modifier.Text = "Ajouter";
+            this.Button_Ajouter_Modifier.UseVisualStyleBackColor = true;
+            this.Button_Ajouter_Modifier.Click += new System.EventHandler(this.Button_Ajouter_Modifier_Click);
             // 
-            // button_annuler
+            // Button_Annuler
             // 
-            this.button_annuler.Location = new System.Drawing.Point(268, 213);
-            this.button_annuler.Name = "button_annuler";
-            this.button_annuler.Size = new System.Drawing.Size(75, 23);
-            this.button_annuler.TabIndex = 2;
-            this.button_annuler.Text = "Annuler";
-            this.button_annuler.UseVisualStyleBackColor = true;
-            this.button_annuler.Click += new System.EventHandler(this.button_annuler_Click);
+            this.Button_Annuler.Location = new System.Drawing.Point(268, 213);
+            this.Button_Annuler.Name = "Button_Annuler";
+            this.Button_Annuler.Size = new System.Drawing.Size(75, 23);
+            this.Button_Annuler.TabIndex = 2;
+            this.Button_Annuler.Text = "Annuler";
+            this.Button_Annuler.UseVisualStyleBackColor = true;
+            this.Button_Annuler.Click += new System.EventHandler(this.Button_Annuler_Click);
             // 
             // Ajouter_Modifier_Famille
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(358, 261);
-            this.Controls.Add(this.button_annuler);
-            this.Controls.Add(this.button_ajouter_modifier);
+            this.Controls.Add(this.Button_Annuler);
+            this.Controls.Add(this.Button_Ajouter_Modifier);
             this.Controls.Add(this.groupBox_Famille);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Ajouter_Modifier_Famille";
@@ -102,9 +102,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox_Famille;
-        private System.Windows.Forms.TextBox textBox_nomfamille;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button_ajouter_modifier;
-        private System.Windows.Forms.Button button_annuler;
+        private System.Windows.Forms.TextBox TextBox_NomFamille;
+        private System.Windows.Forms.Label Label_Nom_Famille;
+        private System.Windows.Forms.Button Button_Ajouter_Modifier;
+        private System.Windows.Forms.Button Button_Annuler;
     }
 }

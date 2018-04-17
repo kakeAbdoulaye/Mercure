@@ -13,18 +13,37 @@ using Mercure.Models;
 
 namespace Mercure.Vue
 {
+    /// <summary>
+    ///  Cette classe permet l'ajout et la modification d'une sous famille à travers une interface graphique contenant les champs à remplir  
+    /// </summary>
     public partial class Ajouter_Modifier_SousFamille : Form
     {
-        private int RefsousFamile;
+        /// <summary>
+        ///  Attribut contenant la reférence de la sous famille à modifier , il est égale à -1 si c'est pour l'ajout 
+        /// </summary>
+        private int RefSousFamile;
+
+        /// <summary>
+        ///     Constructeur pour un objet de type Ajouter_Modifier_SousFamille
+        /// </summary>
+        /// <param name="titre">le titre de la fenetre </param>
+        /// <param name="refsousFamille"> la reférence de la sous famille , valeur par défaut = -1</param>
+        /// <remarks>
+        ///     - Si la reférence est à -1 , alors il s'agit de l'ajout d'une nouvelle sous famille 
+        ///     - Sinon il s'agit d'une modification
+        /// </remarks>
         public Ajouter_Modifier_SousFamille(string titre, int refsousFamille = -1)
         {
             InitializeComponent();
             this.Text = titre;
-            this.RefsousFamile = refsousFamille;
+            this.RefSousFamile = refsousFamille;
             Init();
             
         }
 
+        /// <summary>
+        ///  Cette methode permet d'aller chercher dans la base de données Toutes les familles et remplir la liste Combobox pour les familles
+        /// </summary>
         public void RemplirComboFamille()
         {
             InterfaceDB_Famille inter = new InterfaceDB_Famille();
@@ -40,30 +59,45 @@ namespace Mercure.Vue
                 indice++;
             }
 
-            this.comboBox_typefamille.Items.AddRange(chaine);
+            this.ComboBox_TypeFamille.Items.AddRange(chaine);
 
         }
+
+        /// <summary>
+        ///  Cette méthode permet d'initialiser l'interface graphique 
+        /// </summary>
         public void Init()
         {
-            if (RefsousFamile == -1)
+            if (RefSousFamile == -1)
             {
                 RemplirComboFamille();
             }
             else
             {
+                // Initialise les champs correspondant à la reférence de la sous famille ( cas d'une modification)
                 InterfaceDB_Sous_Famille inter = new InterfaceDB_Sous_Famille();
-                SousFamille sousfammille = inter.GetSousFamille(RefsousFamile);
-                textBox_nomsousfamille.Text = sousfammille.NomSousFamille;
-                button_ajouter_modifier.Text = "Modifier";
+                SousFamille sousfammille = inter.GetSousFamille(RefSousFamile);
+                TextBox_NomSousFamille.Text = sousfammille.NomSousFamille;
+                Button_Ajouter_Modifier.Text = "Modifier";
                 RemplirComboFamille();
-                this.comboBox_typefamille.SelectedIndex = this.comboBox_typefamille.FindString(sousfammille.MaFamille.NomFamille);
+                this.ComboBox_TypeFamille.SelectedIndex = this.ComboBox_TypeFamille.FindString(sousfammille.MaFamille.NomFamille);
             }
         }
 
-        private void button_ajouter_modifier_Click(object sender, EventArgs e)
+        /// <summary>
+        ///  Cette methode permet d'ajout ou de modifier une sous famille après avoir cliqué sur le bouton ajouter / modifier
+        /// </summary>
+        /// <param name="sender">object qui envoie l'action </param>
+        /// <param name="e">Evenement envoyé </param>
+        /// <remarks>
+        ///     Cette methode vérifie que tous les champs sont saisie par l'utilisateur 
+        ///     et choisie en fonction de l'attribut <see cref="RefSousFamile"/> si on ajoute ou modifie la sous famille 
+        ///     puis on ferme la fenetre
+        /// </remarks>
+        private void Button_Ajouter_Modifier_Click(object sender, EventArgs e)
         {
             
-            if (String.IsNullOrEmpty(textBox_nomsousfamille.Text) || String.IsNullOrEmpty(comboBox_typefamille.Text))
+            if (String.IsNullOrEmpty(TextBox_NomSousFamille.Text) || String.IsNullOrEmpty(ComboBox_TypeFamille.Text))
             {
                 MessageBox.Show(this,"Veillez remplir tous les champs !!!" ,"Erreur Insertion ",MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
@@ -72,17 +106,17 @@ namespace Mercure.Vue
 
                 InterfaceDB_Sous_Famille inter = new InterfaceDB_Sous_Famille();
                 InterfaceDB_Famille interfam = new InterfaceDB_Famille();
-                Famille famille = interfam.GetFamille(comboBox_typefamille.Text);
+                Famille famille = interfam.GetFamille(ComboBox_TypeFamille.Text);
                 string resultat;
-                if (RefsousFamile == -1)//on ajoute
+                if (RefSousFamile == -1)//on ajoute
                 {
-                    resultat = inter.InsererSousFamille(famille.NomFamille, textBox_nomsousfamille.Text);
+                    resultat = inter.InsererSousFamille(famille.NomFamille, TextBox_NomSousFamille.Text);
                    
                 }
                 else // on modifie
                 {
                    
-                    resultat = inter.ModifierSousFamille(RefsousFamile,famille.RefFamille, textBox_nomsousfamille.Text);
+                    resultat = inter.ModifierSousFamille(RefSousFamile,famille.RefFamille, TextBox_NomSousFamille.Text);
                     
                 }
                 MessageBox.Show(this, resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
@@ -91,7 +125,12 @@ namespace Mercure.Vue
             }
         }
 
-        private void button_annuler_Click(object sender, EventArgs e)
+        /// <summary>
+        ///  Cette methode permet de fermer la fenetre après avoir cliquer sur le bouton annuler 
+        /// </summary>
+        /// <param name="sender">object qui envoie l'action </param>
+        /// <param name="e">Evenement envoyé </param>
+        private void Button_Annuler_Click(object sender, EventArgs e)
         {
             this.Close();
         }

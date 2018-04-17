@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.label_Accueil = new System.Windows.Forms.Label();
-            this.button_choix_fichier = new System.Windows.Forms.Button();
-            this.text_chemin_fichier_choisi = new System.Windows.Forms.TextBox();
+            this.Button_Choix_Fichier = new System.Windows.Forms.Button();
+            this.Text_Chemin_Fichier_Choisi = new System.Windows.Forms.TextBox();
             this.label_choix_fichier = new System.Windows.Forms.Label();
-            this.Bar_Progression_Integration_fichier_XML = new System.Windows.Forms.ProgressBar();
-            this.textBox_affichage_resultateterreurs = new System.Windows.Forms.TextBox();
+            this.Bar_Progression_Integration_Fichier_XML = new System.Windows.Forms.ProgressBar();
+            this.TextBox_Affichage_ResultatEtErreurs = new System.Windows.Forms.TextBox();
             this.groupBox_Integration = new System.Windows.Forms.GroupBox();
-            this.radioButton_mise_jour = new System.Windows.Forms.RadioButton();
-            this.radioButton_nouvelle_Integration = new System.Windows.Forms.RadioButton();
-            this.button_integration = new System.Windows.Forms.Button();
+            this.RadioButton_Mise_Jour = new System.Windows.Forms.RadioButton();
+            this.RadioButton_Nouvelle_Integration = new System.Windows.Forms.RadioButton();
+            this.Button_Integration = new System.Windows.Forms.Button();
             this.groupBox_choix_fichier = new System.Windows.Forms.GroupBox();
             this.Ouvrir_XML_Fichier = new System.Windows.Forms.OpenFileDialog();
             this.Travail_En_Arriere_Plan = new System.ComponentModel.BackgroundWorker();
@@ -54,25 +54,24 @@
             this.label_Accueil.TabIndex = 0;
             this.label_Accueil.Text = " integration";
             // 
-            // button_choix_fichier
+            // Button_Choix_Fichier
             // 
-            this.button_choix_fichier.Location = new System.Drawing.Point(161, 36);
-            this.button_choix_fichier.Name = "button_choix_fichier";
-            this.button_choix_fichier.Size = new System.Drawing.Size(75, 23);
-            this.button_choix_fichier.TabIndex = 1;
-            this.button_choix_fichier.Text = "parcourir";
-            this.button_choix_fichier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_choix_fichier.UseVisualStyleBackColor = true;
-            this.button_choix_fichier.Click += new System.EventHandler(this.button_choix_fichier_Click);
+            this.Button_Choix_Fichier.Location = new System.Drawing.Point(161, 36);
+            this.Button_Choix_Fichier.Name = "Button_Choix_Fichier";
+            this.Button_Choix_Fichier.Size = new System.Drawing.Size(75, 23);
+            this.Button_Choix_Fichier.TabIndex = 1;
+            this.Button_Choix_Fichier.Text = "parcourir";
+            this.Button_Choix_Fichier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Button_Choix_Fichier.UseVisualStyleBackColor = true;
+            this.Button_Choix_Fichier.Click += new System.EventHandler(this.Button_Choix_Fichier_Click);
             // 
-            // text_chemin_fichier_choisi
+            // Text_Chemin_Fichier_Choisi
             // 
-            this.text_chemin_fichier_choisi.Location = new System.Drawing.Point(254, 38);
-            this.text_chemin_fichier_choisi.Name = "text_chemin_fichier_choisi";
-            this.text_chemin_fichier_choisi.Size = new System.Drawing.Size(315, 20);
-            this.text_chemin_fichier_choisi.TabIndex = 4;
-            this.text_chemin_fichier_choisi.TextChanged += new System.EventHandler(this.text_chemin_fichier_choisi_TextChanged);
-            this.text_chemin_fichier_choisi.VisibleChanged += new System.EventHandler(this.text_chemin_fichier_choisi_VisibleChanged);
+            this.Text_Chemin_Fichier_Choisi.Location = new System.Drawing.Point(254, 38);
+            this.Text_Chemin_Fichier_Choisi.Name = "Text_Chemin_Fichier_Choisi";
+            this.Text_Chemin_Fichier_Choisi.Size = new System.Drawing.Size(315, 20);
+            this.Text_Chemin_Fichier_Choisi.TabIndex = 4;
+            this.Text_Chemin_Fichier_Choisi.TextChanged += new System.EventHandler(this.Text_Chemin_Fichier_Choisi_TextChanged);
             // 
             // label_choix_fichier
             // 
@@ -83,30 +82,30 @@
             this.label_choix_fichier.TabIndex = 5;
             this.label_choix_fichier.Text = "Choisir un fichier : ";
             // 
-            // Bar_Progression_Integration_fichier_XML
+            // Bar_Progression_Integration_Fichier_XML
             // 
-            this.Bar_Progression_Integration_fichier_XML.Location = new System.Drawing.Point(91, 94);
-            this.Bar_Progression_Integration_fichier_XML.Name = "Bar_Progression_Integration_fichier_XML";
-            this.Bar_Progression_Integration_fichier_XML.Size = new System.Drawing.Size(342, 23);
-            this.Bar_Progression_Integration_fichier_XML.TabIndex = 6;
+            this.Bar_Progression_Integration_Fichier_XML.Location = new System.Drawing.Point(91, 94);
+            this.Bar_Progression_Integration_Fichier_XML.Name = "Bar_Progression_Integration_Fichier_XML";
+            this.Bar_Progression_Integration_Fichier_XML.Size = new System.Drawing.Size(342, 23);
+            this.Bar_Progression_Integration_Fichier_XML.TabIndex = 6;
             // 
-            // textBox_affichage_resultateterreurs
+            // TextBox_Affichage_ResultatEtErreurs
             // 
-            this.textBox_affichage_resultateterreurs.Location = new System.Drawing.Point(91, 136);
-            this.textBox_affichage_resultateterreurs.Multiline = true;
-            this.textBox_affichage_resultateterreurs.Name = "textBox_affichage_resultateterreurs";
-            this.textBox_affichage_resultateterreurs.ReadOnly = true;
-            this.textBox_affichage_resultateterreurs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox_affichage_resultateterreurs.Size = new System.Drawing.Size(342, 173);
-            this.textBox_affichage_resultateterreurs.TabIndex = 7;
+            this.TextBox_Affichage_ResultatEtErreurs.Location = new System.Drawing.Point(91, 136);
+            this.TextBox_Affichage_ResultatEtErreurs.Multiline = true;
+            this.TextBox_Affichage_ResultatEtErreurs.Name = "TextBox_Affichage_ResultatEtErreurs";
+            this.TextBox_Affichage_ResultatEtErreurs.ReadOnly = true;
+            this.TextBox_Affichage_ResultatEtErreurs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TextBox_Affichage_ResultatEtErreurs.Size = new System.Drawing.Size(342, 173);
+            this.TextBox_Affichage_ResultatEtErreurs.TabIndex = 7;
             // 
             // groupBox_Integration
             // 
-            this.groupBox_Integration.Controls.Add(this.radioButton_mise_jour);
-            this.groupBox_Integration.Controls.Add(this.radioButton_nouvelle_Integration);
-            this.groupBox_Integration.Controls.Add(this.Bar_Progression_Integration_fichier_XML);
-            this.groupBox_Integration.Controls.Add(this.textBox_affichage_resultateterreurs);
-            this.groupBox_Integration.Controls.Add(this.button_integration);
+            this.groupBox_Integration.Controls.Add(this.RadioButton_Mise_Jour);
+            this.groupBox_Integration.Controls.Add(this.RadioButton_Nouvelle_Integration);
+            this.groupBox_Integration.Controls.Add(this.Bar_Progression_Integration_Fichier_XML);
+            this.groupBox_Integration.Controls.Add(this.TextBox_Affichage_ResultatEtErreurs);
+            this.groupBox_Integration.Controls.Add(this.Button_Integration);
             this.groupBox_Integration.Location = new System.Drawing.Point(12, 179);
             this.groupBox_Integration.Name = "groupBox_Integration";
             this.groupBox_Integration.Size = new System.Drawing.Size(569, 326);
@@ -114,46 +113,46 @@
             this.groupBox_Integration.TabStop = false;
             this.groupBox_Integration.Text = "Intégration - Base de données";
             // 
-            // radioButton_mise_jour
+            // RadioButton_Mise_Jour
             // 
-            this.radioButton_mise_jour.AutoSize = true;
-            this.radioButton_mise_jour.Location = new System.Drawing.Point(241, 37);
-            this.radioButton_mise_jour.Name = "radioButton_mise_jour";
-            this.radioButton_mise_jour.Size = new System.Drawing.Size(79, 17);
-            this.radioButton_mise_jour.TabIndex = 11;
-            this.radioButton_mise_jour.TabStop = true;
-            this.radioButton_mise_jour.Text = "Mise à jour ";
-            this.radioButton_mise_jour.UseVisualStyleBackColor = true;
-            this.radioButton_mise_jour.CheckedChanged += new System.EventHandler(this.radioButton_mise_jour_CheckedChanged);
+            this.RadioButton_Mise_Jour.AutoSize = true;
+            this.RadioButton_Mise_Jour.Location = new System.Drawing.Point(241, 37);
+            this.RadioButton_Mise_Jour.Name = "RadioButton_Mise_Jour";
+            this.RadioButton_Mise_Jour.Size = new System.Drawing.Size(79, 17);
+            this.RadioButton_Mise_Jour.TabIndex = 11;
+            this.RadioButton_Mise_Jour.TabStop = true;
+            this.RadioButton_Mise_Jour.Text = "Mise à jour ";
+            this.RadioButton_Mise_Jour.UseVisualStyleBackColor = true;
+            this.RadioButton_Mise_Jour.CheckedChanged += new System.EventHandler(this.RadioButton_Mise_Jour_CheckedChanged);
             // 
-            // radioButton_nouvelle_Integration
+            // RadioButton_Nouvelle_Integration
             // 
-            this.radioButton_nouvelle_Integration.AutoSize = true;
-            this.radioButton_nouvelle_Integration.Location = new System.Drawing.Point(51, 37);
-            this.radioButton_nouvelle_Integration.Name = "radioButton_nouvelle_Integration";
-            this.radioButton_nouvelle_Integration.Size = new System.Drawing.Size(120, 17);
-            this.radioButton_nouvelle_Integration.TabIndex = 10;
-            this.radioButton_nouvelle_Integration.TabStop = true;
-            this.radioButton_nouvelle_Integration.Text = "Nouvelle Intégration";
-            this.radioButton_nouvelle_Integration.UseVisualStyleBackColor = true;
-            this.radioButton_nouvelle_Integration.CheckedChanged += new System.EventHandler(this.radioButton_nouvelle_Integration_CheckedChanged);
+            this.RadioButton_Nouvelle_Integration.AutoSize = true;
+            this.RadioButton_Nouvelle_Integration.Location = new System.Drawing.Point(51, 37);
+            this.RadioButton_Nouvelle_Integration.Name = "RadioButton_Nouvelle_Integration";
+            this.RadioButton_Nouvelle_Integration.Size = new System.Drawing.Size(120, 17);
+            this.RadioButton_Nouvelle_Integration.TabIndex = 10;
+            this.RadioButton_Nouvelle_Integration.TabStop = true;
+            this.RadioButton_Nouvelle_Integration.Text = "Nouvelle Intégration";
+            this.RadioButton_Nouvelle_Integration.UseVisualStyleBackColor = true;
+            this.RadioButton_Nouvelle_Integration.CheckedChanged += new System.EventHandler(this.RadioButton_Nouvelle_Integration_CheckedChanged);
             // 
-            // button_integration
+            // Button_Integration
             // 
-            this.button_integration.Enabled = false;
-            this.button_integration.Location = new System.Drawing.Point(403, 37);
-            this.button_integration.Name = "button_integration";
-            this.button_integration.Size = new System.Drawing.Size(75, 23);
-            this.button_integration.TabIndex = 2;
-            this.button_integration.Text = "Integrer";
-            this.button_integration.UseVisualStyleBackColor = true;
-            this.button_integration.Click += new System.EventHandler(this.button_integration_Click);
+            this.Button_Integration.Enabled = false;
+            this.Button_Integration.Location = new System.Drawing.Point(403, 37);
+            this.Button_Integration.Name = "Button_Integration";
+            this.Button_Integration.Size = new System.Drawing.Size(75, 23);
+            this.Button_Integration.TabIndex = 2;
+            this.Button_Integration.Text = "Integrer";
+            this.Button_Integration.UseVisualStyleBackColor = true;
+            this.Button_Integration.Click += new System.EventHandler(this.Button_Integration_Click);
             // 
             // groupBox_choix_fichier
             // 
-            this.groupBox_choix_fichier.Controls.Add(this.button_choix_fichier);
+            this.groupBox_choix_fichier.Controls.Add(this.Button_Choix_Fichier);
             this.groupBox_choix_fichier.Controls.Add(this.label_choix_fichier);
-            this.groupBox_choix_fichier.Controls.Add(this.text_chemin_fichier_choisi);
+            this.groupBox_choix_fichier.Controls.Add(this.Text_Chemin_Fichier_Choisi);
             this.groupBox_choix_fichier.Location = new System.Drawing.Point(12, 60);
             this.groupBox_choix_fichier.Name = "groupBox_choix_fichier";
             this.groupBox_choix_fichier.Size = new System.Drawing.Size(580, 100);
@@ -200,17 +199,17 @@
         #endregion
 
         private System.Windows.Forms.Label label_Accueil;
-        private System.Windows.Forms.Button button_choix_fichier;
-        private System.Windows.Forms.TextBox text_chemin_fichier_choisi;
+        private System.Windows.Forms.Button Button_Choix_Fichier;
+        private System.Windows.Forms.TextBox Text_Chemin_Fichier_Choisi;
         private System.Windows.Forms.Label label_choix_fichier;
-        private System.Windows.Forms.ProgressBar Bar_Progression_Integration_fichier_XML;
-        private System.Windows.Forms.TextBox textBox_affichage_resultateterreurs;
+        private System.Windows.Forms.ProgressBar Bar_Progression_Integration_Fichier_XML;
+        private System.Windows.Forms.TextBox TextBox_Affichage_ResultatEtErreurs;
         private System.Windows.Forms.GroupBox groupBox_Integration;
         private System.Windows.Forms.GroupBox groupBox_choix_fichier;
         private System.Windows.Forms.OpenFileDialog Ouvrir_XML_Fichier;
         private System.ComponentModel.BackgroundWorker Travail_En_Arriere_Plan;
-        private System.Windows.Forms.RadioButton radioButton_nouvelle_Integration;
-        private System.Windows.Forms.RadioButton radioButton_mise_jour;
-        private System.Windows.Forms.Button button_integration;
+        private System.Windows.Forms.RadioButton RadioButton_Nouvelle_Integration;
+        private System.Windows.Forms.RadioButton RadioButton_Mise_Jour;
+        private System.Windows.Forms.Button Button_Integration;
     }
 }

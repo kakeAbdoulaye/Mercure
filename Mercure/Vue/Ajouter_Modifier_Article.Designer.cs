@@ -29,33 +29,33 @@
         private void InitializeComponent()
         {
             this.groupBox_article = new System.Windows.Forms.GroupBox();
-            this.numericUpDown_quantite = new System.Windows.Forms.NumericUpDown();
-            this.textBox_description = new System.Windows.Forms.TextBox();
-            this.textBox_refArticle = new System.Windows.Forms.TextBox();
-            this.comboBox_marque = new System.Windows.Forms.ComboBox();
-            this.comboBox_sousfamille = new System.Windows.Forms.ComboBox();
-            this.numericUpDown_prixht = new System.Windows.Forms.NumericUpDown();
+            this.NumericUpDown_Quantite = new System.Windows.Forms.NumericUpDown();
+            this.TextBox_Description = new System.Windows.Forms.TextBox();
+            this.TextBox_RefArticle = new System.Windows.Forms.TextBox();
+            this.ComboBox_Marque = new System.Windows.Forms.ComboBox();
+            this.ComboBox_SousFamille = new System.Windows.Forms.ComboBox();
+            this.NumericUpDown_PrixHT = new System.Windows.Forms.NumericUpDown();
             this.label_description = new System.Windows.Forms.Label();
             this.label_quantite = new System.Windows.Forms.Label();
             this.label_prixht = new System.Windows.Forms.Label();
             this.label_marque = new System.Windows.Forms.Label();
             this.label_sousfamille = new System.Windows.Forms.Label();
             this.label_refArticle = new System.Windows.Forms.Label();
-            this.button_annuler = new System.Windows.Forms.Button();
-            this.button_ajouter_modifier = new System.Windows.Forms.Button();
+            this.Button_Annuler = new System.Windows.Forms.Button();
+            this.Button_Ajouter_Modifier = new System.Windows.Forms.Button();
             this.groupBox_article.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_quantite)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_prixht)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown_Quantite)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown_PrixHT)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox_article
             // 
-            this.groupBox_article.Controls.Add(this.numericUpDown_quantite);
-            this.groupBox_article.Controls.Add(this.textBox_description);
-            this.groupBox_article.Controls.Add(this.textBox_refArticle);
-            this.groupBox_article.Controls.Add(this.comboBox_marque);
-            this.groupBox_article.Controls.Add(this.comboBox_sousfamille);
-            this.groupBox_article.Controls.Add(this.numericUpDown_prixht);
+            this.groupBox_article.Controls.Add(this.NumericUpDown_Quantite);
+            this.groupBox_article.Controls.Add(this.TextBox_Description);
+            this.groupBox_article.Controls.Add(this.TextBox_RefArticle);
+            this.groupBox_article.Controls.Add(this.ComboBox_Marque);
+            this.groupBox_article.Controls.Add(this.ComboBox_SousFamille);
+            this.groupBox_article.Controls.Add(this.NumericUpDown_PrixHT);
             this.groupBox_article.Controls.Add(this.label_description);
             this.groupBox_article.Controls.Add(this.label_quantite);
             this.groupBox_article.Controls.Add(this.label_prixht);
@@ -68,68 +68,68 @@
             this.groupBox_article.TabIndex = 0;
             this.groupBox_article.TabStop = false;
             // 
-            // numericUpDown_quantite
+            // NumericUpDown_Quantite
             // 
-            this.numericUpDown_quantite.Location = new System.Drawing.Point(154, 217);
-            this.numericUpDown_quantite.Maximum = new decimal(new int[] {
+            this.NumericUpDown_Quantite.Location = new System.Drawing.Point(154, 217);
+            this.NumericUpDown_Quantite.Maximum = new decimal(new int[] {
             1410065408,
             2,
             0,
             0});
-            this.numericUpDown_quantite.Name = "numericUpDown_quantite";
-            this.numericUpDown_quantite.Size = new System.Drawing.Size(71, 20);
-            this.numericUpDown_quantite.TabIndex = 26;
-            this.numericUpDown_quantite.Value = new decimal(new int[] {
+            this.NumericUpDown_Quantite.Name = "NumericUpDown_Quantite";
+            this.NumericUpDown_Quantite.Size = new System.Drawing.Size(71, 20);
+            this.NumericUpDown_Quantite.TabIndex = 26;
+            this.NumericUpDown_Quantite.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // textBox_description
+            // TextBox_Description
             // 
-            this.textBox_description.Location = new System.Drawing.Point(153, 269);
-            this.textBox_description.Multiline = true;
-            this.textBox_description.Name = "textBox_description";
-            this.textBox_description.Size = new System.Drawing.Size(337, 121);
-            this.textBox_description.TabIndex = 24;
+            this.TextBox_Description.Location = new System.Drawing.Point(153, 269);
+            this.TextBox_Description.Multiline = true;
+            this.TextBox_Description.Name = "TextBox_Description";
+            this.TextBox_Description.Size = new System.Drawing.Size(337, 121);
+            this.TextBox_Description.TabIndex = 24;
             // 
-            // textBox_refArticle
+            // TextBox_RefArticle
             // 
-            this.textBox_refArticle.Location = new System.Drawing.Point(153, 39);
-            this.textBox_refArticle.Name = "textBox_refArticle";
-            this.textBox_refArticle.Size = new System.Drawing.Size(121, 20);
-            this.textBox_refArticle.TabIndex = 23;
+            this.TextBox_RefArticle.Location = new System.Drawing.Point(153, 39);
+            this.TextBox_RefArticle.Name = "TextBox_RefArticle";
+            this.TextBox_RefArticle.Size = new System.Drawing.Size(121, 20);
+            this.TextBox_RefArticle.TabIndex = 23;
             // 
-            // comboBox_marque
+            // ComboBox_Marque
             // 
-            this.comboBox_marque.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_marque.FormattingEnabled = true;
-            this.comboBox_marque.Location = new System.Drawing.Point(153, 119);
-            this.comboBox_marque.Name = "comboBox_marque";
-            this.comboBox_marque.Size = new System.Drawing.Size(201, 21);
-            this.comboBox_marque.TabIndex = 22;
+            this.ComboBox_Marque.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_Marque.FormattingEnabled = true;
+            this.ComboBox_Marque.Location = new System.Drawing.Point(153, 119);
+            this.ComboBox_Marque.Name = "ComboBox_Marque";
+            this.ComboBox_Marque.Size = new System.Drawing.Size(201, 21);
+            this.ComboBox_Marque.TabIndex = 22;
             // 
-            // comboBox_sousfamille
+            // ComboBox_SousFamille
             // 
-            this.comboBox_sousfamille.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_sousfamille.Location = new System.Drawing.Point(153, 83);
-            this.comboBox_sousfamille.Name = "comboBox_sousfamille";
-            this.comboBox_sousfamille.Size = new System.Drawing.Size(201, 21);
-            this.comboBox_sousfamille.TabIndex = 21;
+            this.ComboBox_SousFamille.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_SousFamille.Location = new System.Drawing.Point(153, 83);
+            this.ComboBox_SousFamille.Name = "ComboBox_SousFamille";
+            this.ComboBox_SousFamille.Size = new System.Drawing.Size(201, 21);
+            this.ComboBox_SousFamille.TabIndex = 21;
             // 
-            // numericUpDown_prixht
+            // NumericUpDown_PrixHT
             // 
-            this.numericUpDown_prixht.DecimalPlaces = 2;
-            this.numericUpDown_prixht.Location = new System.Drawing.Point(154, 166);
-            this.numericUpDown_prixht.Maximum = new decimal(new int[] {
+            this.NumericUpDown_PrixHT.DecimalPlaces = 2;
+            this.NumericUpDown_PrixHT.Location = new System.Drawing.Point(154, 166);
+            this.NumericUpDown_PrixHT.Maximum = new decimal(new int[] {
             1410065408,
             2,
             0,
             0});
-            this.numericUpDown_prixht.Name = "numericUpDown_prixht";
-            this.numericUpDown_prixht.Size = new System.Drawing.Size(71, 20);
-            this.numericUpDown_prixht.TabIndex = 20;
-            this.numericUpDown_prixht.Value = new decimal(new int[] {
+            this.NumericUpDown_PrixHT.Name = "NumericUpDown_PrixHT";
+            this.NumericUpDown_PrixHT.Size = new System.Drawing.Size(71, 20);
+            this.NumericUpDown_PrixHT.TabIndex = 20;
+            this.NumericUpDown_PrixHT.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -189,41 +189,41 @@
             this.label_refArticle.TabIndex = 13;
             this.label_refArticle.Text = "Reférence Article ";
             // 
-            // button_annuler
+            // Button_Annuler
             // 
-            this.button_annuler.Location = new System.Drawing.Point(427, 449);
-            this.button_annuler.Name = "button_annuler";
-            this.button_annuler.Size = new System.Drawing.Size(75, 23);
-            this.button_annuler.TabIndex = 28;
-            this.button_annuler.Text = "Annuler";
-            this.button_annuler.UseVisualStyleBackColor = true;
-            this.button_annuler.Click += new System.EventHandler(this.button_annuler_Click);
+            this.Button_Annuler.Location = new System.Drawing.Point(427, 449);
+            this.Button_Annuler.Name = "Button_Annuler";
+            this.Button_Annuler.Size = new System.Drawing.Size(75, 23);
+            this.Button_Annuler.TabIndex = 28;
+            this.Button_Annuler.Text = "Annuler";
+            this.Button_Annuler.UseVisualStyleBackColor = true;
+            this.Button_Annuler.Click += new System.EventHandler(this.Button_Annuler_Click);
             // 
-            // button_ajouter_modifier
+            // Button_Ajouter_Modifier
             // 
-            this.button_ajouter_modifier.Location = new System.Drawing.Point(329, 449);
-            this.button_ajouter_modifier.Name = "button_ajouter_modifier";
-            this.button_ajouter_modifier.Size = new System.Drawing.Size(75, 23);
-            this.button_ajouter_modifier.TabIndex = 27;
-            this.button_ajouter_modifier.Text = "Ajouter";
-            this.button_ajouter_modifier.UseVisualStyleBackColor = true;
-            this.button_ajouter_modifier.Click += new System.EventHandler(this.button_ajouter_modifier_Click);
+            this.Button_Ajouter_Modifier.Location = new System.Drawing.Point(329, 449);
+            this.Button_Ajouter_Modifier.Name = "Button_Ajouter_Modifier";
+            this.Button_Ajouter_Modifier.Size = new System.Drawing.Size(75, 23);
+            this.Button_Ajouter_Modifier.TabIndex = 27;
+            this.Button_Ajouter_Modifier.Text = "Ajouter";
+            this.Button_Ajouter_Modifier.UseVisualStyleBackColor = true;
+            this.Button_Ajouter_Modifier.Click += new System.EventHandler(this.Button_Ajouter_Modifier_Click);
             // 
-            // Ajouter_Modifier_Artcle
+            // Ajouter_Modifier_Article
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 484);
-            this.Controls.Add(this.button_ajouter_modifier);
-            this.Controls.Add(this.button_annuler);
+            this.Controls.Add(this.Button_Ajouter_Modifier);
+            this.Controls.Add(this.Button_Annuler);
             this.Controls.Add(this.groupBox_article);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Ajouter_Modifier_Artcle";
+            this.Name = "Ajouter_Modifier_Article";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.groupBox_article.ResumeLayout(false);
             this.groupBox_article.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_quantite)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_prixht)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown_Quantite)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown_PrixHT)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -231,19 +231,19 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox_article;
-        private System.Windows.Forms.TextBox textBox_description;
-        private System.Windows.Forms.TextBox textBox_refArticle;
-        private System.Windows.Forms.ComboBox comboBox_marque;
-        private System.Windows.Forms.ComboBox comboBox_sousfamille;
-        private System.Windows.Forms.NumericUpDown numericUpDown_prixht;
+        private System.Windows.Forms.TextBox TextBox_Description;
+        private System.Windows.Forms.TextBox TextBox_RefArticle;
+        private System.Windows.Forms.ComboBox ComboBox_Marque;
+        private System.Windows.Forms.ComboBox ComboBox_SousFamille;
+        private System.Windows.Forms.NumericUpDown NumericUpDown_PrixHT;
         private System.Windows.Forms.Label label_quantite;
         private System.Windows.Forms.Label label_prixht;
         private System.Windows.Forms.Label label_marque;
         private System.Windows.Forms.Label label_sousfamille;
         private System.Windows.Forms.Label label_refArticle;
-        private System.Windows.Forms.NumericUpDown numericUpDown_quantite;
-        private System.Windows.Forms.Button button_annuler;
-        private System.Windows.Forms.Button button_ajouter_modifier;
+        private System.Windows.Forms.NumericUpDown NumericUpDown_Quantite;
+        private System.Windows.Forms.Button Button_Annuler;
+        private System.Windows.Forms.Button Button_Ajouter_Modifier;
         private System.Windows.Forms.Label label_description;
     }
 }

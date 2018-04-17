@@ -245,6 +245,62 @@
                 qui  permet de modifier et retourner  le nom  
             </summary>
         </member>
+        <member name="T:Mercure.Vue.Ajouter_Modifier_Article">
+            <summary>
+             Cette classe permet l'ajout et la modification d'un article à travers une interface graphique contenant les champs à remplir  
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.Ajouter_Modifier_Article.RefArticle">
+            <summary>
+             Attribut contenant la reférence de l'article à modifier , il est null si c'est pour l'ajout 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Article.#ctor(System.String,System.String)">
+            <summary>
+                Constructeur pour un objet de type Ajouter_Modifier_Article
+            </summary>
+            <param name="titre">le titre de la fenetre </param>
+            <param name="refArticle"> la reférence de l'article , valeur par défaut = null</param>
+            <remarks>
+                - Si la reférence est à null , alors il s'agit de l'ajout d'un nouveau article 
+                - Sinon il s'agit d'une modification
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Article.Init">
+            <summary>
+             Cette méthode permet d'initialiser l'interface graphique 
+             
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Article.RemplirComboSousfamille">
+            <summary>
+             Cette methode permet d'aller chercher dans la base de données Toutes les sous familles et remplir la liste Combobox pour les sous familles
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Article.RemplirComboMarque">
+            <summary>
+             Cette methode permet d'aller chercher dans la base de données Toutes les marques et remplir la liste Combobox pour les marques
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Article.Button_Annuler_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet de fermer la fenetre àprès avoir cliquer sur le bouton annuler 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Article.Button_Ajouter_Modifier_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet d'ajout ou de modifier un article après avoir cliqué sur le bouton ajouter / modifier
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+            <remarks>
+                Cette methode vérifie que tous les champs sont saisie par l'utilisateur 
+                et choisie en fonction de l'attribut RefArticle si on ajoute ou modifie l'article 
+                puis on ferme la fenetre
+            </remarks>
+        </member>
         <member name="F:Mercure.Vue.Ajouter_Modifier_Article.components">
             <summary>
             Required designer variable.
@@ -260,6 +316,33 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Mercure.Vue.Ajouter_Modifier_Famille">
+            <summary>
+             Cette classe permet l'ajout et la modification d'une famille à travers une interface graphique contenant les champs à remplir  
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.Ajouter_Modifier_Famille.RefFamille">
+            <summary>
+             Attribut contenant la reférence de la famille à modifier , il est égale à -1  si c'est pour l'ajout 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Famille.#ctor(System.String,System.Int32)">
+            <summary>
+                Constructeur pour un objet de type Ajouter_Modifier_Famille
+            </summary>
+            <param name="titre">le titre de la fenetre </param>
+            <param name="refFamille"> la reférence de la famille , valeur par défaut = -1</param>
+            <remarks>
+                - Si la reférence est à -1 , alors il s'agit de l'ajout d'un nouveau famille 
+                - Sinon il s'agit d'une modification
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Famille.Init">
+            <summary>
+             Cette méthode permet d'initialiser l'interface graphique 
+             
             </summary>
         </member>
         <member name="F:Mercure.Vue.Ajouter_Modifier_Famille.components">
@@ -381,14 +464,132 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:Mercure.Vue.Fenetre_Integration">
+            <summary>
+             Cette classe représente la fenetre d'intégration d'un fichier xml avec un mode d'intégration dans la base de données
+            </summary>
+            <remarks>
+                Cette fenetre permet de : 
+                    - choisir un fichier de type xml
+                    - Choisir un mode d'intégration : intégration ou mise à jour 
+                    - Afficher la barre de progression  lors de l'intégration / mise à jour 
+                    - Les actions faites sur la base de données lors de l'intégration / mise à jour 
+            </remarks>
+        </member>
         <member name="F:Mercure.Vue.Fenetre_Integration.NomFicherXML">
             <summary>
-            Prendre le text contenu dans  text pour la lecture 
-            tant que le champ du fichier est vide le groupbox integration sera inactif aussi
-            quand on appuie sur un bouton (integration totale / update) l'autre est désactivé jusqu'à la fin de l'integration
-            verifier que le fichier choisie est correcte sinon faite une erreur (fait)
+             Attribut indiquant le chemin du fichier xml  choisie 
             </summary>
-             si une marque est référencié on ne peut pas le supprimer , mettre à jour si existe sinon le cree (fait) , en levé la saisie des reférences dans marque , sous famill , famille (fait)
+        </member>
+        <member name="F:Mercure.Vue.Fenetre_Integration.Count">
+            <summary>
+             Attribut indiquant le nombre de noeud article dans le fichier xml 
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.Fenetre_Integration.ResultatErreur">
+            <summary>
+            Attribut contenant le resultat de chaque opération 
+            </summary>
+        </member>
+        <member name="T:Mercure.Vue.Fenetre_Integration.AjouterFinLigneResultatErreurs">
+            <summary>
+             Cette methode de type delegate permettant de signaler l'ajout en fin de ligne d'un resulat
+            </summary>
+            <param name="text">le resultat d'une opération </param>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.#ctor">
+            <summary>
+             Constructeur par defaut 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.Button_Choix_Fichier_Click(System.Object,System.EventArgs)">
+             <summary>
+              Cette methode permet de choisir un fichier après un click  sur le bouton de choix de fichier 
+            
+             </summary>
+             <param name="sender">object qui envoie l'action </param>
+             <param name="e">Evenement envoyé </param>
+             <remarks>
+                 Le choix de fichier est fait avec un <see cref="T:System.Windows.Forms.OpenFileDialog"/>
+             </remarks>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.Text_Chemin_Fichier_Choisi_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+             Cette permet de gerer l'évenement : quand le contenu du text Box indiquant le chemin du fichier choisi change ,
+             elle sert réellement à activer ou désactiviser le bouton d'intégration / mise à jour si un fichier n'est pas choisie 
+             donc si le text box est vide ou null 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.Travail_En_Arriere_Plan_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+             Cette methode permet de faire le travail du <see cref="T:System.ComponentModel.BackgroundWorker"/> , elle est directement déclenché au moment 
+             où notre back Worker veut lancer un boulot .
+             Elle lance soit l'intégration ou la mise à jour en fontion du bouton radio choisie 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.Travail_En_Arriere_Plan_ProgressChanged(System.Object,System.ComponentModel.ProgressChangedEventArgs)">
+            <summary>
+             Cette methode permet d'incrémenter la bar de progression 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.ChangerResultat(System.String)">
+            <summary>
+             Cette methode permet d'ajouter en fin de ligne dans la Text Box d'affichage le resultat d'une opération sur la base de données
+            </summary>
+            <param name="text"> resultat d'une opération </param>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.FileIntegration">
+            <summary>
+            Cette methode permet de lire le contenu du fichier xml et inserer dans la base de données 
+            </summary>
+            <remarks>
+               -  Elle supprime en premier lieu , toutes les tuples qui se trouvent dans les différents tables de la base de données 
+               -  Puis ouvre et lit  le fichier XML avec <see cref="T:System.Xml.XmlDocument"/>
+               -  Pour chaque noeud lu , elle cree une marque , une famille , une sous famille puis un article si ils existent pas déjà
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.FileMisejour">
+            <summary>
+            Cette methode permet de lire le contenu du fichier xml et mettre à jour les informations des articles dans la base de données 
+            </summary>
+            <remarks>
+                  Elle permet de : 
+               -  Ouvre et lit  le fichier XML avec <see cref="T:System.Xml.XmlDocument"/>
+               -  Pour chaque noeud lu , elle met à jour un article avec les nouveaux éléments d'un fichier 
+                 - si la marque , la  famille et la sous famille existent alors l'action est faite directement
+                 - sinon on cree l'objet puis on met à jour l'article 
+               - Si l'article n'existe pas avant dans la base de données alors il est crée
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.RadioButton_Nouvelle_Integration_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+             Cette permet de d'activier ou désactivier le bouton d'intégration quand on check le bouton radio NOuvelle intégration 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.RadioButton_Mise_Jour_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+             Cette permet de d'activier ou désactivier le bouton d'intégration quand on check le bouton radio Mise à jour
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.Fenetre_Integration.Button_Integration_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet de lancer notre <see cref="T:System.ComponentModel.BackgroundWorker"/> après avoir cliqué sur le bouton Intégration 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+            <remarks> 
+                Elle désactive le bouton d'intégration pour empêcher l'utiliser de lancer un notre travail alors que le 1 er n'est pas fini
+            </remarks>
         </member>
         <member name="F:Mercure.Vue.Fenetre_Integration.components">
             <summary>
@@ -407,20 +608,55 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:Mercure.Vue.GestionGroupTri">
+            <summary>
+               Cette classe est destiné à gerer le groupe d’éléments  qui devra refléter le trie actuel de la colonne. 
+            </summary>
+            <remarks>
+                La formation des groupes est faite en fonction d'une colonne 
+            </remarks>
+        </member>
+        <member name="T:Mercure.Vue.ListViewColumnTri">
+            <summary>
+             Cette classe permet le tri par column les éléments d'une liste view en fonction d'un ordre de trie 
+            </summary>
+            <remarks>
+                Elle étends la classe <see cref="T:System.Collections.IComparer"/>
+            </remarks>
+        </member>
         <member name="F:Mercure.Vue.ListViewColumnTri.columnATrier">
             <summary>
-            Spécifie la colonne à trier
+                Spécifie la colonne à trier
             </summary>
         </member>
         <member name="F:Mercure.Vue.ListViewColumnTri.ordreTri">
             <summary>
-            Spécifie l'ordre de tri .
+             Spécifie l'ordre de tri .
             </summary>
         </member>
         <member name="F:Mercure.Vue.ListViewColumnTri.ObjectCompare">
             <summary>
-            Objet de comparaison ne respectant pas les majuscules et minuscules
+                Objet de comparaison ne respectant pas les majuscules et minuscules
             </summary>
+        </member>
+        <member name="M:Mercure.Vue.ListViewColumnTri.#ctor">
+            <summary>
+            Constructeur par defaut 
+            </summary>
+            <remarks>
+                On se base directement sur la 1 ere colonne
+                L'orde de trie est à None , l'initailisation de l'objet permettant la comparaison des objets 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ListViewColumnTri.#ctor(System.Windows.Forms.SortOrder)">
+            <summary>
+             Constructeur 
+            </summary>
+            <param name="ordre"> l'orde de trie de la colonne </param>
+            <remarks>
+                On se base directement sur la 1 ere colonne
+                l'initailisation de l'objet permettant la comparaison des objets 
+            </remarks>
         </member>
         <member name="M:Mercure.Vue.ListViewColumnTri.Compare(System.Object,System.Object)">
              <summary>
@@ -429,12 +665,48 @@
              </summary>
              <param name="x">Premier objet à comparer</param>
              <param name="x">Deuxième objet à comparer</param>
-             <returns>Le résultat de la comparaison. "0" si équivalent, négatif si 'x' est inférieur à 'y' 
-            et positif si 'x' est supérieur à 'y'</returns>
+             <returns>Le résultat de la comparaison. "0" si équivalent, négatif si 'x' est inférieur à 'y' et positif si 'x' est supérieur à 'y'</returns>
         </member>
-        <member name="F:Mercure.Vue.ListViewGroupTri.OrdreTri">
+        <member name="P:Mercure.Vue.ListViewColumnTri.ColumnATrier">
+            <summary>
+             Cette propriété permet de retourner ou de modifier le numéro de colonne à trier 
+            </summary>
+        </member>
+        <member name="P:Mercure.Vue.ListViewColumnTri.OrdreTri">
+            <summary>
+             Cette propriété permet de retourner ou de modifier l'ordre de tri de la colonne 
+            </summary>
+        </member>
+        <member name="T:Mercure.Vue.ListViewGroupTri">
+            <summary>
+             Cette classe permet le tri par groupe dans la liste view en fonction d'un ordre de trie 
+            </summary>
+            <remarks>
+                Elle étends la classe <see cref="T:System.Collections.IComparer"/>
+            </remarks>
+        </member>
+        <member name="F:Mercure.Vue.ListViewGroupTri.OrdreTri_">
             <summary>
             Spécifie l'ordre de tri .
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ListViewGroupTri.#ctor(System.Windows.Forms.SortOrder)">
+            <summary>
+             Constructeur 
+            </summary>
+            <param name="ordre"> ordre de trie des groupes </param>
+        </member>
+        <member name="M:Mercure.Vue.ListViewGroupTri.Compare(System.Object,System.Object)">
+            <summary>
+            Cette méthode est héritée de l'interface IComparer.  Il compare les deux objets passés en effectuant une comparaison 
+            </summary>
+            <param name="x">Premier objet à comparer</param>
+            <param name="x">Deuxième objet à comparer</param>
+            <returns>Le résultat de la comparaison.positif si équivalent, sinon négatif </returns>
+        </member>
+        <member name="P:Mercure.Vue.ListViewGroupTri.OrdreTri">
+            <summary>
+             Cette propriété permet de retourner ou de modifier l'ordre de tri  
             </summary>
         </member>
         <member name="T:Mercure.InterfaceBaseDonnee.InterfaceDB">

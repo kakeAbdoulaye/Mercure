@@ -13,92 +13,151 @@ using Mercure.Models;
 
 namespace Mercure.Vue
 {
+    /// <summary>
+    ///  Cette classe représente la fenetre d'intégration d'un fichier xml avec un mode d'intégration dans la base de données
+    /// </summary>
+    /// <remarks>
+    ///     Cette fenetre permet de : 
+    ///         - choisir un fichier de type xml
+    ///         - Choisir un mode d'intégration : intégration ou mise à jour 
+    ///         - Afficher la barre de progression  lors de l'intégration / mise à jour 
+    ///         - Les actions faites sur la base de données lors de l'intégration / mise à jour 
+    /// </remarks>
     public partial class Fenetre_Integration : Form
     {
+
         /// <summary>
-        /// Prendre le text contenu dans  text pour la lecture 
-        /// tant que le champ du fichier est vide le groupbox integration sera inactif aussi
-        /// quand on appuie sur un bouton (integration totale / update) l'autre est désactivé jusqu'à la fin de l'integration
-        /// verifier que le fichier choisie est correcte sinon faite une erreur (fait)
+        ///  Attribut indiquant le chemin du fichier xml  choisie 
         /// </summary>
-        ///  si une marque est référencié on ne peut pas le supprimer , mettre à jour si existe sinon le cree (fait) , en levé la saisie des reférences dans marque , sous famill , famille (fait)
         private string NomFicherXML= "";
+
+        /// <summary>
+        ///  Attribut indiquant le nombre de noeud article dans le fichier xml 
+        /// </summary>
         private int Count;
+
+        /// <summary>
+        /// Attribut contenant le resultat de chaque opération 
+        /// </summary>
         private string ResultatErreur;
 
+        /// <summary>
+        ///  Cette methode de type delegate permettant de signaler l'ajout en fin de ligne d'un resulat
+        /// </summary>
+        /// <param name="text">le resultat d'une opération </param>
         delegate void AjouterFinLigneResultatErreurs(string text);
 
+        /// <summary>
+        ///  Constructeur par defaut 
+        /// </summary>
         public Fenetre_Integration()
         {
             InitializeComponent();
 
         }
 
-        private void button_choix_fichier_Click(object sender, EventArgs e)
+        /// <summary>
+        ///  Cette methode permet de choisir un fichier après un click  sur le bouton de choix de fichier 
+        ///
+        /// </summary>
+        /// <param name="sender">object qui envoie l'action </param>
+        /// <param name="e">Evenement envoyé </param>
+        /// <remarks>
+        ///     Le choix de fichier est fait avec un <see cref="OpenFileDialog"/>
+        /// </remarks>
+        private void Button_Choix_Fichier_Click(object sender, EventArgs e)
         {
             DialogResult dialogueResultXML = this.Ouvrir_XML_Fichier.ShowDialog();
+
             if (dialogueResultXML == DialogResult.OK)
             {
                 this.NomFicherXML = this.Ouvrir_XML_Fichier.FileName;
                 XmlDocument documentXml = new XmlDocument();
                 documentXml.Load(this.NomFicherXML);
                 Count = Int32.Parse(documentXml.CreateNavigator().Evaluate("count(//article)").ToString());
-                text_chemin_fichier_choisi.Text = NomFicherXML;
+                Text_Chemin_Fichier_Choisi.Text = NomFicherXML;
             }
         }
 
-        private void text_chemin_fichier_choisi_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        ///  Cette permet de gerer l'évenement : quand le contenu du text Box indiquant le chemin du fichier choisi change ,
+        ///  elle sert réellement à activer ou désactiviser le bouton d'intégration / mise à jour si un fichier n'est pas choisie 
+        ///  donc si le text box est vide ou null 
+        /// </summary>
+        /// <param name="sender">object qui envoie l'action </param>
+        /// <param name="e">Evenement envoyé </param>
+        private void Text_Chemin_Fichier_Choisi_TextChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(text_chemin_fichier_choisi.Text))
+            if (String.IsNullOrEmpty(Text_Chemin_Fichier_Choisi.Text))
             {
-               
-                button_integration.Enabled = false;
+
+                Button_Integration.Enabled = false;
             }
             else
             {
-                if (radioButton_mise_jour.Checked == true || radioButton_nouvelle_Integration.Checked == true)
+                if (RadioButton_Mise_Jour.Checked == true || RadioButton_Nouvelle_Integration.Checked == true)
                 {
-                    button_integration.Enabled = true;
+                    Button_Integration.Enabled = true;
                 }
-                   
+
             }
         }
 
-        private void text_chemin_fichier_choisi_VisibleChanged(object sender, EventArgs e)
-        {
-            text_chemin_fichier_choisi_TextChanged(sender, e);
-        }
-
+        /// <summary>
+        ///  Cette methode permet de faire le travail du <see cref="BackgroundWorker"/> , elle est directement déclenché au moment 
+        ///  où notre back Worker veut lancer un boulot .
+        ///  Elle lance soit l'intégration ou la mise à jour en fontion du bouton radio choisie 
+        /// </summary>
+        /// <param name="sender">object qui envoie l'action </param>
+        /// <param name="e">Evenement envoyé </param>
         private void Travail_En_Arriere_Plan_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (radioButton_mise_jour.Checked == true)
+            if (RadioButton_Mise_Jour.Checked == true)
             {
                 FileMisejour();
             }
-             else if (radioButton_nouvelle_Integration.Checked == true)
+             else if (RadioButton_Nouvelle_Integration.Checked == true)
             {
                 FileIntegration();
             } 
                
         }
 
+        /// <summary>
+        ///  Cette methode permet d'incrémenter la bar de progression 
+        /// </summary>
+        /// <param name="sender">object qui envoie l'action </param>
+        /// <param name="e">Evenement envoyé </param>
         private void Travail_En_Arriere_Plan_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            Bar_Progression_Integration_fichier_XML.Value = e.ProgressPercentage;
+            Bar_Progression_Integration_Fichier_XML.Value = e.ProgressPercentage;
    
         }
 
         private void Travail_En_Arriere_Plan_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Chargement et insertion des éléments du fichier XML dans la base de Données", "Information de Chargement ", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            Bar_Progression_Integration_fichier_XML.Value = 0;
-            text_chemin_fichier_choisi.Text = "";
+            MessageBox.Show("le Chargement et l'insertion des éléments du fichier XML dans la base de Données sont finis", "Information de Chargement ", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            Bar_Progression_Integration_Fichier_XML.Value = 0;
+            Text_Chemin_Fichier_Choisi.Text = "";
         }
        
+        /// <summary>
+        ///  Cette methode permet d'ajouter en fin de ligne dans la Text Box d'affichage le resultat d'une opération sur la base de données
+        /// </summary>
+        /// <param name="text"> resultat d'une opération </param>
         private void ChangerResultat(String text)
         {
-            textBox_affichage_resultateterreurs.Text += text + Environment.NewLine;
+            TextBox_Affichage_ResultatEtErreurs.Text += text + Environment.NewLine;
         }
+
+        /// <summary>
+        /// Cette methode permet de lire le contenu du fichier xml et inserer dans la base de données 
+        /// </summary>
+        /// <remarks>
+        ///    -  Elle supprime en premier lieu , toutes les tuples qui se trouvent dans les différents tables de la base de données 
+        ///    -  Puis ouvre et lit  le fichier XML avec <see cref="XmlDocument"/>
+        ///    -  Pour chaque noeud lu , elle cree une marque , une famille , une sous famille puis un article si ils existent pas déjà
+        /// </remarks>
         private void FileIntegration()
         {
             int increment = 0;
@@ -108,13 +167,13 @@ namespace Mercure.Vue
              * Suppression des tables de la base de données 
              * */
             ResultatErreur = InterfaceDB.SupprimerToutTable("Articles");
-            textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+            TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
             ResultatErreur = InterfaceDB.SupprimerToutTable("Familles");
-            textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+            TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
             ResultatErreur = InterfaceDB.SupprimerToutTable("SousFamilles");
-            textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+            TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
             ResultatErreur = InterfaceDB.SupprimerToutTable("Marques");
-            textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+            TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
             
 
             /**
@@ -145,16 +204,16 @@ namespace Mercure.Vue
 
                 InterfaceDB_Marque marque = new InterfaceDB_Marque();
                 ResultatErreur = marque.InsererMarque(nomMarque);
-                textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
     
 
                 InterfaceDB_Famille famille = new InterfaceDB_Famille();
                 ResultatErreur = famille.InsererFamille(nomfamille);
-                textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
 
                 InterfaceDB_Sous_Famille sousfamille = new InterfaceDB_Sous_Famille();               
                 ResultatErreur = sousfamille.InsererSousFamille(nomfamille, nomSousfamille);
-                textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
 
                 Marque marqueArticle = marque.GetMarque(nomMarque);
                 SousFamille sousFamilleArticle = sousfamille.GetSousFamille(nomSousfamille);
@@ -165,7 +224,7 @@ namespace Mercure.Vue
                 {
                     InterfaceDB_Articles article = new InterfaceDB_Articles();  
                     ResultatErreur = article.InsererArticle(refArticle, descriptionActicle, sousFamilleArticle.RefSousFamille, marqueArticle.RefMarque, prixArticle, quantiteArticle);
-                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                    TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
                 }
                
                 increment++;
@@ -174,6 +233,19 @@ namespace Mercure.Vue
 
             }
         }
+
+
+        /// <summary>
+        /// Cette methode permet de lire le contenu du fichier xml et mettre à jour les informations des articles dans la base de données 
+        /// </summary>
+        /// <remarks>
+        ///       Elle permet de : 
+        ///    -  Ouvre et lit  le fichier XML avec <see cref="XmlDocument"/>
+        ///    -  Pour chaque noeud lu , elle met à jour un article avec les nouveaux éléments d'un fichier 
+        ///      - si la marque , la  famille et la sous famille existent alors l'action est faite directement
+        ///      - sinon on cree l'objet puis on met à jour l'article 
+        ///    - Si l'article n'existe pas avant dans la base de données alors il est crée
+        /// </remarks>
         private void FileMisejour()
         {
             Article articleMisejour;
@@ -208,7 +280,7 @@ namespace Mercure.Vue
                 if(marqueMisejour == null)
                 {
                     ResultatErreur = interMarque.InsererMarque(nomMarque);
-                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                    TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
                     marqueMisejour = interMarque.GetMarque(nomMarque);
                 }
                 /**
@@ -218,7 +290,7 @@ namespace Mercure.Vue
                 if(familleMisejour == null)
                 {
                     ResultatErreur = interfamille.InsererFamille(nomfamille);
-                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                    TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
                     familleMisejour = interfamille.GetFamille(nomfamille);
                 }
 
@@ -229,7 +301,7 @@ namespace Mercure.Vue
                 if(sousfamilleMisejour == null)
                 {
                     ResultatErreur = interSousfamille.InsererSousFamille(nomfamille, nomSousfamille);
-                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                    TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
                     sousfamilleMisejour = interSousfamille.GetSousFamille(nomSousfamille);
                 }
                 else
@@ -237,7 +309,7 @@ namespace Mercure.Vue
                     if(sousfamilleMisejour.MaFamille.RefFamille != familleMisejour.RefFamille)
                     {
                         ResultatErreur = interSousfamille.ModifierSousFamille(sousfamilleMisejour.RefSousFamille, familleMisejour.RefFamille, sousfamilleMisejour.NomSousFamille);
-                        textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                        TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
                     }
                 }
 
@@ -249,12 +321,12 @@ namespace Mercure.Vue
                 if(articleMisejour == null)
                 {
                     ResultatErreur = interArticle.InsererArticle(refArticle, descriptionActicle, sousfamilleMisejour.RefSousFamille, marqueMisejour.RefMarque, prixArticle, quantiteArticle);
-                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                    TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
                 }
                 else
                 {
                    ResultatErreur = interArticle.ModifierArticle(refArticle, descriptionActicle, sousfamilleMisejour.RefSousFamille, marqueMisejour.RefMarque, prixArticle, quantiteArticle);
-                    textBox_affichage_resultateterreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
+                    TextBox_Affichage_ResultatEtErreurs.Invoke(new AjouterFinLigneResultatErreurs(ChangerResultat), ResultatErreur);
                 }
                 increment++;
                 Travail_En_Arriere_Plan.ReportProgress(increment);
@@ -262,31 +334,48 @@ namespace Mercure.Vue
 
             }
         }
-
-        private void button_integration_Click(object sender, EventArgs e)
+        /// <summary>
+        ///  Cette permet de d'activier ou désactivier le bouton d'intégration quand on check le bouton radio NOuvelle intégration 
+        /// </summary>
+        /// <param name="sender">object qui envoie l'action </param>
+        /// <param name="e">Evenement envoyé </param>
+        private void RadioButton_Nouvelle_Integration_CheckedChanged(object sender, EventArgs e)
         {
-            Bar_Progression_Integration_fichier_XML.Maximum = Count;
-            button_integration.Enabled = false;
+            if (!String.IsNullOrEmpty(Text_Chemin_Fichier_Choisi.Text))
+            {
+                this.Button_Integration.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        ///  Cette permet de d'activier ou désactivier le bouton d'intégration quand on check le bouton radio Mise à jour
+        /// </summary>
+        /// <param name="sender">object qui envoie l'action </param>
+        /// <param name="e">Evenement envoyé </param>
+        private void RadioButton_Mise_Jour_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(Text_Chemin_Fichier_Choisi.Text))
+            {
+                this.Button_Integration.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        ///  Cette methode permet de lancer notre <see cref="BackgroundWorker"/> après avoir cliqué sur le bouton Intégration 
+        /// </summary>
+        /// <param name="sender">object qui envoie l'action </param>
+        /// <param name="e">Evenement envoyé </param>
+        /// <remarks> 
+        ///     Elle désactive le bouton d'intégration pour empêcher l'utiliser de lancer un notre travail alors que le 1 er n'est pas fini
+        /// </remarks>
+        private void Button_Integration_Click(object sender, EventArgs e)
+        {
+            Bar_Progression_Integration_Fichier_XML.Maximum = Count;
+            Button_Integration.Enabled = false;
             Travail_En_Arriere_Plan.RunWorkerAsync();
-
         }
 
-     
-        private void radioButton_nouvelle_Integration_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(text_chemin_fichier_choisi.Text))
-            {
-                this.button_integration.Enabled = true;
-            }
-          
-        }
 
-        private void radioButton_mise_jour_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(text_chemin_fichier_choisi.Text))
-            {
-                this.button_integration.Enabled = true;
-            }
-        }
+
     }
 }

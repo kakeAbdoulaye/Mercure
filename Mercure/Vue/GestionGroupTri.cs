@@ -8,6 +8,12 @@ using System.Windows.Forms;
 
 namespace Mercure.Vue
 {
+    /// <summary>
+    ///    Cette classe est destiné à gerer le groupe d’éléments  qui devra refléter le trie actuel de la colonne. 
+    /// </summary>
+    /// <remarks>
+    ///     La formation des groupes est faite en fonction d'une colonne 
+    /// </remarks>
     class GestionGroupTri
     {
         private ListViewGroupTri GroupTri;
@@ -29,7 +35,6 @@ namespace Mercure.Vue
         }
         private void Init()
         { 
-            // init 
             if (isRunningXPOrLater)
             {
                 GroupTables = new Hashtable[Listview_.Columns.Count];

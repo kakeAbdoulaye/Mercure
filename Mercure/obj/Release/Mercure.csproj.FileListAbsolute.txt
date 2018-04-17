@@ -23,6 +23,14 @@ C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\Release\EntityFramework.xml
 C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\Release\EntityFramework.SqlServer.xml
 C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\Release\System.Data.SQLite.xml
 C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.csprojResolveAssemblyReference.cache
-C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.ApplicatioCentrale.resources
 C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.Properties.Resources.resources
 C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.csproj.GenerateResource.Cache
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.Vue.Ajouter_Modifier_Article.resources
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.Vue.Ajouter_Modifier_Famille.resources
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.Vue.Ajouter_Modifier_Marque.resources
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.Vue.Ajouter_Modifier_SousFamille.resources
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.Vue.ApplicatioCentrale.resources
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.Vue.ApplicationFamille.resources
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.Vue.ApplicationMarque.resources
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.Vue.ApplicationSousFamille.resources
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Release\Mercure.Vue.Fenetre_Integration.resources
