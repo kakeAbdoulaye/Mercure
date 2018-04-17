@@ -48,6 +48,22 @@ namespace Mercure.Vue
         delegate void AjouterFinLigneResultatErreurs(string text);
 
         /// <summary>
+        ///  Attribut permettant de savoir s'il y a eu intégration ou mise jour de la base de données, par défaut -1 
+        /// </summary>
+        private int Reussi_ = -1;
+
+        /// <summary>
+        ///  Cette propriété permet d'avoir l'etat de l'opération l'ajout / modification 
+        /// </summary>
+        public int Reussi
+        {
+            get
+            {
+                return Reussi_;
+            }
+        }
+
+        /// <summary>
         ///  Constructeur par defaut 
         /// </summary>
         public Fenetre_Integration()
@@ -232,6 +248,7 @@ namespace Mercure.Vue
 
 
             }
+            Reussi_ = 1; // Integration reussie
         }
 
 
@@ -333,6 +350,7 @@ namespace Mercure.Vue
 
 
             }
+            Reussi_ = 2; // Mise à jour reussie
         }
         /// <summary>
         ///  Cette permet de d'activier ou désactivier le bouton d'intégration quand on check le bouton radio NOuvelle intégration 

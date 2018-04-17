@@ -24,7 +24,6 @@ C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\Debug\EntityFramework.xml
 C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.csprojResolveAssemblyReference.cache
-C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.Vue.ApplicatioCentrale.resources
 C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.Vue.Fenetre_Integration.resources
 C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.Vue.Ajouter_Modifier_Famille.resources
 C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.Vue.Ajouter_Modifier_Marque.resources
@@ -34,3 +33,4 @@ C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.Vue.ApplicationMarque
 C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.Vue.ApplicationSousFamille.resources
 C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.Vue.Ajouter_Modifier_Article.resources
 C:\Users\KAKEA\Downloads\Mercure\Mercure\bin\Debug\Mercure.XML
+C:\Users\KAKEA\Downloads\Mercure\Mercure\obj\Debug\Mercure.Vue.ApplicatioCentrale.resources

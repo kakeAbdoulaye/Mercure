@@ -121,7 +121,7 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ouvrirToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="OuvrirToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJHSURBVDhPxZBdSNNhFMb/F110ZZEVhVBgeeHNICiiuggp
@@ -137,7 +137,7 @@
         g6eHO+A/lyD8ARfG3mk9fv1YAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="quitterToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="QuitterToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABkAAAAZACAYAAAAhDI6nAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAe9FJREFUeF7s3SFzHOn19uF8KLGlYqZmhqaGZuZLAgXDzEyFjcyMBY1EhfQJ3nrP
@@ -671,7 +671,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/y7Nn/ASjUrL4zuJ40AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="afficherToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="AfficherFamilleToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABLAAAASwCAYAAADrIbPPAAAABGdBTUEAALGPC/xhBQAAd3ZJREFUeF7s
         3Qe4ZWV99/1Beu8SmqAgRRR7byhWVKwYUR9jib0SS4waexI1sbdETezGjhHxsXdERUBEURAICihFeofB
@@ -1186,7 +1186,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACg/Uya9AcKCm+Yi3g0qAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ajouterToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="AjouterFamilleToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAAAAAAAD/4QCqRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAZKG
         AAcAAAB0AAAALAAAAABDAFIARQBBAFQATwBSADoAIABnAGQALQBqAHAAZQBnACAAdgAxAC4AMAAgACgA
@@ -1541,7 +1541,7 @@
         QAtFFFABRRRQAUg6UUUAHrS0UUAIKDRRQAtFFFACUtFFABSetFFAC0UUUAFFFFAH/9k=
 </value>
   </data>
-  <data name="afficherToolStripMenuItem1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="AfficherSousFamilleToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABLAAAASwCAYAAADrIbPPAAAABGdBTUEAALGPC/xhBQAAd3ZJREFUeF7s
         3Qe4ZWV99/1Beu8SmqAgRRR7byhWVKwYUR9jib0SS4waexI1sbdETezGjhHxsXdERUBEURAICihFeofB
@@ -2056,7 +2056,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACg/Uya9AcKCm+Yi3g0qAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ajouterToolStripMenuItem1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="AjouterSousFamilleToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAAAAAAAD/4QCqRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAZKG
         AAcAAAB0AAAALAAAAABDAFIARQBBAFQATwBSADoAIABnAGQALQBqAHAAZQBnACAAdgAxAC4AMAAgACgA
@@ -2411,7 +2411,7 @@
         QAtFFFABRRRQAUg6UUUAHrS0UUAIKDRRQAtFFFACUtFFABSetFFAC0UUUAFFFFAH/9k=
 </value>
   </data>
-  <data name="afficherToolStripMenuItem2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="AfficherMarqueToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABLAAAASwCAYAAADrIbPPAAAABGdBTUEAALGPC/xhBQAAd3ZJREFUeF7s
         3Qe4ZWV99/1Beu8SmqAgRRR7byhWVKwYUR9jib0SS4waexI1sbdETezGjhHxsXdERUBEURAICihFeofB
@@ -2926,7 +2926,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACg/Uya9AcKCm+Yi3g0qAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ajouterToolStripMenuItem2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="AjouterMarqueToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAAAAAAAD/4QCqRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAZKG
         AAcAAAB0AAAALAAAAABDAFIARQBBAFQATwBSADoAIABnAGQALQBqAHAAZQBnACAAdgAxAC4AMAAgACgA
@@ -3287,7 +3287,7 @@
   <metadata name="Barre_Outil.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>251, 17</value>
   </metadata>
-  <data name="toolStripButton_ajoutArticle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ToolStripButton_AjoutArticle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAnIAAAJyCAYAAABALi2VAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAKz3SURBVHhe7Z0HuBTV+cYvUeA2qlSRJqKAgFgQEVREARFR
@@ -4031,7 +4031,7 @@
         S3VV3b856nW1fV91VNv31Zeivm/qvr/Z/wNSYtLOc9DvzwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="toolStripButton_quitterApplication.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ToolStripButton_QuitterApplication.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABkAAAAZACAYAAAAhDI6nAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAHvRSURBVHhe7N0hcxzp9fbhfCixpWKmZoamhmbmSwIFw8xM
@@ -4566,7 +4566,7 @@
         rkJggg==
 </value>
   </data>
-  <metadata name="contextMenu_optionClicDroit.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="ContextMenu_OptionClicDroit.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>378, 20</value>
   </metadata>
 </root>

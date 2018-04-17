@@ -255,6 +255,16 @@
              Attribut contenant la reférence de l'article à modifier , il est null si c'est pour l'ajout 
             </summary>
         </member>
+        <member name="F:Mercure.Vue.Ajouter_Modifier_Article.Reussi_">
+            <summary>
+             Attribut permettant de savoir s'il y a eu ajout ou modification , par défaut false 
+            </summary>
+        </member>
+        <member name="P:Mercure.Vue.Ajouter_Modifier_Article.Reussi">
+            <summary>
+             Cette propriété permet d'avoir l'etat de l'opération l'ajout / modification 
+            </summary>
+        </member>
         <member name="M:Mercure.Vue.Ajouter_Modifier_Article.#ctor(System.String,System.String)">
             <summary>
                 Constructeur pour un objet de type Ajouter_Modifier_Article
@@ -269,7 +279,6 @@
         <member name="M:Mercure.Vue.Ajouter_Modifier_Article.Init">
             <summary>
              Cette méthode permet d'initialiser l'interface graphique 
-             
             </summary>
         </member>
         <member name="M:Mercure.Vue.Ajouter_Modifier_Article.RemplirComboSousfamille">
@@ -284,7 +293,7 @@
         </member>
         <member name="M:Mercure.Vue.Ajouter_Modifier_Article.Button_Annuler_Click(System.Object,System.EventArgs)">
             <summary>
-             Cette methode permet de fermer la fenetre àprès avoir cliquer sur le bouton annuler 
+             Cette methode permet de fermer la fenetre après avoir cliquer sur le bouton annuler 
             </summary>
             <param name="sender">object qui envoie l'action </param>
             <param name="e">Evenement envoyé </param>
@@ -297,7 +306,7 @@
             <param name="e">Evenement envoyé </param>
             <remarks>
                 Cette methode vérifie que tous les champs sont saisie par l'utilisateur 
-                et choisie en fonction de l'attribut RefArticle si on ajoute ou modifie l'article 
+                et choisie en fonction de l'attribut <see cref="F:Mercure.Vue.Ajouter_Modifier_Article.RefArticle"/> si on ajoute ou modifie l'article 
                 puis on ferme la fenetre
             </remarks>
         </member>
@@ -328,6 +337,16 @@
              Attribut contenant la reférence de la famille à modifier , il est égale à -1  si c'est pour l'ajout 
             </summary>
         </member>
+        <member name="F:Mercure.Vue.Ajouter_Modifier_Famille.Reussi_">
+            <summary>
+             Attribut permettant de savoir s'il y a eu ajout ou modification , par défaut false 
+            </summary>
+        </member>
+        <member name="P:Mercure.Vue.Ajouter_Modifier_Famille.Reussi">
+            <summary>
+             Cette propriété permet d'avoir l'etat de l'opération l'ajout / modification 
+            </summary>
+        </member>
         <member name="M:Mercure.Vue.Ajouter_Modifier_Famille.#ctor(System.String,System.Int32)">
             <summary>
                 Constructeur pour un objet de type Ajouter_Modifier_Famille
@@ -335,7 +354,7 @@
             <param name="titre">le titre de la fenetre </param>
             <param name="refFamille"> la reférence de la famille , valeur par défaut = -1</param>
             <remarks>
-                - Si la reférence est à -1 , alors il s'agit de l'ajout d'un nouveau famille 
+                - Si la reférence est à -1 , alors il s'agit de l'ajout d'une nouvelle famille 
                 - Sinon il s'agit d'une modification
             </remarks>
         </member>
@@ -344,6 +363,25 @@
              Cette méthode permet d'initialiser l'interface graphique 
              
             </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Famille.Button_Ajouter_Modifier_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet d'ajout ou de modifier une famille après avoir cliqué sur le bouton ajouter / modifier
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+            <remarks>
+                Cette methode vérifie que tous les champs sont saisie par l'utilisateur 
+                et choisie en fonction de l'attribut <see cref="F:Mercure.Vue.Ajouter_Modifier_Famille.RefFamille"/> si on ajoute ou modifie la famille 
+                puis on ferme la fenetre
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Famille.Button_Annuler_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet de fermer la fenetre àprès avoir cliquer sur le bouton annuler 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
         </member>
         <member name="F:Mercure.Vue.Ajouter_Modifier_Famille.components">
             <summary>
@@ -362,6 +400,61 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:Mercure.Vue.Ajouter_Modifier_Marque">
+            <summary>
+             Cette classe permet l'ajout et la modification d'une marque à travers une interface graphique contenant les champs à remplir  
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.Ajouter_Modifier_Marque.RefMarque">
+            <summary>
+             Attribut contenant la reférence de la marque à modifier , il est egale à -1 si c'est pour l'ajout 
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.Ajouter_Modifier_Marque.Reussi_">
+            <summary>
+             Attribut permettant de savoir s'il y a eu ajout ou modification , par défaut false 
+            </summary>
+        </member>
+        <member name="P:Mercure.Vue.Ajouter_Modifier_Marque.Reussi">
+            <summary>
+             Cette propriété permet d'avoir l'etat de l'opération l'ajout / modification 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Marque.#ctor(System.String,System.Int32)">
+            <summary>
+                Constructeur pour un objet de type Ajouter_Modifier_Marque
+            </summary>
+            <param name="titre">le titre de la fenetre </param>
+            <param name="refMarque"> la reférence de la marque , valeur par défaut = -1</param>
+            <remarks>
+                - Si la reférence est égale à -1  , alors il s'agit de l'ajout d'une nouvelle marque 
+                - Sinon il s'agit d'une modification
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Marque.Init">
+            <summary>
+             Cette méthode permet d'initialiser l'interface graphique 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Marque.Button_Ajouter_Modifier_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet d'ajout ou de modifier une marqque après avoir cliqué sur le bouton ajouter / modifier
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+            <remarks>
+                Cette methode vérifie que tous les champs sont saisie par l'utilisateur 
+                et choisie en fonction de l'attribut <see cref="F:Mercure.Vue.Ajouter_Modifier_Marque.RefMarque"/> si on ajoute ou modifie la marque  
+                puis on ferme la fenetre
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_Marque.Button_Annuler_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet de fermer la fenetre après avoir cliquer sur le bouton annuler 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
         <member name="F:Mercure.Vue.Ajouter_Modifier_Marque.components">
             <summary>
             Required designer variable.
@@ -378,6 +471,66 @@
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
+        </member>
+        <member name="T:Mercure.Vue.Ajouter_Modifier_SousFamille">
+            <summary>
+             Cette classe permet l'ajout et la modification d'une sous famille à travers une interface graphique contenant les champs à remplir  
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.Ajouter_Modifier_SousFamille.RefSousFamile">
+            <summary>
+             Attribut contenant la reférence de la sous famille à modifier , il est égale à -1 si c'est pour l'ajout 
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.Ajouter_Modifier_SousFamille.Reussi_">
+            <summary>
+             Attribut permettant de savoir s'il y a eu ajout ou modification , par défaut false 
+            </summary>
+        </member>
+        <member name="P:Mercure.Vue.Ajouter_Modifier_SousFamille.Reussi">
+            <summary>
+             Cette propriété permet d'avoir l'etat de l'opération l'ajout / modification 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_SousFamille.#ctor(System.String,System.Int32)">
+            <summary>
+                Constructeur pour un objet de type Ajouter_Modifier_SousFamille
+            </summary>
+            <param name="titre">le titre de la fenetre </param>
+            <param name="refsousFamille"> la reférence de la sous famille , valeur par défaut = -1</param>
+            <remarks>
+                - Si la reférence est à -1 , alors il s'agit de l'ajout d'une nouvelle sous famille 
+                - Sinon il s'agit d'une modification
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_SousFamille.RemplirComboFamille">
+            <summary>
+             Cette methode permet d'aller chercher dans la base de données Toutes les familles et remplir la liste Combobox pour les familles
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_SousFamille.Init">
+            <summary>
+             Cette méthode permet d'initialiser l'interface graphique 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_SousFamille.Button_Ajouter_Modifier_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet d'ajout ou de modifier une sous famille après avoir cliqué sur le bouton ajouter / modifier
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+            <remarks>
+                Cette methode vérifie que tous les champs sont saisie par l'utilisateur 
+                et choisie en fonction de l'attribut <see cref="F:Mercure.Vue.Ajouter_Modifier_SousFamille.RefSousFamile"/> si on ajoute ou modifie la sous famille 
+                puis on ferme la fenetre
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.Ajouter_Modifier_SousFamille.Button_Annuler_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet de fermer la fenetre après avoir cliquer sur le bouton annuler 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
         </member>
         <member name="F:Mercure.Vue.Ajouter_Modifier_SousFamille.components">
             <summary>
@@ -396,6 +549,217 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:Mercure.Vue.ApplicatioCentrale">
+            <summary>
+             Cette classe represente l'application Centrale du projet , elle permet la gestion des articles 
+             , des menus pour: 
+             - L'intégration du fichier XML dans la base de données 
+             - L'affichage : 
+                - Des marques
+                - Des sous familles
+                - Des familles
+             - L'Ajout :
+                - Article
+                - Marque
+                - Sous Famille
+                - Famille
+             - Quitter l'application
+             - Un status pour afficher la dernière action 
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ApplicatioCentrale.ColumnTri">
+            <summary>
+             Attribut permettant le tri sur une colonne 
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ApplicatioCentrale.GroupTri">
+            <summary>
+            Attribut des gestions des groupes sur les colonnes 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.#ctor">
+            <summary>
+            Constructeur d'un objet de type ApplicatioCentrale
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.MettreJourArticles">
+            <summary>
+            Cette methode permet de mettre à jour la liste view contenant les articles  
+            </summary>
+            <remarks>
+             On libère la liste view puis la remplie avec des nouveaux articles 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.RemplirListeArticle">
+            <summary>
+             Cette methode permet d'aller chercher dans la base de données Tous les articles et remplir la liste View de ces articles
+             , en indiquant les noms de colonne 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.ApplicatioCentrale_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+            <summary>
+             Cette methode de se déconnecter à la base de données lors de la fermeture de l'application 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.ChangementStatus(System.String)">
+            <summary>
+             Cette methode permet de changer le label status de l'application lors d'une opération
+            </summary>
+            <param name="chaine"> l'action faite sur l'application </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.AjouterArticle">
+            <summary>
+             Cette méthode permet d'ouvir une fenetre modale d'ajout d'un article <see cref="T:Mercure.Vue.Ajouter_Modifier_Article"/>
+            </summary>
+            <remarks>
+                Après la fermeture de cette fenetre modale , on met à jour la liste view des articles <see cref="F:Mercure.Vue.ApplicatioCentrale.ListView_Articles"/>  et 
+                on change  le status de l'application si l'ajout à reussi 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.ModifierArticle">
+            <summary>
+            Cette méthode permet l'ouverture d'une fenetre modale permettant la modification d'un article <see cref="T:Mercure.Vue.Ajouter_Modifier_Article"/>
+            </summary>
+            <remarks>
+                la fenetre modale ne s'ouvre que si une ligne est sélectionnée , et la modification se base sur la colonne contenant la reférence de l'article
+                on met à jour la liste view des articles <see cref="F:Mercure.Vue.ApplicatioCentrale.ListView_Articles"/> , on change  le status de l'application si la modification à reussi 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.SupprimerArticle">
+            <summary>
+                Cette méthode permet de supprimer un article dans la base de données 
+            </summary>
+            <remarks>
+                la suppression est faite que si une ligne est sélectionnée , et un message box est affiché pour demander à l'utilisateur de confirmer la suppression
+                on met à jour la liste view des articles <see cref="F:Mercure.Vue.ApplicatioCentrale.ListView_Articles"/> , on change  le status de l'application si la suppression à reussi 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.ListView_Articles_MouseClick(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+             Cette methode permet de gerer l'évènement d'un clic droit en ouvrant un menu  <see cref="F:Mercure.Vue.ApplicatioCentrale.ContextMenu_OptionClicDroit"/> contenant des options d'ajout , suppression et de modification d'un article
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.ListView_Articles_MouseDoubleClick(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+             Cette methode permet de gerer l'evènement double clic qui permet la modification d'un article <see cref="M:Mercure.Vue.ApplicatioCentrale.ModifierArticle"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.ListView_Articles_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+             Cette methode permet de gérer les évènements claviers
+            -  F5 : pour mettre à jour la liste view <see cref="M:Mercure.Vue.ApplicatioCentrale.MettreJourArticles"/>
+            - Supp : pour supprimer un article <see cref="M:Mercure.Vue.ApplicatioCentrale.SupprimerArticle"/>
+            - Entrer : pour modifier un article <see cref="M:Mercure.Vue.ApplicatioCentrale.ModifierArticle"/>
+             
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.AfficherFamilleToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet d'ouvrir une fenetre modale <see cref="T:Mercure.Vue.ApplicationFamille"/> pour l'affichage des familles 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.AjouterFamilleToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet d'ouvrir une fenetre modale <see cref="T:Mercure.Vue.Ajouter_Modifier_Famille"/> pour l'ajout d'une famille 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.AfficherSousFamilleToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet d'ouvrir une fenetre modale <see cref="T:Mercure.Vue.ApplicationSousFamille"/> pour l'affichage des sous familles 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.AjouterSousFamilleToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet d'ouvrir une fenetre modale <see cref="T:Mercure.Vue.Ajouter_Modifier_SousFamille"/> pour l'ajout d'une sous famille 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.AfficherMarqueToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet d'ouvrir une fenetre modale <see cref="T:Mercure.Vue.ApplicationMarque"/> pour l'affichage des marques 
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.AjouterMarqueToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet d'ouvrir une fenetre modale <see cref="T:Mercure.Vue.Ajouter_Modifier_Marque"/> pour l'ajout d'une marque
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.OuvrirToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode permet d'ouvrir une fenetre modale <see cref="T:Mercure.Vue.Fenetre_Integration"/> pour l'intégration ou mise jour des données de la base de données à travers le fichier XML
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.AjouterToolStripMenuItem3_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode gere l'évènement de clic sur l'option ajout du <see cref="F:Mercure.Vue.ApplicatioCentrale.ContextMenu_OptionClicDroit"/> pour ajouter un article 
+             gràce la fonction <see cref="M:Mercure.Vue.ApplicatioCentrale.AjouterArticle"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.ModifierToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode gere l'évènement de clic sur l'option modifier du <see cref="F:Mercure.Vue.ApplicatioCentrale.ContextMenu_OptionClicDroit"/> pour modifier un article 
+             gràce la fonction <see cref="M:Mercure.Vue.ApplicatioCentrale.ModifierArticle"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.SupprimerToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode gere l'évènement de clic sur l'option supprimer du <see cref="F:Mercure.Vue.ApplicatioCentrale.ContextMenu_OptionClicDroit"/> pour supprimer un article 
+             gràce la fonction <see cref="M:Mercure.Vue.ApplicatioCentrale.SupprimerArticle"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.ToolStripButton_AjoutArticle_Click(System.Object,System.EventArgs)">
+            <summary>
+            Cette methode gere l'évènement de clic sur le bouton ajout de la barre d'outil pour ajouter un article voir <see cref="M:Mercure.Vue.ApplicatioCentrale.AjouterArticle"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.QuitterApplication">
+            <summary>
+             Cette methode permet de fermer l'application et de se deconnecter de la base de données 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.QuitterToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Cette methode gere l'évènement de clic sur le menu quitter ,  pour quitter l'application  voir <see cref="M:Mercure.Vue.ApplicatioCentrale.QuitterApplication"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicatioCentrale.ToolStripButton_QuitterApplication_Click(System.Object,System.EventArgs)">
+            <summary>
+            Cette methode gere l'évènement de clic sur le bouton quitter de la barre d'outil pour quitter l'application  voir <see cref="M:Mercure.Vue.ApplicatioCentrale.QuitterApplication"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
         <member name="F:Mercure.Vue.ApplicatioCentrale.components">
             <summary>
             Variable nécessaire au concepteur.
@@ -412,6 +776,138 @@
             Méthode requise pour la prise en charge du concepteur - ne modifiez pas
             le contenu de cette méthode avec l'éditeur de code.
             </summary>
+        </member>
+        <member name="T:Mercure.Vue.ApplicationFamille">
+            <summary>
+             Cette classe represente l'application de la famille, elle permet la gestion des familles 
+             , comme : 
+             
+             - L'affichage : 
+                - Des familles
+             - L'Ajout d'une Famille
+             - La modification d'une famille 
+             - la suppresion d'une famille 
+             - Quitter l'application
+             - Un status pour afficher la dernière action 
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ApplicationFamille.ColumnTri">
+            <summary>
+             Attribut permettant le tri sur une colonne 
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ApplicationFamille.GroupTri">
+            <summary>
+            Attribut des gestions des groupes sur les colonnes 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.#ctor">
+            <summary>
+            Constructeur d'un objet de type ApplicationFamille
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.MettreJourFamilles">
+            <summary>
+            Cette methode permet de mettre à jour la liste view contenant les familles  
+            </summary>
+            <remarks>
+             On libère la liste view puis la remplie avec des nouvelles familles 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.RemplirListeFamille">
+            <summary>
+             Cette methode permet d'aller chercher dans la base de données Toutes les familles et remplir la liste View de ces familles
+             , en indiquant les noms de colonne 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.ChangementStatus(System.String)">
+            <summary>
+             Cette methode permet de changer le label status de l'application lors d'une opération
+            </summary>
+            <param name="chaine"> l'action faite sur l'application </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.AjouterFamille">
+            <summary>
+             Cette méthode permet d'ouvir une fenetre modale d'ajout d'une famille <see cref="T:Mercure.Vue.Ajouter_Modifier_Famille"/>
+            </summary>
+            <remarks>
+                Après la fermeture de cette fenetre modale , on met à jour la liste view des familles <see cref="F:Mercure.Vue.ApplicationFamille.ListView_Famille"/>  et 
+                on change  le status de l'application si l'ajout à reussi 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.ModifierFamille">
+            <summary>
+            Cette méthode permet l'ouverture d'une fenetre modale permettant la modification d'une famille <see cref="T:Mercure.Vue.Ajouter_Modifier_Famille"/>
+            </summary>
+            <remarks>
+                la fenetre modale ne s'ouvre que si une ligne est sélectionnée , et la modification se base sur la colonne contenant la reférence de la famille
+                on met à jour la liste view des familles <see cref="F:Mercure.Vue.ApplicationFamille.ListView_Famille"/> , on change  le status de l'application si la modification à reussi 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.SupprimerFamille">
+            <summary>
+                Cette méthode permet de supprimer une famille dans la base de données 
+            </summary>
+            <remarks>
+                la suppression est faite que si une ligne est sélectionnée , et un message box est affiché pour demander à l'utilisateur de confirmer la suppression
+                on met à jour la liste view des familles <see cref="F:Mercure.Vue.ApplicationFamille.ListView_Famille"/> , on change  le status de l'application si la suppression à reussi 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.ListView_Famille_MouseClick(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+             Cette methode permet de gerer l'évènement d'un clic droit en ouvrant un menu  <see cref="F:Mercure.Vue.ApplicationFamille.ContextMenu_OptionClicDroit"/> contenant des options d'ajout , suppression et de modification d'une famille
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.ListView_Famille_MouseDoubleClick(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+             Cette methode permet de gerer l'evènement double clic qui permet la modification d'une famille  <see cref="M:Mercure.Vue.ApplicationFamille.ModifierFamille"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.ListView_Famille_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+             Cette methode permet de gérer les évènements claviers
+            -  F5 : pour mettre à jour la liste view <see cref="M:Mercure.Vue.ApplicationFamille.MettreJourFamilles"/>
+            - Supp : pour supprimer une famille <see cref="M:Mercure.Vue.ApplicationFamille.SupprimerFamille"/>
+            - Entrer : pour modifier une famille <see cref="M:Mercure.Vue.ApplicationFamille.ModifierFamille"/>
+             
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.AjouterToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode gere l'évènement de clic sur l'option ajout du <see cref="F:Mercure.Vue.ApplicationFamille.ContextMenu_OptionClicDroit"/> pour ajouter une famille
+             gràce la fonction <see cref="M:Mercure.Vue.ApplicationFamille.AjouterFamille"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.ModifierToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode gere l'évènement de clic sur l'option modifier du <see cref="F:Mercure.Vue.ApplicationFamille.ContextMenu_OptionClicDroit"/> pour modifier une famille
+             gràce la fonction <see cref="M:Mercure.Vue.ApplicationFamille.ModifierFamille"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.SupprimerToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode gere l'évènement de clic sur l'option supprimer du <see cref="F:Mercure.Vue.ApplicationFamille.ContextMenu_OptionClicDroit"/> pour supprimer une famille
+             gràce la fonction <see cref="M:Mercure.Vue.ApplicationFamille.SupprimerFamille"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationFamille.ToolStripButton_AjoutFamille_Click(System.Object,System.EventArgs)">
+            <summary>
+            Cette methode gere l'évènement de clic sur le bouton ajout de la barre d'outil pour ajouter une famille voir <see cref="M:Mercure.Vue.ApplicationFamille.AjouterFamille"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
         </member>
         <member name="F:Mercure.Vue.ApplicationFamille.components">
             <summary>
@@ -430,6 +926,138 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:Mercure.Vue.ApplicationMarque">
+            <summary>
+             Cette classe represente l'application de la marque , elle permet la gestion des marques 
+             , comme : 
+             
+             - L'affichage : 
+                - Des marques
+             - L'Ajout d'une marque
+             - La modification d'une marque 
+             - la suppresion d'une marque 
+             - Quitter l'application
+             - Un status pour afficher la dernière action 
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ApplicationMarque.ColumnTri">
+            <summary>
+             Attribut permettant le tri sur une colonne 
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ApplicationMarque.GroupTri">
+            <summary>
+            Attribut des gestions des groupes sur les colonnes 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.#ctor">
+            <summary>
+            Constructeur d'un objet de type ApplicationMarque
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.MettreJourMarques">
+            <summary>
+            Cette methode permet de mettre à jour la liste view contenant les marques  
+            </summary>
+            <remarks>
+             On libère la liste view puis la remplie avec des nouvelles marques 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.RemplirListeMarque">
+            <summary>
+             Cette methode permet d'aller chercher dans la base de données Toutes les marques et remplir la liste View de ces marques
+             , en indiquant les noms de colonne 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.ChangementStatus(System.String)">
+            <summary>
+             Cette methode permet de changer le label status de l'application lors d'une opération
+            </summary>
+            <param name="chaine"> l'action faite sur l'application </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.AjouterMarque">
+            <summary>
+             Cette méthode permet d'ouvir une fenetre modale d'ajout d'une marque <see cref="T:Mercure.Vue.Ajouter_Modifier_Marque"/>
+            </summary>
+            <remarks>
+                Après la fermeture de cette fenetre modale , on met à jour la liste view des marques <see cref="F:Mercure.Vue.ApplicationMarque.ListView_Marque"/>  et 
+                on change  le status de l'application si l'ajout à reussi 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.ModifierMarque">
+            <summary>
+            Cette méthode permet l'ouverture d'une fenetre modale permettant la modification d'une marque <see cref="T:Mercure.Vue.Ajouter_Modifier_Marque"/>
+            </summary>
+            <remarks>
+                la fenetre modale ne s'ouvre que si une ligne est sélectionnée , et la modification se base sur la colonne contenant la reférence de la marque
+                on met à jour la liste view des marques <see cref="F:Mercure.Vue.ApplicationMarque.ListView_Marque"/> , on change  le status de l'application si la modification à reussi 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.SupprimerMarque">
+            <summary>
+                Cette méthode permet de supprimer une marque dans la base de données 
+            </summary>
+            <remarks>
+                la suppression est faite que si une ligne est sélectionnée , et un message box est affiché pour demander à l'utilisateur de confirmer la suppression
+                on met à jour la liste view des marques <see cref="F:Mercure.Vue.ApplicationMarque.ListView_Marque"/> , on change  le status de l'application si la suppression à reussi 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.ListView_Marque_MouseClick(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+             Cette methode permet de gerer l'évènement d'un clic droit en ouvrant un menu  <see cref="F:Mercure.Vue.ApplicationMarque.ContextMenu_OptionClicDroit"/> contenant des options d'ajout , suppression et de modification d'une marque
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.ListView_Marque_MouseDoubleClick(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+             Cette methode permet de gerer l'evènement double clic qui permet la modification d'une marque  <see cref="M:Mercure.Vue.ApplicationMarque.ModifierMarque"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.ListView_Marque_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+             Cette methode permet de gérer les évènements claviers
+            -  F5 : pour mettre à jour la liste view <see cref="M:Mercure.Vue.ApplicationMarque.MettreJourMarques"/>
+            - Supp : pour supprimer une marque <see cref="M:Mercure.Vue.ApplicationMarque.SupprimerMarque"/>
+            - Entrer : pour modifier une marque <see cref="M:Mercure.Vue.ApplicationMarque.ModifierMarque"/>
+             
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.AjouterToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode gere l'évènement de clic sur l'option ajout du <see cref="F:Mercure.Vue.ApplicationMarque.ContextMenu_OptionClicDroit"/> pour ajouter une marque
+             gràce la fonction <see cref="M:Mercure.Vue.ApplicationMarque.AjouterMarque"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.ModifierToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode gere l'évènement de clic sur l'option modifier du <see cref="F:Mercure.Vue.ApplicationMarque.ContextMenu_OptionClicDroit"/> pour modifier une marque
+             gràce la fonction <see cref="M:Mercure.Vue.ApplicationMarque.ModifierMarque"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.SupprimerToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode gere l'évènement de clic sur l'option supprimer du <see cref="F:Mercure.Vue.ApplicationMarque.ContextMenu_OptionClicDroit"/> pour supprimer une marque
+             gràce la fonction <see cref="M:Mercure.Vue.ApplicationMarque.SupprimerMarque"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationMarque.ToolStripButton_AjoutMarque_Click(System.Object,System.EventArgs)">
+            <summary>
+            Cette methode gere l'évènement de clic sur le bouton ajout de la barre d'outil pour ajouter une marque voir <see cref="M:Mercure.Vue.ApplicationMarque.AjouterMarque"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
         <member name="F:Mercure.Vue.ApplicationMarque.components">
             <summary>
             Required designer variable.
@@ -446,6 +1074,138 @@
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
+        </member>
+        <member name="T:Mercure.Vue.ApplicationSousFamille">
+            <summary>
+             Cette classe represente l'application de la sous famille, elle permet la gestion des sous familles 
+             , comme : 
+             
+             - L'affichage : 
+                - Des sous  familles
+             - L'Ajout d'une sous Famille
+             - La modification d'une sous famille 
+             - la suppresion d'une sous famille 
+             - Quitter l'application
+             - Un status pour afficher la dernière action 
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ApplicationSousFamille.ColumnTri">
+            <summary>
+             Attribut permettant le tri sur une colonne 
+            </summary>
+        </member>
+        <member name="F:Mercure.Vue.ApplicationSousFamille.GroupTri">
+            <summary>
+            Attribut des gestions des groupes sur les colonnes 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.#ctor">
+            <summary>
+            Constructeur d'un objet de type ApplicationSousFamille
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.MettreJourSousFamilles">
+            <summary>
+            Cette methode permet de mettre à jour la liste view contenant les sous familles  
+            </summary>
+            <remarks>
+             On libère la liste view puis la remplie avec des nouvelles sous familles 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.RemplirListeSousFamille">
+            <summary>
+             Cette methode permet d'aller chercher dans la base de données Toutes les sous familles et remplir la liste View de ces sous familles
+             , en indiquant les noms de colonne 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.ChangementStatus(System.String)">
+            <summary>
+             Cette methode permet de changer le label status de l'application lors d'une opération
+            </summary>
+            <param name="chaine"> l'action faite sur l'application </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.AjouterSousFamille">
+            <summary>
+             Cette méthode permet d'ouvir une fenetre modale d'ajout d'une sous famille <see cref="T:Mercure.Vue.Ajouter_Modifier_SousFamille"/>
+            </summary>
+            <remarks>
+                Après la fermeture de cette fenetre modale , on met à jour la liste view des sous familles <see cref="F:Mercure.Vue.ApplicationSousFamille.ListView_SousFamille"/>  et 
+                on change  le status de l'application si l'ajout à reussi 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.ModifierSousFamille">
+            <summary>
+            Cette méthode permet l'ouverture d'une fenetre modale permettant la modification d'une sous famille <see cref="T:Mercure.Vue.Ajouter_Modifier_SousFamille"/>
+            </summary>
+            <remarks>
+                la fenetre modale ne s'ouvre que si une ligne est sélectionnée , et la modification se base sur la colonne contenant la reférence de la sous famille
+                on met à jour la liste view des sous  familles <see cref="F:Mercure.Vue.ApplicationSousFamille.ListView_SousFamille"/> , on change  le status de l'application si la modification à reussi 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.SupprimerSousFamille">
+            <summary>
+                Cette méthode permet de supprimer une sous famille dans la base de données 
+            </summary>
+            <remarks>
+                la suppression est faite que si une ligne est sélectionnée , et un message box est affiché pour demander à l'utilisateur de confirmer la suppression
+                on met à jour la liste view des sous familles <see cref="F:Mercure.Vue.ApplicationSousFamille.ListView_SousFamille"/> , on change  le status de l'application si la suppression à reussi 
+            </remarks>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.ListView_SousFamille_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+             Cette methode permet de gérer les évènements claviers
+            -  F5 : pour mettre à jour la liste view <see cref="M:Mercure.Vue.ApplicationSousFamille.MettreJourSousFamilles"/>
+            - Supp : pour supprimer une sous famille <see cref="M:Mercure.Vue.ApplicationSousFamille.SupprimerSousFamille"/>
+            - Entrer : pour modifier une sous famille <see cref="M:Mercure.Vue.ApplicationSousFamille.ModifierSousFamille"/>
+             
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.ListView_SousFamille_MouseClick(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+             Cette methode permet de gerer l'évènement d'un clic droit en ouvrant un menu  <see cref="F:Mercure.Vue.ApplicationSousFamille.ContextMenu_OptionClicDroit"/> contenant des options d'ajout , suppression et de modification d'une sous famille
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.ListView_SousFamille_MouseDoubleClick(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+             Cette methode permet de gerer l'evènement double clic qui permet la modification d'une sous famille  <see cref="M:Mercure.Vue.ApplicationSousFamille.ModifierSousFamille"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.AjouterToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode gere l'évènement de clic sur l'option ajout du <see cref="F:Mercure.Vue.ApplicationSousFamille.ContextMenu_OptionClicDroit"/> pour ajouter une sous famille
+             gràce la fonction <see cref="M:Mercure.Vue.ApplicationSousFamille.AjouterSousFamille"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.ModifierToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode gere l'évènement de clic sur l'option modifier du <see cref="F:Mercure.Vue.ApplicationSousFamille.ContextMenu_OptionClicDroit"/> pour modifier une sous famille
+             gràce la fonction <see cref="M:Mercure.Vue.ApplicationSousFamille.ModifierSousFamille"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.SupprimerToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+             Cette methode gere l'évènement de clic sur l'option supprimer du <see cref="F:Mercure.Vue.ApplicationSousFamille.ContextMenu_OptionClicDroit"/> pour supprimer une sous famille
+             gràce la fonction <see cref="M:Mercure.Vue.ApplicationSousFamille.SupprimerSousFamille"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
+        </member>
+        <member name="M:Mercure.Vue.ApplicationSousFamille.ToolStripButton_AjoutSousFamille_Click(System.Object,System.EventArgs)">
+            <summary>
+            Cette methode gere l'évènement de clic sur le bouton ajout de la barre d'outil pour ajouter une sous famille voir <see cref="M:Mercure.Vue.ApplicationSousFamille.AjouterSousFamille"/>
+            </summary>
+            <param name="sender">object qui envoie l'action </param>
+            <param name="e">Evenement envoyé </param>
         </member>
         <member name="F:Mercure.Vue.ApplicationSousFamille.components">
             <summary>
@@ -496,6 +1256,16 @@
              Cette methode de type delegate permettant de signaler l'ajout en fin de ligne d'un resulat
             </summary>
             <param name="text">le resultat d'une opération </param>
+        </member>
+        <member name="F:Mercure.Vue.Fenetre_Integration.Reussi_">
+            <summary>
+             Attribut permettant de savoir s'il y a eu intégration ou mise jour de la base de données, par défaut -1 
+            </summary>
+        </member>
+        <member name="P:Mercure.Vue.Fenetre_Integration.Reussi">
+            <summary>
+             Cette propriété permet d'avoir l'etat de l'opération l'ajout / modification 
+            </summary>
         </member>
         <member name="M:Mercure.Vue.Fenetre_Integration.#ctor">
             <summary>
@@ -615,6 +1385,38 @@
             <remarks>
                 La formation des groupes est faite en fonction d'une colonne 
             </remarks>
+        </member>
+        <member name="M:Mercure.Vue.GestionGroupTri.#ctor(System.Windows.Forms.ListView)">
+            <summary>
+             Constructeur de l'objet GestionGroupTri
+            </summary>
+            <param name="list"> la liste view sur la quelle le tri se passera </param>
+        </member>
+        <member name="M:Mercure.Vue.GestionGroupTri.Init">
+            <summary>
+             Cette méthode permet de créer toutes les groupes possibles de toutes colonnes 
+            </summary>
+        </member>
+        <member name="M:Mercure.Vue.GestionGroupTri.SetGroups(System.Int32)">
+            <summary>
+                Cette méthode permet de trier en fonction de l'ordre , et de former les groupes adequats de la colonne
+            </summary>
+            <param name="column">le numéro de la colonne </param>
+        </member>
+        <member name="M:Mercure.Vue.GestionGroupTri.CreerGroupsTable(System.Int32)">
+            <summary>
+             Cette methode cree un <see cref="T:System.Collections.Hashtable"/> les groupes avec une entrée pour chaque valeur en fonction de la colonne 
+            </summary>
+            <param name="column">numéro de la colonne </param>
+            <returns></returns>
+        </member>
+        <member name="M:Mercure.Vue.GestionGroupTri.ColumnClick(System.Object,System.Windows.Forms.ColumnClickEventArgs)">
+            <summary>
+              Cette methode permet de gérer l'évènement clic sur une colonne de la liste view
+              , pour trier la colonne en fonction de l'odre de <see cref="T:System.Windows.Forms.SortOrder"/>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="T:Mercure.Vue.ListViewColumnTri">
             <summary>

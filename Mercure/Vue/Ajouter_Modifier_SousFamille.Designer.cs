@@ -92,7 +92,7 @@
             this.Button_Annuler.TabIndex = 1;
             this.Button_Annuler.Text = "Annuler";
             this.Button_Annuler.UseVisualStyleBackColor = true;
-            this.Button_Annuler.Click += new System.EventHandler(this.button_annuler_Click);
+            this.Button_Annuler.Click += new System.EventHandler(this.Button_Annuler_Click);
             // 
             // Button_Ajouter_Modifier
             // 
@@ -102,12 +102,13 @@
             this.Button_Ajouter_Modifier.TabIndex = 2;
             this.Button_Ajouter_Modifier.Text = "Ajouter";
             this.Button_Ajouter_Modifier.UseVisualStyleBackColor = true;
-            this.Button_Ajouter_Modifier.Click += new System.EventHandler(this.button_ajouter_modifier_Click);
+            this.Button_Ajouter_Modifier.Click += new System.EventHandler(this.Button_Ajouter_Modifier_Click);
             // 
             // Ajouter_Modifier_SousFamille
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(358, 295);
             this.Controls.Add(this.Button_Ajouter_Modifier);
             this.Controls.Add(this.Button_Annuler);

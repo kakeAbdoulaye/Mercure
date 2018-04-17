@@ -132,11 +132,11 @@
     <Compile Include="Vue\Ajouter_Modifier_SousFamille.Designer.cs">
       <DependentUpon>Ajouter_Modifier_SousFamille.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vue\ApplicatioCentrale.cs">
+    <Compile Include="Vue\ApplicationCentrale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vue\ApplicatioCentrale.Designer.cs">
-      <DependentUpon>ApplicatioCentrale.cs</DependentUpon>
+    <Compile Include="Vue\ApplicationCentrale.Designer.cs">
+      <DependentUpon>ApplicationCentrale.cs</DependentUpon>
     </Compile>
     <Compile Include="Vue\ApplicationFamille.cs">
       <SubType>Form</SubType>
@@ -184,8 +184,8 @@
     <EmbeddedResource Include="Vue\Ajouter_Modifier_SousFamille.resx">
       <DependentUpon>Ajouter_Modifier_SousFamille.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vue\ApplicatioCentrale.resx">
-      <DependentUpon>ApplicatioCentrale.cs</DependentUpon>
+    <EmbeddedResource Include="Vue\ApplicationCentrale.resx">
+      <DependentUpon>ApplicationCentrale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vue\ApplicationFamille.resx">
       <DependentUpon>ApplicationFamille.cs</DependentUpon>

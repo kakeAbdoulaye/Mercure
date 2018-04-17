@@ -26,6 +26,10 @@ namespace Mercure.Vue
 
         private ListView Listview_;
 
+        /// <summary>
+        ///  Constructeur de l'objet GestionGroupTri
+        /// </summary>
+        /// <param name="list"> la liste view sur la quelle le tri se passera </param>
         public GestionGroupTri(ListView list)
         {
             Listview_ = list;
@@ -33,6 +37,10 @@ namespace Mercure.Vue
             Init();
            
         }
+
+        /// <summary>
+        ///  Cette méthode permet de créer toutes les groupes possibles de toutes colonnes 
+        /// </summary>
         private void Init()
         { 
             if (isRunningXPOrLater)
@@ -45,6 +53,11 @@ namespace Mercure.Vue
             }
            
         }
+
+        /// <summary>
+        ///     Cette méthode permet de trier en fonction de l'ordre , et de former les groupes adequats de la colonne
+        /// </summary>
+        /// <param name="column">le numéro de la colonne </param>
         private void SetGroups(int column)
         {
             Listview_.Groups.Clear();
@@ -69,6 +82,11 @@ namespace Mercure.Vue
             }
         }
 
+        /// <summary>
+        ///  Cette methode cree un <see cref="Hashtable"/> les groupes avec une entrée pour chaque valeur en fonction de la colonne 
+        /// </summary>
+        /// <param name="column">numéro de la colonne </param>
+        /// <returns></returns>
         private Hashtable CreerGroupsTable(int column)
         {
             Hashtable groups = new Hashtable();
@@ -88,6 +106,12 @@ namespace Mercure.Vue
             return groups;
         }
 
+        /// <summary>
+        ///   Cette methode permet de gérer l'évènement clic sur une colonne de la liste view
+        ///   , pour trier la colonne en fonction de l'odre de <see cref="SortOrder"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ColumnClick(object sender, ColumnClickEventArgs e)
         {
             Init();

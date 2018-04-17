@@ -22,6 +22,23 @@ namespace Mercure.Vue
         /// </summary>
         private int RefFamille;
 
+
+        /// <summary>
+        ///  Attribut permettant de savoir s'il y a eu ajout ou modification , par défaut false 
+        /// </summary>
+        private bool Reussi_ = false;
+
+        /// <summary>
+        ///  Cette propriété permet d'avoir l'etat de l'opération l'ajout / modification 
+        /// </summary>
+        public bool Reussi
+        {
+            get
+            {
+                return Reussi_;
+            }
+        }
+
         /// <summary>
         ///     Constructeur pour un objet de type Ajouter_Modifier_Famille
         /// </summary>
@@ -93,7 +110,7 @@ namespace Mercure.Vue
 
                 }
                 MessageBox.Show(this, resultat, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                Console.WriteLine(resultat);
+                Reussi_ = true;
                 this.Close();
             }
         }
@@ -105,6 +122,7 @@ namespace Mercure.Vue
         /// <param name="e">Evenement envoyé </param>
         private void Button_Annuler_Click(object sender, EventArgs e)
         {
+            Reussi_ = false;
             this.Close();
         }
     }
